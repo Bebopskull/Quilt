@@ -11,6 +11,26 @@ const router  = express.Router();
 
 module.exports = (db) => {
 
+  const login =  function(email) {
+    return db.getUserWithEmail(email)
+    .then(user => user)
+  }
+  exports.login = login;
+
+  router.post('/login', (req, res) => {
+    const {email} = req.body;
+    login(email)
+      .then(user => {
+        if (!user) {
+          res.send({error: "error"});
+          return;
+        }
+        req.session.userId = user.id;
+        res.send({user: {name: user.name, email: user.email, id: user.id}});
+      })
+      .catch(e => res.send(e));
+  });
+
 
   router.get("/", (req, res) => {
     db.query(`SELECT * FROM users;`)

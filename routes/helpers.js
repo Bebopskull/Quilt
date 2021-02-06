@@ -1,4 +1,5 @@
-module.exports = (pool) => {
+const pool = require("../db/pool.js");
+
   const getUserWithEmail = function (email) {
     return pool.query(`
     SELECT * FROM users
@@ -6,4 +7,5 @@ module.exports = (pool) => {
     .then (res => res.rows[0])
     .catch (err => console.log(err))
   }
-}
+
+  exports.getUserWithEmail = getUserWithEmail;

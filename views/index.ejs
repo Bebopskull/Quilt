@@ -19,20 +19,20 @@
       </div>
       <div class='login'>
         <div class="form-group mb-2" style='float: left;'>
-     
 
-      <% if(true){ %> 
-        
+
+      <% if(true){ %>
+
         <form class="form-inline" action="/login" method="GET">
           <a href="/login">Log In</a>
         </form>
-      <% } else{ %>  
-        
+      <% } else{ %>
+
         <form class="form-inline" action="/logOut" method="POST">
-          
+
           <a class="navbar-brand" style='color:whitesmoke'>Welcome <%= user.email %> !</a>
           <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫</button></form>
-        
+
      <% } %>
     </div>
       </div>
@@ -55,19 +55,19 @@
             <p>description</p>
             <p>categoty</p>
             <p>avg rating</p>
-            
+
           </div>
         </div>
-        
+
       </div>
 
       <!-- patches go here -->
     </div>
 
     <footer>
-      
+
 
     </footer>
-    
+
   </body>
 </html>
