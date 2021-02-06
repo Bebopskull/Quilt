@@ -34,3 +34,24 @@ git branch --delete newbranch
 
 --DELETING A BRANCH (on github)
 1) git push origin --delete newbranch
+
+
+** PROGRESS  
+Day 1:   
+GROUP:   
+Settled on an option based on preferences and learning points  
+compiled several user stories  
+Spent some time doing up an ERD over zoom  
+Wireframe on figma  
+Assistance Request w Rohit  
+
+DAY 2:  
+GROUP:  
+Settled on an app name  
+Helped each other to push sample commits into remote master via branches  
+Sarah - Did up base .sql migrations and sample seeds  
+Ed - Worked on layout of each widget  
+May - Organised skeleton (shifted some code around, added relevant js files) 
+
+
+
