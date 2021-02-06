@@ -13,3 +13,8 @@ git pull
 git add.
 git commit -m "message"
 
+git pull (if someone has done changes)
+-solve any conflicts and git add git commit again
+
+git push origin newBranch
+
