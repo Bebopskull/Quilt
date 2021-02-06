@@ -20,10 +20,10 @@
       <div class='login'>
         <div class="form-group mb-2" style='float: left;'>
 
-
       <% if(true){ %>
 
-        <form class="form-inline" action="/login" method="GET">
+        <form class="form-inline" action="/login" method="POST">
+          <input type="text" name="username" placeholder='username'>
           <a href="/login">Log In</a>
         </form>
       <% } else{ %>
