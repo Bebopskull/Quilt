@@ -18,3 +18,9 @@ git pull (if someone has done changes)
 
 git push origin newBranch
 
+Once the branch is error free:
+git checkout master  
+>referring to local master
+
+git merge newBranch TO MERGE your local branch to your local master
+git push origin master to merge your local master with the remote master.
