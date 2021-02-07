@@ -2,6 +2,19 @@
 
 
 $(() => {
+
+  //LOAD IN ALL PATCHES (when clicked on home)
+  $(".to-home").on("click", function (event) {
+    event.preventDefault();
+
+    $.ajax({
+      method: "GET",
+      url: "api/patches/"
+    })
+    .then (res => console.log(res));
+  })
+
+
   //LOGIN
   $("#useremail").on("submit", function(event) {
     event.preventDefault();
@@ -13,9 +26,9 @@ $(() => {
       url: "/api/users/login",
       data,
     })
-    //res is the user obj (name, email, id)
+    //res is the json (name, email, id)
     .then (res => {
-      //lists all patches created by the user
+      console.log(res);
     })
   })
 });

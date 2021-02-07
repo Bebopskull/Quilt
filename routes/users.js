@@ -30,24 +30,16 @@ module.exports = (db) => {
           return;
         }
         req.session.userId = user.id;
-        res.send({user: {name: user.name, email: user.email, id: user.id}});    //do not templatevars the password!
+        return user.id;
       })
-      .catch(e => res.send(e));
+      .then (userId => {
+        return database.getPatchesWithUser(userId)
+      })
+      .then (patches => res.json(patches))
+
+
   });
 
 
-  router.get("/", (req, res) => {
-
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
   return router;
 };

@@ -5,7 +5,8 @@ const pool = require("../db/pool.js");
 
 const getAllPatches = function () {
   return pool.query(
-    `SELECT * FROM patches;`
+    `SELECT * FROM patches
+    ORDER BY created_at;`
   )
   .then (res => res.rows)
   .catch(err => console.log(err))
