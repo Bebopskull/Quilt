@@ -25,11 +25,9 @@
         
         <form class="form-inline" action="/login" method="POST">
           <input type="text" name="username" placeholder='username'>
-<<<<<<< HEAD
           <button type="submit" class="btn btn-primary" > Log In </a>
-=======
-          <button type="submit" class="btn btn-primary">Log In</a>
->>>>>>> edsBackup
+
+
         </form>
       <% } else{ %>  
         
@@ -55,17 +53,22 @@
           </div>
 
           <div class = 'patchinfo'>
-
-            <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'><p>name</p></a>
-            <p>description</p>
-            <p>category</p>
-            <p>avg rating</p>
+            <div class ='infoHeader'>
+              <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'><p> name </p></a>
+              <p> user </p>
+              <p> avg rating </p>
+              
+            </div>
+            <div>
+              <p>description</p>
+            </div>
             
           </div>
         </div>
         
       </div>
-
+      
+      <!-- patches go here -->
       <div class= "frameb">
 
         <div class = 'patchb'>
@@ -86,7 +89,7 @@
         
       </div>
 
-      <!-- patches go here -->
+      
     </div>
 
     <footer>
