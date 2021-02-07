@@ -1,4 +1,5 @@
-// const { database } = require("pg/lib/defaults");
+//This is the main js file that adds event listeners and queries the back-end, then does something with the returned json data.
+
 
 $(() => {
   //LOGIN
