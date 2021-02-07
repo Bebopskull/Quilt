@@ -7,13 +7,13 @@
 
 const express = require('express');
 const router  = express.Router();
-const helpers = require('./helpers')
+const database = require('./database') //database queries
 
 
 module.exports = (db) => {
 
   const login =  function(email) {
-    return helpers.getUserWithEmail(email)
+    return database.getUserWithEmail(email)
     .then(user => user)
     .catch(err => console.log(err))
   }

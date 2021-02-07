@@ -1,15 +1,7 @@
 // const { database } = require("pg/lib/defaults");
 
 $(() => {
-  $.ajax({
-    method: "GET",
-    url: "/api/users"
-  }).done((users) => {
-    for(user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
-    }
-  });;
-
+  //LOGIN
   $("#useremail").on("submit", function(event) {
     event.preventDefault();
 
@@ -20,6 +12,9 @@ $(() => {
       url: "/api/users/login",
       data,
     })
-
+    //res is the user obj (name, email, id)
+    .then (res => {
+      //lists all patches created by the user
+    })
   })
 });

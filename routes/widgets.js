@@ -7,6 +7,7 @@
 
 const express = require('express');
 const router  = express.Router();
+const database = require('./database') //database queries
 
 module.exports = (db) => {
   router.get("/", (req, res) => {
