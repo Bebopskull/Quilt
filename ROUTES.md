@@ -19,18 +19,18 @@ ROUTES
 
 - /GET /:user_id DISPLAYS user's created pins + create pin button + delete button on each pin
 
-    //click create pin button
+   * click create pin button  
 
-       - /GET /new displays create pin FORM
+     * /GET /new displays create pin FORM
 
-      ....fills form and clicks submit
+       *  ....fills form and clicks submit
 
-       - /POST /new  -insert into query
+       * /POST /new  -insert into query
 
-    //click delete on PIN
-        - /DELETE /:pin_id
-        - checks user_id on PIN (that returns true/false if user is the creator)
-        - if true, deletes from pins, if false deletes from pin-collection 
+   * click delete on PIN  
+     * /DELETE /:pin_id  
+       *  checks user_id on PIN (that returns true/false if user is the creator)  
+       *  if true, deletes from pins, if false deletes from pin-collection   
 
 //adding ratings
 
