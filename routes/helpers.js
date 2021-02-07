@@ -4,7 +4,9 @@ const pool = require("../db/pool.js");
     return pool.query(`
     SELECT * FROM users
     WHERE email = $1`, [email])
-    .then (res => res.rows[0])
+    .then (res => {
+      return res.rows[0];
+    })
     .catch (err => console.log(err))
   }
 
