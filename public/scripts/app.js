@@ -3,9 +3,15 @@
 $(() => {
 
   const clearPage = function() {
-    
-
+    //clear <section> of all patches with innerhtml = ''.
   }
+
+  $.ajax({
+    method: "GET",
+    url: "api/patches/"
+  })
+  .then (res => console.log(res));
+
 
   //LOAD IN ALL PATCHES (when clicked on home)
   $(".to-home").on("click", function (event) {
