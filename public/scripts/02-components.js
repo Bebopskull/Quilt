@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 $(function() {
+=======
+  //patchObj is {id,title,url,user_id,description,category_id,media_type_id,created_at, avg_rating}
+>>>>>>> master
 
   const createPatchElement = function(patchObj) {
     const escape =  function(str) {
@@ -7,6 +11,7 @@ $(function() {
       return div.innerHTML;
     }
     const patchEl = //sample html please edit.
+<<<<<<< HEAD
     `<div>
       <div class="patch-display"
         <span class="creator"></span>
@@ -37,3 +42,32 @@ $(function() {
 
 
 });
+=======
+    `<div class= "frame">
+    <div class = 'patch'>
+      <div class = 'thumbnail'>
+        <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+      </div>
+      <div class = 'patchinfo'>
+      <a class='sourceUrl' href='${patchObj.url}'>
+      <p>URL: ${patchObj.title}</p>
+      </a>
+      <p>${patchObj.description}</p>
+      <p>${patchObj.category}</p>
+      <p>${patchObj.ave_rating}</p>
+       </div>
+     </div>
+  </div>
+  `;
+  return patchEl;
+  }
+  const renderPatches = function(patchesArr) {
+    let render = '';
+    for (patchObj of patchesArr) {
+      $patch = createPatchElement(patchObj);
+      render = $patch + render;
+    }
+    $('section.board').append(render);
+
+  }
+>>>>>>> master

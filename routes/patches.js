@@ -13,7 +13,11 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     database.getAllPatches()
       .then(patches => {
+<<<<<<< HEAD:routes/patches.js
         res.json({ patches });
+=======
+        res.json(patches);
+>>>>>>> master:routes/widgets.js
       })
       .catch(err => {
         res
