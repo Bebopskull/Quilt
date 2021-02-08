@@ -37,9 +37,14 @@ $(() => { //the jquery document.on ready function
 
     ajaxGetUserPatches(data)
     .then (res => {
+      if (!res) {
+        console.log('No such user')
+      } else {
       clearPage();
       renderPatches(res);
+      }
     })
+
   })
 
   //on click "patch"

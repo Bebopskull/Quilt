@@ -47,4 +47,4 @@ const loginHTML = `<form class="form-inline" action="/login" method="POST" id="u
 <button type="submit" class="btn btn-primary">Log In</a>
 </form>`
 
-const logoutHTML
+// const logoutHTML
