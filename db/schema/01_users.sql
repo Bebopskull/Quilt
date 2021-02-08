@@ -1,7 +1,59 @@
 -- Drop and recreate Users table (Example)
-
 DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS media_types CASCADE;
+DROP TABLE IF EXISTS collections CASCADE;
+DROP TABLE IF EXISTS patches CASCADE;
+DROP TABLE IF EXISTS reviews CASCADE;
+DROP TABLE IF EXISTS patches_collections CASCADE;
+
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255)
+);
+
+CREATE TABLE media_types (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description VARCHAR(255)
+);
+
+CREATE TABLE collections (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE patches (
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  description TEXT DEFAULT '',
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
+  media_type_id INTEGER REFERENCES media_types(id) ON DELETE CASCADE,
+  created_at DATE NOT NULL
+);
+
+CREATE TABLE reviews (
+  id SERIAL PRIMARY KEY NOT NULL,
+  patch_id INTEGER REFERENCES patches(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  rating INTEGER NOT NULL DEFAULT 0,
+  comment TEXT,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE patches_collections (
+  id SERIAL PRIMARY KEY NOT NULL,
+  patch_id INTEGER REFERENCES patches(id) ON DELETE CASCADE,
+  collection_id INTEGER REFERENCES collections(id) ON DELETE CASCADE
 );

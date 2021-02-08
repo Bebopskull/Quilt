@@ -7,22 +7,39 @@
 
 const express = require('express');
 const router  = express.Router();
+const database = require('./database') //database queries
 
 
 module.exports = (db) => {
 
+  const login =  function(email) {
+    return database.getUserWithEmail(email)
+    .then(user => user)
+    .catch(err => console.log(err))
+  }
+  exports.login = login;
 
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
+  router.post('/login', (req, res) => {
+        const {email} = req.body;
+    login(email)
+      .then(user => {
+        console.log(user.id)
+        if (!user) {
+          res.send({error: "error"});
+          console.log('this error')
+          return;
+        }
+        req.session.userId = user.id;
+        return user.id;
       })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+      .then (userId => {
+        return database.getPatchesWithUser(userId)
+      })
+      .then (patches => res.json(patches))
+
+
   });
+
+
   return router;
 };
