@@ -40,6 +40,8 @@ $(() => { //the jquery document.on ready function
     .then (res => {
       clearPage();
       renderPatches(res);
+      console.log('loaded user patches');
+      renderLoginStatus()
     })
   })
 

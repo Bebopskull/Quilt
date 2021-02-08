@@ -40,3 +40,10 @@
     $('section.board').append(render);
   }
 
+const renderLoginStatus = function(user = null) {
+  if(!user) {
+    console.log('user exists')
+  } else {
+    console.log('no user now')
+  }
+}
