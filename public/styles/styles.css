@@ -1,7 +1,7 @@
 
 /*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Roboto&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=PT+Serif&family=Roboto&display=swap');
-
+/*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=PT+Serif&family=Roboto&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
 /*font-family: 'Josefin Slab', serif;
 font-family: 'Roboto', sans-serif;*/
@@ -68,7 +68,12 @@ header{
 	flex-direction:  row;
 
 	justify-content: space-between;
+	align-items: center;
 
+}
+
+.typo{
+	margin-left: 20px;
 }
 
 
@@ -86,9 +91,11 @@ header{
 	border-color: black;
 
 	background-color:white;
-	margin: 20px;
+	margin: 5px 15px;
 
 	flex-wrap: wrap;
+
+	overflow: hidden;
 }
 
 .frame{
@@ -110,6 +117,10 @@ header{
 
 	
 }
+.frame:hover{
+	box-shadow: 5px 5px #545149;
+	transform: scale(1.01);
+}
 
 .patch{
 	display:flex;
@@ -117,7 +128,10 @@ header{
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+	font-family: 'Josefin Slab', serif;
+
 }
+
 
 .thumbnail{
 	display:flex;
@@ -128,24 +142,36 @@ header{
   max-height: 100%;
 
   margin: 10px;
+  
 }
 
 .thumbnailContent{
 	max-width: 100%;
   max-height: 100%;
   padding:12px;
+  mix-blend-mode: hard-light;
 }
+
 
 .patchinfo{
 	height: 50px;
 	width: 100%;
 	display:flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: space-between;
+	padding:0px;
+
+}
+
+.infoHeader{
+	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding:12px;
+	justify-content: space-around;
+}
 
-
+.patchinfo p{
+	color:white;
 }
 
 
@@ -172,6 +198,7 @@ header{
 	padding: 1em;*/
 	box-shadow: 1px 2px rgba(0,0,0,0.25);
 
+
 }
 
 .patchb{
@@ -180,6 +207,7 @@ header{
 	justify-content: flex-start;
 	align-items: flex-start;
 	overflow: hidden;
+	font-family: 'Roboto', sans-serif;
 }
 
 .thumbnailb{
