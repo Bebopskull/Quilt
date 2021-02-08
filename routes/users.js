@@ -36,10 +36,25 @@ module.exports = (db) => {
         return database.getPatchesWithUser(userId)
       })
       .then (patches => res.json(patches))
-
+      .catch(err => res.send(null))
 
   });
 
+  //returns user if logged in, returns null if no user is logged in.
+  router.get('/login', (req,res) => {
+    const userId = req.session.userId;
+    if (!userId) {
+      console.log('null');
+      res.send(null)
+    } else {
+    database.getUserWithId(userId)
+    .then ((user) => {
+      console.log(user)
+      res.json(user)
+    })
+    }
+
+  })
 
   return router;
 };

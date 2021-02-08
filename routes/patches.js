@@ -34,11 +34,18 @@ module.exports = (db) => {
     //   });
   });
 
+// create a POST route for catching the "add patch"
+  // function that will do the SQL query
+  // happy path:
+    // send back a response to the client side "Pin added!"
+    // send back information: all patches user has created
+  // error:
 
+  // if front end isn't ready yet:
+    // use Postman or Insomnia to test the backend routes
 
-
-
-  //takes in a patch_id and does a query for all the reviews for that patch, returns the array of reviews {comment,user_id,created_at, etc}
+// test feature: make the necessary changes. once test is successful, merge to master
 
   return router;
+
 };

@@ -1,5 +1,7 @@
   //patchObj is {id,title,url,user_id,description,category_id,media_type_id,created_at, avg_rating}
 
+
+  //Takes in a patch obj and returns html
   const createPatchElement = function(patchObj) {
 
     //takes in a string and returns the xml-safe version
@@ -40,10 +42,21 @@
     $('section.board').append(render);
   }
 
-const renderLoginStatus = function(user = null) {
-  if(!user) {
-    console.log('user exists')
+//optionally takes in a user obj and renders either the "Logged-in" HTML to the navbar or the default login state.
+const loginOrLogout = function (user = null) {
+  let outputHTML = ''
+  if (!user) {
+    outputHTML = `<form class="form-inline" action="/login" method="POST" id="useremail">
+    <input type="text" name="email" placeholder='email'>
+    <button type="submit" class="btn btn-primary">Log In</a>
+    </form>`
   } else {
-    console.log('no user now')
+    outputHTML = `
+    <form class="form-inline" action="/logout" method="POST">
+    <a class="navbar-brand" style='color:whitesmoke'>Welcome ${user.name} !</a>
+    <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫 Logout</button>
+    </form>`
   }
+
+  $(".login div").html(outputHTML)
 }
