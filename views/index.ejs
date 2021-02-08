@@ -9,85 +9,82 @@
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/01-network.js"></script>
+    <script type="text/javascript" src="/scripts/02-components.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
 
   <body>
-    <header>
+    <nav>
       <div class = 'typo'>
-         <h1 class="to-home">Quilt</h1>
+        <h1 class="to-home">Quilt</h1>
       </div>
       <div class='login'>
         <div class="form-group mb-2" style='float: left;'>
 
-      <% if(true){ %>
+          <% if(true){ %>
 
-        <form class="form-inline" action="/login" method="POST" id="useremail">
-          <input type="text" name="email" placeholder='email'>
-          <button type="submit" class="btn btn-primary">Log In</a>
-        </form>
-      <% } else{ %>
+          <form class="form-inline" action="/login" method="POST" id="useremail">
+            <input type="text" name="email" placeholder='email'>
+            <button type="submit" class="btn btn-primary">Log In</a>
+          </form>
+            <% } else{ %>
 
-        <form class="form-inline" action="/logOut" method="POST">
+          <form class="form-inline" action="/logOut" method="POST">
 
-          <a class="navbar-brand" style='color:whitesmoke'>Welcome <%= user.email %> !</a>
-          <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫</button></form>
+                <a class="navbar-brand" style='color:whitesmoke'>Welcome <%= user.email %> !</a>
+                <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫</button>
+          </form>
 
-     <% } %>
-    </div>
+                <% } %>
+        </div>
       </div>
-    </header>
+    </nav>
+          <header>
+          </header>
 
-    <div class="board">
+    <section class="board">
 
       <!-- patch template -->
-      <div class= "frame">
-
-        <div class = 'patch'>
-          <div class = 'tumbnail'>
-
-            <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-          </div>
-
-          <div class = 'patchinfo'>
-
-            <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'><p>name</p></a>
+        <div class= "frame">
+          <div class = 'patch'>
+            <div class = 'tumbnail'>
+              <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+            </div>
+            <div class = 'patchinfo'>
+            <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'>
+              <p>name</p>
+            </a>
             <p>description</p>
             <p>category</p>
             <p>avg rating</p>
-
-          </div>
+             </div>
+           </div>
         </div>
 
-      </div>
-
-      <div class= "frameb">
-
-        <div class = 'patchb'>
+        <div class= "frameb">
+          <div class = 'patchb'>
           <!-- <div class = 'tumbnail'>
 
             <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
           </div> -->
-
-          <div class = 'patchinfob'>
-
-            <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'><p>name</p></a>
-            <p>description</p>
-            <p>category</p>
-            <p>avg rating</p>
-
+            <div class = 'patchinfob'>
+              <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'>
+                <p>name</p>
+              </a>
+              <p>description</p>
+              <p>category</p>
+              <p>avg rating</p>
+            </div>
           </div>
         </div>
 
-      </div>
-
       <!-- patches go here -->
-    </div>
+      </section>
 
     <footer>
 
 
     </footer>
-
   </body>
 </html>

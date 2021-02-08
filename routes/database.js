@@ -5,10 +5,17 @@ const pool = require("../db/pool.js");
 
 const getAllPatches = function () {
   return pool.query(
-    `SELECT * FROM patches
-    ORDER BY created_at;`
+    `SELECT patches.*, avg(rating) as ave_rating
+    FROM patches
+    LEFT JOIN reviews ON patch_id = patches.id
+    GROUP BY patches.id
+    ORDER BY patches.created_at
+    LIMIT 12;`
   )
-  .then (res => res.rows)
+  .then (res => {
+
+    return res.rows
+  })
   .catch(err => console.log(err))
 }
 
@@ -31,13 +38,28 @@ exports.getUserWithEmail = getUserWithEmail;
 
 const getPatchesWithUser = function (id) {
   return pool.query(
-    `SELECT * FROM patches
-    WHERE user_id = $1;`, [id]
+    `
+    SELECT patches.*, avg(rating) as ave_rating
+    FROM patches
+    LEFT JOIN reviews ON patch_id = patches.id
+    WHERE patches.user_id = $1
+    GROUP BY patches.id
+    ORDER BY patches.created_at;`, [id]
   )
-  .then (res => res.rows)
+  .then (res => {
+    return res.rows
+  })
   .catch(err => console.log(err))
 }
 
 exports.getPatchesWithUser = getPatchesWithUser;
 
 
+const getPatchCreator = function (patch_id) {
+  return pool.query(
+    `SELECT * FROM USERS
+    JOIN patches ON users.id = user_id
+    WHERE patches.id = $1
+    `,[patch_id])
+
+}
