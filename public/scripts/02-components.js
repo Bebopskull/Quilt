@@ -42,3 +42,9 @@
     $('section.board').append(render);
   }
 
+const loginHTML = `<form class="form-inline" action="/login" method="POST" id="useremail">
+<input type="text" name="email" placeholder='email'>
+<button type="submit" class="btn btn-primary">Log In</a>
+</form>`
+
+const logoutHTML
