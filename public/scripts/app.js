@@ -1,6 +1,6 @@
 //This is the main js file that adds event listeners and queries the back-end, then does something with the returned json data.
 
-$(() => {
+$(() => { //the jquery document.on ready function
 
   const clearPage = function() {
     $("section.board").empty()
@@ -29,7 +29,6 @@ $(() => {
   $("#useremail").on("submit", function(event) {
     event.preventDefault();
 
-    clearPage();
     const data = $(this).serialize();
 
     $.ajax({
@@ -39,7 +38,16 @@ $(() => {
     })
     //res is the json (name, email, id)
     .then (res => {
-      renderPatches(res)
+      clearPage();
+      renderPatches(res);
     })
   })
+
+  //on click "patch"
+  //fetches the existing comments and appends into #patch_id (/get)
+
+  //on click submit of "Add review"
+  //1.adds into review database (/post)
+  //2.clears comments and re-fetches the comments and appends into #patch_id (/get)
+
 });

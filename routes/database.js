@@ -35,7 +35,6 @@ const getUserWithEmail = function (email) {
 exports.getUserWithEmail = getUserWithEmail;
 
 //receives a user id integer and queries the database to return all patches created by the user.
-
 const getPatchesWithUser = function (id) {
   return pool.query(
     `
