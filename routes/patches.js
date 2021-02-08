@@ -34,6 +34,7 @@ module.exports = (db) => {
     //   });
   });
 
+<<<<<<< HEAD
   //
 
 // create a POST route for catching the "add patch"
@@ -47,6 +48,14 @@ module.exports = (db) => {
     // use Postman or Insomnia to test the backend routes
 
 // test feature: make the necessary changes. once test is successful, merge to master
+=======
+
+
+
+
+  //takes in a patch_id and does a query for all the reviews for that patch, returns the array of reviews {comment,user_id,created_at, etc}
+
+>>>>>>> f3f76cf7fce76797c135416beb81137e231b0c7c
   return router;
 
 };
