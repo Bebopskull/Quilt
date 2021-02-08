@@ -1,5 +1,7 @@
   //patchObj is {id,title,url,user_id,description,category_id,media_type_id,created_at, avg_rating}
 
+
+  //Takes in a patch obj and returns html
   const createPatchElement = function(patchObj) {
 
     //takes in a string and returns the xml-safe version

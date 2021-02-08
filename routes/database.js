@@ -2,7 +2,7 @@
 
 const pool = require("../db/pool.js");
 
-
+//queries the database for all patches + their average rating.
 const getAllPatches = function () {
   return pool.query(
     `SELECT patches.*, avg(rating) as ave_rating
@@ -53,7 +53,7 @@ const getPatchesWithUser = function (id) {
 
 exports.getPatchesWithUser = getPatchesWithUser;
 
-
+//still WIP
 const getPatchCreator = function (patch_id) {
   return pool.query(
     `SELECT * FROM USERS
