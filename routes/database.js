@@ -41,3 +41,11 @@ const getPatchesWithUser = function (id) {
 exports.getPatchesWithUser = getPatchesWithUser;
 
 
+const getPatchCreator = function (patch_id) {
+  return pool.query(
+    `SELECT * FROM USERS
+    JOIN patches ON users.id = user_id
+    WHERE patches.id = $1
+    `,[patch_id])
+    
+}

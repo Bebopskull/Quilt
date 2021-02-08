@@ -1,7 +1,11 @@
 //This is the main js file that adds event listeners and queries the back-end, then does something with the returned json data.
 
-
 $(() => {
+
+  const clearPage = function() {
+    
+
+  }
 
   //LOAD IN ALL PATCHES (when clicked on home)
   $(".to-home").on("click", function (event) {

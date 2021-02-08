@@ -21,5 +21,17 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+  //GET OWNER OF PATCH
+  router.get("/user", (req, res) => {
+    // database.getAllPatches()
+    //   .then(patches => {
+    //     res.json({ patches });
+    //   })
+    //   .catch(err => {
+    //     res
+    //       .status(500)
+    //       .json({ error: err.message });
+    //   });
+  });
   return router;
 };
