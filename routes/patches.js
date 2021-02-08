@@ -13,7 +13,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     database.getAllPatches()
       .then(patches => {
-        res.json({ patches });
+        res.json(patches);
       })
       .catch(err => {
         res

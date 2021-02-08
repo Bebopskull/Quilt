@@ -3,25 +3,25 @@
 $(() => {
 
   const clearPage = function() {
-    //clear <section> of all patches with innerhtml = ''.
+    $("section.board").empty()
   }
 
-  $.ajax({
-    method: "GET",
-    url: "api/patches/"
-  })
-  .then (res => console.log(res));
+  ajaxGetAllPatches()
+  .then (res => {
+    renderPatches(res)
+  });
 
 
   //LOAD IN ALL PATCHES (when clicked on home)
   $(".to-home").on("click", function (event) {
     event.preventDefault();
 
-    $.ajax({
-      method: "GET",
-      url: "api/patches/"
-    })
-    .then (res => console.log(res));
+    clearPage();
+
+    ajaxGetAllPatches()
+    .then (res => {
+    renderPatches(res)
+    });
   })
 
 
@@ -29,6 +29,7 @@ $(() => {
   $("#useremail").on("submit", function(event) {
     event.preventDefault();
 
+    clearPage();
     const data = $(this).serialize();
 
     $.ajax({
@@ -38,7 +39,7 @@ $(() => {
     })
     //res is the json (name, email, id)
     .then (res => {
-      console.log(res);
+      renderPatches(res)
     })
   })
 });
