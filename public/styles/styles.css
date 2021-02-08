@@ -12,10 +12,10 @@ font-family: 'Roboto', sans-serif;*/
 			}
 
 			body {
-				background-color: #fff;
+				background-color: rgb(245, 222, 222);
 				color: #444;
 				/*display: flex;*/
-				
+
 			}
 
 			a {
@@ -57,8 +57,8 @@ font-family: 'Roboto', sans-serif;*/
 			}
 
 
-header{
-	background-color: yellow;
+nav{
+	background-color: #444C5C;
 	width: 100vw;
 	height: 10vh;
 	padding: .5vw;
@@ -72,8 +72,13 @@ header{
 
 }
 
+#search-container {
+
+}
+
 .typo{
 	margin-left: 20px;
+  color:rgb(245, 222, 222);
 }
 
 
@@ -81,7 +86,7 @@ header{
 /*ITEM A*/
 .board{
 
-	width:98vw;
+	width:99vw;
 	height: 85vh;
 	display:flex;
 	justify-content: flex-start;
@@ -94,8 +99,7 @@ header{
 	margin: 5px 15px;
 
 	flex-wrap: wrap;
-
-	overflow: hidden;
+	overflow: scroll;
 }
 
 .frame{
@@ -105,17 +109,18 @@ header{
 	align-items: center;
 	margin:5px;
 	border-style: solid;
-	width:350px;
-	height: 400px;
+	width:30vw;
+	height: 40vh;
 	display:flex;
 	justify-content: center;
 	align-items: center;
+  padding: 0.5em;
 
 	border-style: solid;
 	border-color: black;
 	background-color: #FF5555;
 
-	
+
 }
 .frame:hover{
 	box-shadow: 5px 5px #545149;
@@ -132,7 +137,6 @@ header{
 
 }
 
-
 .thumbnail{
 	display:flex;
 	justify-content: center;
@@ -142,16 +146,15 @@ header{
   max-height: 100%;
 
   margin: 10px;
-  
+
 }
 
 .thumbnailContent{
 	max-width: 100%;
   max-height: 100%;
-  padding:12px;
+  padding:1em;
   mix-blend-mode: hard-light;
 }
-
 
 .patchinfo{
 	height: 50px;
@@ -160,7 +163,8 @@ header{
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: space-between;
-	padding:0px;
+	padding:5px;
+  margin: 5px;
 
 }
 

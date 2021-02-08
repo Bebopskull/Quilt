@@ -33,5 +33,20 @@ module.exports = (db) => {
     //       .json({ error: err.message });
     //   });
   });
+
+  //
+
+// create a POST route for catching the "add patch"
+  // function that will do the SQL query
+  // happy path:
+    // send back a response to the client side "Pin added!"
+    // send back information: all patches user has created
+  // error:
+
+  // if front end isn't ready yet:
+    // use Postman or Insomnia to test the backend routes
+
+// test feature: make the necessary changes. once test is successful, merge to master
   return router;
+
 };
