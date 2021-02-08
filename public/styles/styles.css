@@ -15,7 +15,7 @@ font-family: 'Roboto', sans-serif;*/
 				background-color: #fff;
 				color: #444;
 				/*display: flex;*/
-				
+
 			}
 
 			a {
@@ -115,7 +115,7 @@ header{
 	border-color: black;
 	background-color: #FF5555;
 
-	
+
 }
 .frame:hover{
 	box-shadow: 5px 5px #545149;
@@ -140,9 +140,7 @@ header{
 	overflow: hidden;
 	max-width: 100%;
   max-height: 100%;
-
   margin: 10px;
-  
 }
 
 .thumbnailContent{
@@ -161,7 +159,6 @@ header{
 	justify-content: flex-start;
 	align-items: space-between;
 	padding:0px;
-
 }
 
 .infoHeader{
