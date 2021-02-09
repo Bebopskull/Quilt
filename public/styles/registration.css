@@ -62,4 +62,12 @@
     background-color: #444C5C;
     color: white;
   }
+
 }
+
+.success-message {
+  display: none;
+  text-align: center;
+}
+
+
