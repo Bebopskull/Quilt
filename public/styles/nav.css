@@ -1,0 +1,77 @@
+.nav-btn {
+  outline: none;
+  border: none;
+  background: inherit;
+  color: inherit;
+  text-decoration: underline;
+}
+.nav-btn:hover {
+  cursor: pointer;
+}
+
+ul.dropdown-content {
+  list-style-type: none;
+  margin: 1px;
+  padding:1px;
+}
+
+.nav-item {
+  display:flex;
+}
+.navitem > *{
+  align-self: center;
+  padding-right:0.5em;
+}
+
+/* Links inside the navbar */
+
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+
+
+  color: #E1B16A;
+  padding: 2px 2px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.nav-item li:hover, .dropdown:hover .dropbtn {
+  cursor: pointer;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right:0.5vw;
+  background-color: #f9f9f9;
+}
+
+/* Links inside the dropdown */
+.dropdown-content li {
+  float: none;
+  color: #444C5C;
+  padding: 2px 2px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content li:hover {
+  background-color: #e6dacf;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}

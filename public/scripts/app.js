@@ -44,14 +44,11 @@ $(() => { //the jquery document.on ready function
 
     const data = $(this).serialize();
 
-    console.log("form submitted");
-
     ajaxGetUserPatches(data) //adds user.id to cookies
     .then (res => {
       if (!res) {
         console.log('No such user')
       } else {
-        console.log(res)
       clearPage();
       renderPatches(res);   //displays patches created by user
       }
@@ -59,7 +56,6 @@ $(() => { //the jquery document.on ready function
     .then(() => {
       ajaxGetUser()   //returns userobj or null.
       .then(res => {
-        console.log(res)
         loginOrLogout(res) //renders login or logout, depending.
       })
     })
