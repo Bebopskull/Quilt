@@ -8,8 +8,8 @@ return $.ajax({
 })
 }
 
-//returns the res.send of the route in routes/users: "POST /login"
-function ajaxGetUserPatches(data) {
+//takes in form data (must have email) and returns the user obj
+function ajaxLogin(data) {
 return $.ajax({
   method: "POST",
   url: "/api/users/login",
@@ -18,9 +18,18 @@ return $.ajax({
 }
 
 function ajaxLogout() {
-  $.ajax({
+  return $.ajax({
     method: "POST",
     url: "/api/users/logout"
+  })
+}
+
+//takes in a user obj (must have user.id) and returns owned patches
+function ajaxGetUserPatches(data) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/patches/user",
+    data,
   })
 }
 

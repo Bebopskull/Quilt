@@ -6,61 +6,88 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const database = require('./database') //database queries
 
 
 module.exports = (db) => {
 
-  const login =  function(email) {
+  const login = function (email) {
     return database.getUserWithEmail(email)
-    .then(user => user)
-    .catch(err => console.log(err))
+      .then(user => user)
+      .catch(err => console.log(err))
   }
   exports.login = login;
 
   router.post('/login', (req, res) => {
-        const {email} = req.body;
+    const { email } = req.body;
     login(email)
       .then(user => {
-        console.log(user.id)
-        if (!user) {
-          res.send({error: "error"});
-          console.log('this error')
-          return;
-        }
-        req.session.userId = user.id;
-        return user.id;
-      })
-      .then (userId => {
-        console.log(userId)
-        return database.getPatchesWithUser(userId)
-      })
-      .then (patches => res.json(patches))
-      .catch(err => res.send(null))
 
+        if (!user) {
+          console.log('user does not exist')
+          res.send(null);
+        } else {
+        req.session.userId = user.id;
+
+        res.json({id: user.id, name: user.name, email: user.email});
+        }
+      })
   });
 
+
   //returns user if logged in, returns null if no user is logged in.
-  router.get('/login', (req,res) => {
+  router.get('/login', (req, res) => {
     const userId = req.session.userId;
     if (!userId) {
       console.log('null');
       res.send(null)
     } else {
-    database.getUserWithId(userId)
-    .then ((user) => {
-      res.json(user)
-    })
+      database.getUserWithId(userId)
+        .then((user) => {
+          res.json(user)
+        })
     }
-
   })
 
-
-  router.post('/logout', (req,res) => {
+  router.post('/logout', (req, res) => {
     console.log("logging out")
     req.session = null;
     res.send(null)
   })
+
+  //// UnhandledPromiseRejectionWarning error help!!
+  // route is actually /api/users/register
+  router.post("/register", (req, res) => {
+    // front end to back end
+    console.log(req.body);
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.password;
+
+    // backend to database
+    database.userRegistration([name, email, password])
+      .then((user) => {
+        //setting the cookie
+        req.session.userId = user.id;
+
+        //send back a response to front end
+        // 201 : resource created
+        res.status(201).json(
+          {
+            message: "User has been added to db!",
+            user: user
+          }
+        )
+      }).catch(err => {
+        res.status(500)
+          .json({ error: err.message });
+      })
+
+  })
+
+
+  // endpoint; router is a middleware
   return router;
 };
+

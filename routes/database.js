@@ -9,11 +9,7 @@ const getAllPatches = function () {
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
-
-    WHERE users.name IS NOT NULL
-
-
-    GROUP BY patches.id, users.id 
+    GROUP BY patches.id, users.id
     ORDER BY patches.created_at
     LIMIT 12;`
   )
@@ -53,16 +49,20 @@ const getUserWithId = function (id) {
 exports.getUserWithId = getUserWithId;
 
 
-//receives a user id integer and queries the database to return all patches created by the user.
-const getPatchesWithUser = function (id) {
+//receives a user obj and queries the database to return all patches created by the user.
+const getPatchesWithUser = function (user) {
+  const id = user.id;
   return pool.query(
     `
-    SELECT patches.*, avg(rating) as ave_rating
+    SELECT patches.*, avg(rating) as ave_rating, users.name
     FROM patches
+    JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
-    WHERE patches.user_id = $1
-    GROUP BY patches.id
-    ORDER BY patches.created_at;`, [id]
+    WHERE users.id = $1
+    GROUP BY patches.id, users.id
+    ORDER BY patches.created_at
+    LIMIT 12;
+    `, [id]
   )
   .then (res => {
     return res.rows
@@ -84,13 +84,16 @@ const getPatchCreator = function (patch_id) {
 // adds newly registered user to database
 // takes in an array of the user's name, email, password and inserts entry into to the db
 
-const userRegistration = function(user) {
+const userRegistration = function(userArr) {
+// this query is a promise of a future value ~ queries db but don't know when we'll get the result back
 
-  pool.query(
+//CONSUME the promise - needs a .then() - can be here or on users.js
+// return returns a promise in the function call
+  return pool.query(
     `INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
-    `, [user])
-
-}
+    RETURNING *
+    `, userArr)
+    .then((result) => result.rows[0])}
 
 exports.userRegistration = userRegistration;

@@ -22,8 +22,9 @@ $(() => { //the jquery document.on ready function
   //displays log-in/log-out depending if user is logged in
   ajaxGetUser()
   .then (res => {
-    loginOrLogout(res)
-  })
+    loginOrLogout(res);
+    signupOrAddPatch(res);
+  });
 
   //EVENT LISTENERS
 
@@ -37,7 +38,7 @@ $(() => { //the jquery document.on ready function
     .then (res => {
     renderPatches(res)
     });
-  })
+  });
 
   //When logging in, do this.
   $(".login").on("submit","#login_form", function(event) {
@@ -45,20 +46,21 @@ $(() => { //the jquery document.on ready function
 
     const data = $(this).serialize();
 
-    ajaxGetUserPatches(data) //adds user.id to cookies, returns patches by user
-    .then (res => {
-      if (!res) {
+    ajaxLogin(data) //adds user.id to cookies, returns user
+    .then (user => {
+
+      if (!user) {
         console.log('No such user')
       } else {
-      clearPage();
-      renderPatches(res);   //displays patches created by user
+
+      ajaxGetUserPatches(user)
+      .then(patches => {
+        clearPage();
+        renderPatches(patches);
+      });
+
+      navState(user);
       }
-    })
-    .then(() => {
-      ajaxGetUser()   //returns user obj or null.
-      .then(res => {
-        loginOrLogout(res) //renders login or logout options, depending.
-      })
     })
   });
 
@@ -69,7 +71,7 @@ $(() => { //the jquery document.on ready function
     clearPage();
 
     ajaxLogout(); // clears cookies
-    loginOrLogout(); // renders login form again
+    navState(); //renders logged out state
     ajaxGetAllPatches() // gets all patches
     .then (res => {
     renderPatches(res)
@@ -78,7 +80,7 @@ $(() => { //the jquery document.on ready function
   })
 
   //REGISTRATION FORM
-  $('#signup').click(function() {
+  $('#user-option').on("click","#signup", function(event) {
    console.log("click!");
     $('.registration-section').slideDown(500);
     $('#registration-form').submit((event) => {
@@ -90,20 +92,30 @@ $(() => { //the jquery document.on ready function
 
       $.ajax({
         method: "POST",
-        url: "/api/patches",
+        url: "/api/users/register",
         data: {
           name,
           email,
           password
         }
-      }).done(() => {
+        // the .done takes what the server sends back
+      }).done((serverResponse) => {
+        console.log("server response: ", serverResponse);
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
+        //users.js
+        const loggedInHtml = loggedInNav(serverResponse.user);
+        $(".login div").html(loggedInHtml);
       })
     })
   })
 
+  //on click of "Add Patch" in the Navbar:
+  $('#user-option').on("click","#add-patch", function(event) {
+    //clearPage(); to clear the viewport of patches
+    //render html of the add-patch form
+  });
 
 
   //on click "patch"
