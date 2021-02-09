@@ -96,3 +96,19 @@ const loginOrLogout = function (user = null) {
 
   $(".login div").html(outputHTML)
 }
+
+//optionally takes in a user and renders "signup" or "addpatch" in the nav depending on whether a user is signed in
+const signupOrAddPatch = function (user = null) {
+  let outputHTML = ''
+  if (!user) {
+    outputHTML = `<p>New Quilter? <a id="signup">Sign up!</a>`
+  } else {
+    outputHTML = `
+    <p><a id="add-patch">Add Patch</a>
+    `
+  }
+  $("#user-option").html(outputHTML)
+}
+
+
+//variable to store the html of ADDPATCH form

@@ -58,10 +58,6 @@ font-family: 'Roboto', sans-serif;*/
 				margin-top: 0.5em;
 			}
 
-	box-sizing: border-box;
-	-moz-box-sizing: border-box;
-}
-
 body {
 	background-color: #fff;
 	color: #444;
@@ -123,9 +119,9 @@ nav{
 	align-items: center;
 }
 
-#search-container {
+/* #search-container {
 
-}
+} */
 
 .typo{
 	margin-left: 20px;
