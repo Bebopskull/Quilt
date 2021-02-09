@@ -22,8 +22,9 @@ $(() => { //the jquery document.on ready function
   //displays log-in/log-out depending if user is logged in
   ajaxGetUser()
   .then (res => {
-    loginOrLogout(res)
-  })
+    loginOrLogout(res);
+    signupOrAddPatch(res);
+  });
 
   //EVENT LISTENERS
 
@@ -37,7 +38,7 @@ $(() => { //the jquery document.on ready function
     .then (res => {
     renderPatches(res)
     });
-  })
+  });
 
   //When logging in, do this.
   $(".login").on("submit","#login_form", function(event) {
@@ -57,7 +58,8 @@ $(() => { //the jquery document.on ready function
     .then(() => {
       ajaxGetUser()   //returns user obj or null.
       .then(res => {
-        loginOrLogout(res) //renders login or logout options, depending.
+        loginOrLogout(res); //renders login or logout options
+        signupOrAddPatch(res); //renders signup or addpatch
       })
     })
   });
@@ -70,6 +72,7 @@ $(() => { //the jquery document.on ready function
 
     ajaxLogout(); // clears cookies
     loginOrLogout(); // renders login form again
+    signupOrAddPatch(); //renders sign up
     ajaxGetAllPatches() // gets all patches
     .then (res => {
     renderPatches(res)
@@ -78,7 +81,7 @@ $(() => { //the jquery document.on ready function
   })
 
   //REGISTRATION FORM
-  $('#signup').click(function() {
+  $('#user-option').on("click","#signup", function(event) {
    console.log("click!");
     $('.registration-section').slideDown(500);
     $('#registration-form').submit((event) => {
@@ -109,6 +112,11 @@ $(() => { //the jquery document.on ready function
     })
   })
 
+  //on click of "Add Patch" in the Navbar:
+  $('#user-option').on("click","#add-patch", function(event) {
+    //clearPage(); to clear the viewport of patches
+    //render html of the add-patch form
+  });
 
 
   //on click "patch"

@@ -6,7 +6,9 @@
 /*font-family: 'Josefin Slab', serif;
 font-family: 'Roboto', sans-serif;*/
 
+
 * {
+
 				box-sizing: border-box;
 				-moz-box-sizing: border-box;
 			}
@@ -56,6 +58,51 @@ font-family: 'Roboto', sans-serif;*/
 				margin-top: 0.5em;
 			}
 
+body {
+	background-color: #fff;
+	color: #444;
+	/*display: flex;*/
+}
+
+a {
+	color: white;
+	pointer-events: hand;
+	text-decoration: none;
+}
+
+
+#content {
+	position: absolute;
+	top: 0; width: 100%;
+	z-index: 1;
+	padding: 3em 0 0 0;
+}
+
+#c {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.list-item {
+	display: inline-block;
+	margin: 1em;
+	padding: 1em;
+	box-shadow: 1px 2px 4px 0px rgba(0,0,0,0.25);
+}
+
+.list-item > div:nth-child(1) {
+	width: 200px;
+	height: 200px;
+}
+.list-item > div:nth-child(2) {
+	color: #888;
+	font-family: sans-serif;
+	font-size: large;
+	width: 200px;
+	margin-top: 0.5em;
+}
 
 nav{
 	background-color: #444C5C;
@@ -70,37 +117,42 @@ nav{
 	flex-direction:  row;
 	justify-content: space-between;
 	align-items: center;
-
 }
 
-#search-container {
+/* #search-container {
 
-}
+} */
 
 .typo{
 	margin-left: 20px;
+
+  color:rgb(245, 222, 222);
+
+	pointer-events: none;
+
   color:#e6dacf;
+
 }
-
-
 
 /*ITEM A*/
 .board{
 
+
 	width:99vw;
+
+	width:98vw;
+
 	height: 85vh;
 	display:flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-
 	border-style: solid;
 	border-color: black;
-
 	background-color:white;
 	margin: 5px 15px;
-
 	flex-wrap: wrap;
 	overflow: scroll;
+
 }
 
 .frame{
@@ -170,76 +222,6 @@ nav{
 
 }
 
-.infoHeader{
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-}
-
-.patchinfo p{
-	color:white;
-}
 
 
-
-/*ITEM A*/
-
-
-.frameb{
-
-	display:flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	margin:5px;
-	border-style: hidden;
-	width:350px;
-	height: 400px;
-	/*height: auto;*/
-
-	justify-content: center;
-	align-items: center;
-	background-color: orange;
-	box-shadow: 3px 3px black;
-/*	margin: 1em;
-	padding: 1em;*/
-	box-shadow: 1px 2px rgba(0,0,0,0.25);
-
-
-}
-
-.patchb{
-	display:flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: flex-start;
-	overflow: hidden;
-	font-family: 'Roboto', sans-serif;
-}
-
-.thumbnailb{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-	max-width: 100%;
-  max-height: 100%;
-
-  padding: 10px;
-}
-
-.thumbnailContentb{
-	max-width: 100%;
-  max-height: 100%;
-}
-
-.patchinfob{
-	height: 100%;
-	width: 100%;
-	display:flex;
-	flex-direction: row;
-	justify-content: flex-start;
-	align-items: flex-start;
-	flex-direction: column;
-	font-family: 'Roboto', sans-serif;
-}
 

@@ -11,29 +11,49 @@
       return div.innerHTML;
     }
 
+    ///added this line, so the average ratings are limited to 1 decimal.
+    let ave_rating = Math.round(patchObj.ave_rating * 10 )/10;
+
     //the html of a single patch
     const patchEl =
-    `<div class= "frame">
-    <div class = 'patch' id=${patchObj.id}>
-      <div class = 'thumbnail'>
-        <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-      </div>
-      <div class = 'patchinfo'>
-      <a class='sourceUrl' href='${patchObj.url}'>
-      <p>URL: ${patchObj.title}</p>
-      </a>
-      <p>${patchObj.description}</p>
-      <p>${patchObj.category}</p>
-      <p class="patch-rating">${patchObj.ave_rating}</p>
-      <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">Add to My Collection</button></form> </p>
-       </div>
-     </div>
-  </div>
-  `;
+    `<div class= "frame" id = 'frame_${patchObj.id}'>
+          <div class = 'patch' id='patch_${patchObj.id}''>
+            <div class='infoHeader' id='patchHeader_${patchObj.id}'>
+              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+              <p class = 'usertag'>${patchObj.user_id}</p>
+            </div>
+
+            <div class = 'tumbnail'>
+              <!--a class='sourceUrl' href='${patchObj.url}'-->
+                <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+              <!--</a>-->
+            </div>
+
+            <div class = 'patchinfo'>
+              <div class='patchinfoLeft'>
+                <p>${patchObj.description}</p>
+                <p>timetag</p>
+
+              </div>
+              <div class='patchinfoRight'>
+                <p>${ave_rating}</p>
+                <p class = 'saveflag'>
+                <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit"><i class="far fa-bookmark"></i></button></form> </p>
+                  <i class="fab fa-laravel"></i>
+                  <i class="far fa-bookmark"></i>
+                  <i class="fas fa-bookmark"></i>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>`;
+
   return patchEl;
   }
 
-  //takes in an array of patch objects and renders html into the <section> element in the document
+  //takes in an array of patch objects and renders html into the <section>
+  // element in the document
   const renderPatches = function(patchesArr) {
     let render = '';
     for (patchObj of patchesArr) {
@@ -100,3 +120,19 @@ const loginOrLogout = function (user = null) {
 
   $(".login div").html(outputHTML)
 }
+
+//optionally takes in a user and renders "signup" or "addpatch" in the nav depending on whether a user is signed in
+const signupOrAddPatch = function (user = null) {
+  let outputHTML = ''
+  if (!user) {
+    outputHTML = `<p>New Quilter? <a id="signup">Sign up!</a>`
+  } else {
+    outputHTML = `
+    <p><a id="add-patch">Add Patch</a>
+    `
+  }
+  $("#user-option").html(outputHTML)
+}
+
+
+//variable to store the html of ADDPATCH form
