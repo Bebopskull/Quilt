@@ -22,7 +22,15 @@ module.exports = (db) => {
       });
   });
 
-  // POST ROUTE FOR USER REGISTRATION
+  // ============================ POST ROUTE FOR USER REGISTRATION
+
+  // const userRegistration = function(user) {
+  //   return pool.query(
+  //     `INSERT INTO users (name, email, password)
+  //     VALUES ($1, $2, $3)
+  //     `, [user])
+  // }
+
   //// UnhandledPromiseRejectionWarning error help!!
 
   router.post("/", (req, res) => {
@@ -34,8 +42,7 @@ module.exports = (db) => {
     database.userRegistration([name, email, password])
     .then(() => {
     }).catch(err => {
-      res
-        .status(500)
+      res.status(500)
         .json({ error: err.message });
     })
     res.status(202).send({

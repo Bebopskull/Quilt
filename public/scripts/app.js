@@ -78,28 +78,36 @@ $(() => { //the jquery document.on ready function
   })
 
   //REGISTRATION FORM
-  $('#registration-form').submit((event) => {
-    event.preventDefault();
+  $('#signup').click(function() {
+   console.log("click!");
+    $('.registration-section').slideDown(500);
+    $('#registration-form').submit((event) => {
+      event.preventDefault();
 
-    const name = $("#registration-name").val();
-    const email = $("#registration-email").val();
-    const password = $("#registration-password").val();
+      const name = $("#registration-name").val();
+      const email = $("#registration-email").val();
+      const password = $("#registration-password").val();
 
-    $.ajax({
-      method: "POST",
-      url: "/api/patches",
-      data: {
-        name,
-        email,
-        password
-      }
-    }).done(() => {
-      $('#registration-form').slideUp(500);
-      $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
+      $.ajax({
+        method: "POST",
+        url: "/api/patches",
+        data: {
+          name,
+          email,
+          password
+        }
+      }).done(() => {
+        $('#registration-form').slideUp(500);
+        $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
+        $('.registration-section').slideUp(2200);
+      })
     })
   })
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> be549ae0ecacd1c0e7ab5bca94ae7cbf9836c786
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
