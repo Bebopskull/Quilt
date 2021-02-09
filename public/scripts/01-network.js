@@ -8,16 +8,25 @@ return $.ajax({
 })
 }
 
-
-
-
-
 //returns the res.send of the route in routes/users: "POST /login"
 function ajaxGetUserPatches(data) {
-
-$.ajax({
+return $.ajax({
   method: "POST",
   url: "/api/users/login",
   data,
+})
+}
+
+function ajaxLogout() {
+  $.ajax({
+    method: "POST",
+    url: "/api/users/logout"
+  })
+}
+
+//returns null if no user is logged in, else returns user obj
+function ajaxGetUser() {
+return $.ajax({
+  url: "/api/users/login",
 })
 }

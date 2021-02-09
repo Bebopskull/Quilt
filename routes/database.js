@@ -34,6 +34,20 @@ const getUserWithEmail = function (email) {
 
 exports.getUserWithEmail = getUserWithEmail;
 
+//Receives INTEGER as a parameter and queries database to return the user obj associated with that id.
+const getUserWithId = function (id) {
+  return pool.query(`
+  SELECT * FROM users
+  WHERE id = $1`, [id])
+  .then (res => {
+    return res.rows[0];
+  })
+  .catch (err => console.log(err))
+  }
+
+exports.getUserWithId = getUserWithId;
+
+
 //receives a user id integer and queries the database to return all patches created by the user.
 const getPatchesWithUser = function (id) {
   return pool.query(
