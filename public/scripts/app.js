@@ -58,8 +58,7 @@ $(() => { //the jquery document.on ready function
     .then(() => {
       ajaxGetUser()   //returns user obj or null.
       .then(res => {
-        loginOrLogout(res); //renders login or logout options
-        signupOrAddPatch(res); //renders signup or addpatch
+        navState(res); //renders logged in state in the nav
       })
     })
   });
@@ -71,8 +70,7 @@ $(() => { //the jquery document.on ready function
     clearPage();
 
     ajaxLogout(); // clears cookies
-    loginOrLogout(); // renders login form again
-    signupOrAddPatch(); //renders sign up
+    navState(); //renders logged out state
     ajaxGetAllPatches() // gets all patches
     .then (res => {
     renderPatches(res)

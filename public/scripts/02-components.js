@@ -134,5 +134,9 @@ const signupOrAddPatch = function (user = null) {
   $("#user-option").html(outputHTML)
 }
 
-
+//optionally takes in a user obj (with .name property) and renders the navbar depending on whether the user is logged in.
+const navState = function (user = null) {
+  loginOrLogout(user);
+  signupOrAddPatch(user);
+}
 //variable to store the html of ADDPATCH form
