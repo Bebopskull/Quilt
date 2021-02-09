@@ -82,28 +82,29 @@ $(() => { //the jquery document.on ready function
 
   //REGISTRATION FORM
   $('#signup').click(function() {
-    console.log("click!");
-    $('#registration-form').slideDown(500);
-    // $('#registration-form').submit((event) => {
-    //   event.preventDefault();
+   console.log("click!");
+    $('.registration-section').slideDown(500);
+    $('#registration-form').submit((event) => {
+      event.preventDefault();
 
-    //   const name = $("#registration-name").val();
-    //   const email = $("#registration-email").val();
-    //   const password = $("#registration-password").val();
+      const name = $("#registration-name").val();
+      const email = $("#registration-email").val();
+      const password = $("#registration-password").val();
 
-    //   $.ajax({
-    //     method: "POST",
-    //     url: "/api/patches",
-    //     data: {
-    //       name,
-    //       email,
-    //       password
-    //     }
-    //   }).done(() => {
-    //     $('#registration-form').slideUp(500);
-    //     $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
-    //   })
-    // })
+      $.ajax({
+        method: "POST",
+        url: "/api/patches",
+        data: {
+          name,
+          email,
+          password
+        }
+      }).done(() => {
+        $('#registration-form').slideUp(500);
+        $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
+        $('.registration-section').slideUp(2200);
+      })
+    })
   })
 
   //on click "patch"
