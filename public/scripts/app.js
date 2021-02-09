@@ -84,11 +84,7 @@ $(() => { //the jquery document.on ready function
     $('.registration-section').slideDown(500);
     $('#registration-form').submit(function(event) {
       event.preventDefault();
-
-      // const name = $("#registration-name").val();
-      // const email = $("#registration-email").val();
-      // const password = $("#registration-password").val();
-
+      //stores form data in a variable
       const data = $(this).serialize();
       console.log(data)
 
@@ -117,6 +113,10 @@ $(() => { //the jquery document.on ready function
       })
     })
   });
+  $('#exit-button').on("click", function() {
+    $('.registration-section').slideUp(500)
+  }
+  )
 
   //on click of "Add Patch" in the Navbar:
   $('#user-option').on("click","#add-patch", function(event) {
