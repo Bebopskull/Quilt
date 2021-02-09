@@ -44,14 +44,11 @@ $(() => { //the jquery document.on ready function
 
     const data = $(this).serialize();
 
-    console.log("form submitted");
-
     ajaxGetUserPatches(data) //adds user.id to cookies
     .then (res => {
       if (!res) {
         console.log('No such user')
       } else {
-        console.log(res)
       clearPage();
       renderPatches(res);   //displays patches created by user
       }
@@ -59,7 +56,6 @@ $(() => { //the jquery document.on ready function
     .then(() => {
       ajaxGetUser()   //returns userobj or null.
       .then(res => {
-        console.log(res)
         loginOrLogout(res) //renders login or logout, depending.
       })
     })
@@ -106,6 +102,11 @@ $(() => { //the jquery document.on ready function
       })
     })
   })
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> be549ae0ecacd1c0e7ab5bca94ae7cbf9836c786
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
