@@ -22,6 +22,17 @@ module.exports = (db) => {
       });
   });
 
+  
+  router.post("/user", (req,res) => {
+    const user = req.body;
+    database.getPatchesWithUser(user)
+    .then (patches => {
+      console.log("in post route",patches);
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
+
   // ============================ POST ROUTE FOR USER REGISTRATION
 
   // const userRegistration = function(user) {

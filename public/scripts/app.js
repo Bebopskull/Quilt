@@ -46,20 +46,21 @@ $(() => { //the jquery document.on ready function
 
     const data = $(this).serialize();
 
-    ajaxGetUserPatches(data) //adds user.id to cookies, returns patches by user
-    .then (res => {
-      if (!res) {
+    ajaxLogin(data) //adds user.id to cookies, returns user
+    .then (user => {
+
+      if (!user) {
         console.log('No such user')
       } else {
-      clearPage();
-      renderPatches(res);   //displays patches created by user
+
+      ajaxGetUserPatches(user)
+      .then(patches => {
+        clearPage();
+        renderPatches(patches);
+      });
+
+      navState(user);
       }
-    })
-    .then(() => {
-      ajaxGetUser()   //returns user obj or null.
-      .then(res => {
-        navState(res); //renders logged in state in the nav
-      })
     })
   });
 

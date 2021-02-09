@@ -23,23 +23,18 @@ module.exports = (db) => {
     const { email } = req.body;
     login(email)
       .then(user => {
-        console.log(user.id)
-        if (!user) {
-          res.send({ error: "error" });
-          console.log('this error')
-          return;
-        }
-        req.session.userId = user.id;
-        return user.id;
-      })
-      .then(userId => {
-        console.log(userId)
-        return database.getPatchesWithUser(userId)
-      })
-      .then(patches => res.json(patches))
-      .catch(err => res.send(null))
 
+        if (!user) {
+          console.log('user does not exist')
+          res.send(null);
+        } else {
+        req.session.userId = user.id;
+
+        res.json({id: user.id, name: user.name, email: user.email});
+        }
+      })
   });
+
 
   //returns user if logged in, returns null if no user is logged in.
   router.get('/login', (req, res) => {
@@ -53,9 +48,7 @@ module.exports = (db) => {
           res.json(user)
         })
     }
-
   })
-
 
   router.post('/logout', (req, res) => {
     console.log("logging out")
