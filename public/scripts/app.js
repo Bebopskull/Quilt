@@ -103,11 +103,8 @@ $(() => { //the jquery document.on ready function
       })
     })
   })
-<<<<<<< HEAD
-=======
 
 
->>>>>>> be549ae0ecacd1c0e7ab5bca94ae7cbf9836c786
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
