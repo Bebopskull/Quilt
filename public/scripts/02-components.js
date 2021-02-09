@@ -25,6 +25,7 @@
       <p>${patchObj.description}</p>
       <p>${patchObj.category}</p>
       <p class="patch-rating">${patchObj.ave_rating}</p>
+      <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">Add to My Collection</button></form> </p>
        </div>
      </div>
   </div>
