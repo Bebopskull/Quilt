@@ -43,7 +43,7 @@
     $('section.board').append(render);
   }
 
-//optionally takes in a user obj and renders either the "Logged-in" HTML to the navbar or the default login state.
+//optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
 const loginOrLogout = function (user = null) {
   let outputHTML = ''
   if (!user) {

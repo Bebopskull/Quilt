@@ -1,5 +1,5 @@
 /*
- * All routes for Widgets are defined here
+ * All routes for PATCHES are defined here
  * Since this file is loaded in server.js into api/widgets,
  *   these routes are mounted onto /widgets
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
@@ -21,21 +21,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  //GET OWNER OF PATCH
-  router.get("/user", (req, res) => {
-    // database.getAllPatches()
-    //   .then(patches => {
-    //     res.json({ patches });
-    //   })
-    //   .catch(err => {
-    //     res
-    //       .status(500)
-    //       .json({ error: err.message });
-    //   });
-  });
-
-  //
-
 
   // ============================ POST ROUTE FOR USER REGISTRATION
 
@@ -47,6 +32,7 @@ module.exports = (db) => {
   // }
 
   //// UnhandledPromiseRejectionWarning error help!!
+
   router.post("/", (req, res) => {
     console.log(req.body);
     const name = req.body.name;
@@ -61,7 +47,7 @@ module.exports = (db) => {
     })
     res.status(202).JSON({
       success: "Thanks for registering!"})
-});
+    });
 
   // create a POST route for catching the "add patch"
     // function that will do the SQL query
