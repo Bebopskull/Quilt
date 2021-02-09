@@ -33,7 +33,6 @@
               <div class='patchinfoLeft'>
                 <p>${patchObj.description}</p>
                 <p>timetag</p>
-
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
@@ -43,6 +42,18 @@
               </div>
 
             </div>
+          </div>
+
+          <div class='addendum' id = 'addend_${patchObj.id}'>
+            <div class='description' id = 'descr_${patchObj.id}'>
+              <p>${patchObj.description}</p>
+            </div>
+            <div class='new_comment'>
+            
+            </div>
+
+            <div class = 'comments' ></div>
+
           </div>
         </div>`;
 
