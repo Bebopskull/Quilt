@@ -1,16 +1,25 @@
 $(()=>{
-	$('.patch').toggle(function(event){
+	//frame resize
+	
 
-		$('.frame').css('z-index','1');
-		$('.frame').css('width','90vw');
-	})
+	$(document).on('click', '.frame' ,function(){
 
+		const frameID = $(`#frame_${patchObj.id}`);
+
+		$(this).addClass('frameExpanded');
+		$(this).css('z-index', '1');
+		$(this).css('position', 'absolute');
+		$(this).css('width', '97vw');
+		$(this).css('height', '84vh');
+
+	});
+
+		///this  is a toogle class, quite usefull for icons.
+		// $(this).toggleClass('fas').toggleClass('far');
 
 ///this way the behaviour is assigned to the dinamic element 
 	$(document).on('click', '.saveflag' ,function(){
-
 		const patchid = $(this).data('patchid');
-
 		///this  is a toogle class, quite usefull for icons.
 		$('i', this).toggleClass('fas').toggleClass('far');
 

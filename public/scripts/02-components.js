@@ -20,7 +20,7 @@
           <div class = 'patch' id='patch_${patchObj.id}''>
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-              <p class = 'usertag'>${patchObj.user_id}</p>
+              <p class = 'usertag'>${patchObj.name}</p>
             </div>
 
             <div class = 'tumbnail'>
