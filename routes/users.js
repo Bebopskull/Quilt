@@ -68,22 +68,24 @@ module.exports = (db) => {
     // backend to database
     database.userRegistration([name, email, password])
       .then((user) => {
-        //setting the cookie
-        req.session.userId = user.id;
+        console.log(user)
+        res.json(user)
+      //   //setting the cookie
+      //   req.session.userId = user.id;
 
-        //send back a response to front end
-        // 201 : resource created
-        res.status(201).json(
-          {
-            message: "User has been added to db!",
-            user: user
-          }
-        )
-      }).catch(err => {
+      //   //send back a response to front end
+      //   // 201 : resource created
+      //   res.status(201).json(
+      //     {
+      //       message: "User has been added to db!",
+      //       user: user
+      //     }
+      //   )
+      })
+      .catch(err => {
         res.status(500)
           .json({ error: err.message });
       })
-
   })
 
 

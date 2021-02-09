@@ -89,6 +89,8 @@ const userRegistration = function(userArr) {
 
 //CONSUME the promise - needs a .then() - can be here or on users.js
 // return returns a promise in the function call
+
+console.log(userArr);
   return pool.query(
     `INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)

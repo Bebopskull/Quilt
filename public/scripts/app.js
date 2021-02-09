@@ -22,8 +22,7 @@ $(() => { //the jquery document.on ready function
   //displays log-in/log-out depending if user is logged in
   ajaxGetUser()
   .then (res => {
-    loginOrLogout(res);
-    signupOrAddPatch(res);
+    navState(res);
   });
 
   //EVENT LISTENERS
@@ -83,33 +82,41 @@ $(() => { //the jquery document.on ready function
   $('#user-option').on("click","#signup", function(event) {
    console.log("click!");
     $('.registration-section').slideDown(500);
-    $('#registration-form').submit((event) => {
+    $('#registration-form').submit(function(event) {
       event.preventDefault();
 
-      const name = $("#registration-name").val();
-      const email = $("#registration-email").val();
-      const password = $("#registration-password").val();
+      // const name = $("#registration-name").val();
+      // const email = $("#registration-email").val();
+      // const password = $("#registration-password").val();
+
+      const data = $(this).serialize();
+      console.log(data)
 
       $.ajax({
         method: "POST",
         url: "/api/users/register",
-        data: {
-          name,
-          email,
-          password
-        }
+        data,
         // the .done takes what the server sends back
-      }).done((serverResponse) => {
-        console.log("server response: ", serverResponse);
+      })
+        .done(user => {
+          ajaxLogin(user)
+            .then(user => {
+              navState(user);
+              ajaxGetUserPatches(user)
+              .then(patches => {
+                clearPage();
+                renderPatches(patches);
+              });
+            })
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
         //users.js
-        const loggedInHtml = loggedInNav(serverResponse.user);
-        $(".login div").html(loggedInHtml);
+        // const loggedInHtml = loggedInNav(serverResponse.user);
+        // $(".login div").html(loggedInHtml);
       })
     })
-  })
+  });
 
   //on click of "Add Patch" in the Navbar:
   $('#user-option').on("click","#add-patch", function(event) {
