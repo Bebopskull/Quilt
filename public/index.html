@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Quilt.it</title>
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/registration.css" type="text/css" />
+    <script src="https://kit.fontawesome.com/60c983d1d1.js" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+    <script type="text/javascript" src="/scripts/01-network.js"></script>
+    <script type="text/javascript" src="/scripts/02-components.js"></script>
+    <script type="text/javascript" src="/scripts/app.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <div class = 'typo'>
+        <h1 class="to-home">Quilt</h1>
+      </div>
+
+      <div id="search-container">
+        <form method="POST">
+          <input type="text" placeholder="Search..." name="search">
+          <button type="submit">Search<i class=""></i></button>
+        </form>
+      </div>
+
+      <div>
+          <p>New Quilter? <a id="signup">Sign up!</a></p>
+      </div>
+
+      <div class='login'>
+        <div class="form-group" style='float: left;'>
+          <!-- log in or log out-->
+        </div>
+      </div>
+    </nav>
+          <header>
+          </header>
+    <section class="registration-section">
+      <div class="registration"></div>
+      <div>
+        <form method="get" class="registration" id="registration-form">
+          <input type="text" placeholder="Name" class="registration-field" id="registration-name"><br><br>
+          <input type="email" placeholder="Email" class="registration-field" id="registration-email"><br><br>
+          <input type="text" placeholder="Password" class="registration-field" id="registration-password"><br><br>
+          <input type="submit" value="Register" id="registration-button">
+        </form>
+        <div class="success-message animate__flash"><h2>Success!</h2></div>
+      </div>
+      <div class="registration"></div>
+
+    </section>
+    <section class="board">
+      <!-- patches go here -->
+    </section>
+
+    <footer>
+
+
+    </footer>
+  </body>
+</html>
