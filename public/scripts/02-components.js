@@ -53,7 +53,7 @@ const loginOrLogout = function (user = null) {
   } else {
     outputHTML = `
     <div class= nav-item>
-     <span class="username"><b>${user.name}&nbsp</b></span>
+     <div class="username"><span>Hi <b>${user.name}&nbsp</b></span></div>
         <div class="dropdown">
           <button class="dropbtn"><i class="fas fa-user"></i></button>
           <ul class="dropdown-content user-links">

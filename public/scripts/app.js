@@ -76,7 +76,6 @@ $(() => { //the jquery document.on ready function
 
   })
 
-<<<<<<< HEAD
   //REGISTRATION FORM
   $('#registration-form').submit((event) => {
     event.preventDefault();
@@ -98,10 +97,8 @@ $(() => { //the jquery document.on ready function
       $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
     })
   })
-=======
 
 
->>>>>>> d5c746057a510ebc482bfc1e64ec502f016817e6
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
