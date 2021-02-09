@@ -20,8 +20,8 @@ $(()=>{
 		// $(this).animate()
 
 		const addendum = $(this).find(".addendum");
-
 		console.log(`addendum`,addendum);
+		addendum.show();
 
 
 

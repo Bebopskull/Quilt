@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
 .board{
-
-
+	
 	width:99vw;
-
 	width:98vw;
-
 	height: 85vh;
 	display:flex;
 	justify-content: flex-start;
