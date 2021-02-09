@@ -12,21 +12,53 @@
     //the html of a single patch
     const patchEl =
     `<div class= "frame">
-    <div class = 'patch' id=${patchObj.id}>
-      <div class = 'thumbnail'>
-        <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-      </div>
-      <div class = 'patchinfo'>
-      <a class='sourceUrl' href='${patchObj.url}'>
-      <p>URL: ${patchObj.title}</p>
-      </a>
-      <p>${patchObj.description}</p>
-      <p>${patchObj.category}</p>
-      <p>${patchObj.ave_rating}</p>
-       </div>
-     </div>
-  </div>
-  `;
+          <div class = 'patch' id=${patchObj.id}>
+            <div class='infoHeader'>
+              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+              <p class = 'usertag'>usertag</p>
+            </div>
+
+            <div class = 'tumbnail'>
+              <a class='sourceUrl' href='${patchObj.url}'>
+                <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+              </a>
+            </div>
+
+            <div class = 'patchinfo'>
+              <div class='patchinfoLeft'>
+                <p>${patchObj.description}</p>
+                <p>timetag</p>
+                
+              </div>
+              <div class='patchinfoRight'>
+                <p>${patchObj.ave_rating}</p> 
+                <p class = 'saveflag'> 
+                  <i class="fab fa-laravel"></i>
+                  <i class="far fa-bookmark"></i>
+                  <i class="fas fa-bookmark"></i>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>`
+  //   `<div class= "frame">
+  //   <div class = 'patch' id=${patchObj.id}>
+  //     <div class = 'thumbnail'>
+  //       <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+  //     </div>
+  //     <div class = 'patchinfo'>
+  //     <a class='sourceUrl' href='${patchObj.url}'>
+  //     <p>URL: ${patchObj.title}</p>
+  //     </a>
+  //     <p>${patchObj.description}</p>
+  //     <p>${patchObj.category}</p>
+  //     <p>${patchObj.ave_rating}</p>
+  //      </div>
+  //    </div>
+  // </div>
+  // `
+  ;
   return patchEl;
   }
 
