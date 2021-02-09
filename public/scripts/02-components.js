@@ -37,11 +37,8 @@
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
-                <p class = 'saveflag'>
-                <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit"><i class="far fa-bookmark"></i></button></form> </p>
-                  <i class="fab fa-laravel"></i>
+                <p class = 'saveflag' data-patchid = "${patchObj.id}" >
                   <i class="far fa-bookmark"></i>
-                  <i class="fas fa-bookmark"></i>
                 </p>
               </div>
 
@@ -51,6 +48,10 @@
 
   return patchEl;
   }
+
+  // <form method="POST" action="/collection">
+  // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">
+  // <i class="far fa-bookmark"></i></button></form> </p>
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
