@@ -9,19 +9,22 @@
       return div.innerHTML;
     }
 
+    ///added this line, so the average ratings are limited to 1 decimal.
+    let ave_rating = Math.round(patchObj.ave_rating * 10 )/10;
+
     //the html of a single patch
     const patchEl =
-    `<div class= "frame">
-          <div class = 'patch' id=${patchObj.id}>
-            <div class='infoHeader'>
+    `<div class= "frame" id = 'frame_${patchObj.id}'>
+          <div class = 'patch' id='patch_${patchObj.id}''>
+            <div class='infoHeader' id='patchHeader_${patchObj.id}'>
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-              <p class = 'usertag'>usertag</p>
+              <p class = 'usertag'>${patchObj.user_id}</p>
             </div>
 
             <div class = 'tumbnail'>
-              <a class='sourceUrl' href='${patchObj.url}'>
+              <!--a class='sourceUrl' href='${patchObj.url}'-->
                 <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-              </a>
+              <!--</a>-->
             </div>
 
             <div class = 'patchinfo'>
@@ -31,7 +34,7 @@
                 
               </div>
               <div class='patchinfoRight'>
-                <p>${patchObj.ave_rating}</p> 
+                <p>${ave_rating}</p> 
                 <p class = 'saveflag'> 
                   <i class="fab fa-laravel"></i>
                   <i class="far fa-bookmark"></i>
@@ -62,7 +65,8 @@
   return patchEl;
   }
 
-  //takes in an array of patch objects and renders html into the <section> element in the document
+  //takes in an array of patch objects and renders html into the <section> 
+  // element in the document
   const renderPatches = function(patchesArr) {
     let render = '';
     for (patchObj of patchesArr) {

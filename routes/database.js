@@ -5,10 +5,15 @@ const pool = require("../db/pool.js");
 
 const getAllPatches = function () {
   return pool.query(
-    `SELECT patches.*, avg(rating) as ave_rating
+    `SELECT patches.*, avg(rating) as ave_rating, users.name
     FROM patches
+    JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
-    GROUP BY patches.id
+
+    WHERE users.name IS NOT NULL
+
+
+    GROUP BY patches.id, users.id 
     ORDER BY patches.created_at
     LIMIT 12;`
   )
