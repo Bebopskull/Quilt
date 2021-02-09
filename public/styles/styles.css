@@ -161,7 +161,13 @@ nav{
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: space-between;
+<<<<<<< HEAD
 	padding:0px;
+=======
+	padding:5px;
+  margin: 5px;
+
+>>>>>>> 27d2a55507142fa37af024475be5c45ef319aa33
 }
 
 .infoHeader{
