@@ -76,14 +76,40 @@ $(() => { //the jquery document.on ready function
 
   })
 
+<<<<<<< HEAD
+  //REGISTRATION FORM
+  $('#registration-form').submit((event) => {
+    event.preventDefault();
+
+    const name = $("#registration-name").val();
+    const email = $("#registration-email").val();
+    const password = $("#registration-password").val();
+
+    $.ajax({
+      method: "POST",
+      url: "/api/patches",
+      data: {
+        name,
+        email,
+        password
+      }
+    }).done(() => {
+      $('#registration-form').slideUp(500);
+      $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
+    })
+  })
+=======
 
 
+>>>>>>> d5c746057a510ebc482bfc1e64ec502f016817e6
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
 
-  //on click submit of "Add review"
+
+ //on click submit of "Add review"
   //1.adds into review database (/post)
   //2.clears comments and re-fetches the comments and appends into #patch_id (/get)
 
 });
+

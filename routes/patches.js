@@ -36,8 +36,28 @@ module.exports = (db) => {
 
   //
 
-// create a POST route for catching the "add patch"
-  // function that will do the SQL query
+
+  // POST ROUTE FOR USER REGISTRATION
+  //// UnhandledPromiseRejectionWarning error help!!
+  router.post("/", (req, res) => {
+    console.log(req.body);
+    const name = req.body.name;
+    const email = req.body.email;
+    const password = req.body.email;
+
+    database.userRegistration([name, email, password])
+    .then(() => {
+    }).catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+    res.status(202).send({
+      success: "Thanks for registering!"})
+});
+
+  // create a POST route for catching the "add patch"
+    // function that will do the SQL query
   // happy path:
     // send back a response to the client side "Pin added!"
     // send back information: all patches user has created
