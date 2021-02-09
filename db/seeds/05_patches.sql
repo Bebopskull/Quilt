@@ -15,3 +15,9 @@ INSERT INTO patches (user_id, title, url, description, category_id, media_type_i
 
 INSERT INTO patches (user_id, title, url, description, category_id, media_type_id, created_at)
   VALUES (1, 'Object Creation in JavaScript', 'https://www.youtube.com/watch?v=GhbhD1HR5vk', '15 minute video on Object Creation by Fun Fun Function', 2, 1, '2021-02-08');
+
+INSERT INTO patches (user_id, title, url, description, category_id, media_type_id, created_at)
+  VALUES (2, 'user 2 patch 1', 'https://www.youtube.com/watch?v=DHvZLI7Db8E', 'USER 2 PATCH 1', 2, 1, '2021-02-08');
+
+INSERT INTO patches (user_id, title, url, description, category_id, media_type_id, created_at)
+  VALUES (2, 'user 2 patch 2', 'https://www.youtube.com/watch?v=DHvZLI7Db8E', 'USER 2 PATCH 2', 2, 1, '2021-02-08');

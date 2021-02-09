@@ -17,7 +17,14 @@ return $.ajax({
 })
 }
 
+function ajaxLogout() {
+  $.ajax({
+    method: "POST",
+    url: "/api/users/logout"
+  })
+}
 
+//returns null if no user is logged in, else returns user obj
 function ajaxGetUser() {
 return $.ajax({
   url: "/api/users/login",

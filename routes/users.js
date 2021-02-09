@@ -33,6 +33,7 @@ module.exports = (db) => {
         return user.id;
       })
       .then (userId => {
+        console.log(userId)
         return database.getPatchesWithUser(userId)
       })
       .then (patches => res.json(patches))
@@ -54,6 +55,13 @@ module.exports = (db) => {
     })
     }
 
+  })
+
+
+  router.post('/logout', (req,res) => {
+    console.log("logging out")
+    req.session.userId = null;
+    console.log("IN COOKIE",req.session.userId)
   })
 
   return router;

@@ -6,17 +6,26 @@
 
 $(() => { //the jquery document.on ready function
 
+  //ON LOAD
+
   const clearPage = function() {
     $("section.board").empty()
   }
-
+  //displays all patches
   ajaxGetAllPatches()
   .then (res => {
     renderPatches(res)
   });
 
+  //displays log-in/log-out depending if user is logged in
+  ajaxGetUser()
+  .then (res => {
+    loginOrLogout(res)
+  })
 
-  //LOAD IN ALL PATCHES (when clicked on home)
+  //EVENT LISTENERS
+
+  //loads in all patches when click on home
   $(".to-home").on("click", function (event) {
     event.preventDefault();
 
@@ -29,23 +38,50 @@ $(() => { //the jquery document.on ready function
   })
 
 
-  //LOGIN
-  $("#useremail").on("submit", function(event) {
+  //When log in, do this.
+  $(".login").on("submit","#login_form", function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
 
-    ajaxGetUserPatches(data)
+    console.log("form submitted");
+
+    ajaxGetUserPatches(data) //adds user.id to cookies
     .then (res => {
       if (!res) {
         console.log('No such user')
       } else {
+        console.log(res)
       clearPage();
-      renderPatches(res);
+      renderPatches(res);   //displays patches created by user
       }
+    })
+    .then(() => {
+      ajaxGetUser()   //returns userobj or null.
+      .then(res => {
+        console.log(res)
+        loginOrLogout(res) //renders login or logout, depending.
+      })
+    })
+  });
+
+  //LOGOUT
+  $(".login").on("submit","#logout_form", function (event) {
+
+    event.preventDefault();
+    clearPage();
+
+    ajaxLogout();
+    loginOrLogout();
+    ajaxGetAllPatches()
+    .then (res => {
+    renderPatches(res)
     })
 
   })
+
+
+
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)

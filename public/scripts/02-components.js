@@ -46,15 +46,15 @@
 const loginOrLogout = function (user = null) {
   let outputHTML = ''
   if (!user) {
-    outputHTML = `<form class="form-inline" action="/login" method="POST" id="useremail">
+    outputHTML = `<form class="form-inline" action="/login" method="POST" id="login_form">
     <input type="text" name="email" placeholder='email'>
     <button type="submit" class="btn btn-primary">Log In</a>
-    </form>`
+  </form>`
   } else {
     outputHTML = `
-    <form class="form-inline" action="/logout" method="POST">
+    <form class="form-inline" action="/logout" method="POST" id="logout_form">
     <a class="navbar-brand" style='color:whitesmoke'>Welcome ${user.name} !</a>
-    <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫 Logout</button>
+    <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right"> 🚫 Logout</button>
     </form>`
   }
 

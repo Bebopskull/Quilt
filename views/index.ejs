@@ -5,9 +5,7 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/01-network.js"></script>
     <script type="text/javascript" src="/scripts/02-components.js"></script>
@@ -29,22 +27,7 @@
 
       <div class='login'>
         <div class="form-group mb-2" style='float: left;'>
-
-          <% if(true){ %>
-
-          <form class="form-inline" action="/login" method="POST" id="useremail">
-            <input type="text" name="email" placeholder='email'>
-            <button type="submit" class="btn btn-primary">Log In</a>
-          </form>
-            <% } else{ %>
-
-          <form class="form-inline" action="/logOut" method="POST">
-
-                <a class="navbar-brand" style='color:whitesmoke'>Welcome <%= user.email %> !</a>
-                <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right">🚫</button>
-          </form>
-
-                <% } %>
+          <!-- log in or log out-->
         </div>
       </div>
     </nav>
@@ -52,43 +35,8 @@
           </header>
 
     <section class="board">
-
-      <!-- patch template -->
-        <div class= "frame">
-          <div class = 'patch'>
-            <div class = 'thumbnail'>
-              <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-            </div>
-            <div class = 'patchinfo'>
-            <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'>
-              <p>name</p>
-            </a>
-            <p>description</p>
-            <p>category</p>
-            <p>avg rating</p>
-             </div>
-           </div>
-        </div>
-
-        <div class= "frameb">
-          <div class = 'patchb'>
-          <!-- <div class = 'tumbnail'>
-
-            <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-          </div> -->
-            <div class = 'patchinfob'>
-              <a class='sourceUrl' href='https://evangelion.fandom.com/wiki/Pen_Pen'>
-                <p>name</p>
-              </a>
-              <p>description</p>
-              <p>category</p>
-              <p>avg rating</p>
-            </div>
-          </div>
-        </div>
-
       <!-- patches go here -->
-      </section>
+    </section>
 
     <footer>
 
