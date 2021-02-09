@@ -47,7 +47,7 @@ module.exports = (db) => {
     })
     res.status(202).send({
       success: "Thanks for registering!"})
-});
+    });
 
   // create a POST route for catching the "add patch"
     // function that will do the SQL query
