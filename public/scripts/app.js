@@ -90,17 +90,22 @@ $(() => { //the jquery document.on ready function
 
       $.ajax({
         method: "POST",
-        url: "/api/patches",
+        url: "/api/users/register",
         data: {
           name,
           email,
           password
         }
-      }).done(() => {
+        // the .done takes what the server sends back
+      }).done((serverResponse) => {
+        console.log("server response: ", serverResponse);
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
-      }).fail((e) => {console.log(e)})
+        //users.js
+        const loggedInHtml = loggedInNav(serverResponse.user);
+        $(".login div").html(loggedInHtml);
+      })
     })
   })
 

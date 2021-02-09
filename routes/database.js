@@ -80,13 +80,16 @@ const getPatchCreator = function (patch_id) {
 // adds newly registered user to database
 // takes in an array of the user's name, email, password and inserts entry into to the db
 
-const userRegistration = function(user) {
+const userRegistration = function(userArr) {
+// this query is a promise of a future value ~ queries db but don't know when we'll get the result back
 
-  pool.query(
+//CONSUME the promise - needs a .then() - can be here or on users.js
+// return returns a promise in the function call
+  return pool.query(
     `INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
-    `, [user])
-
-}
+    RETURNING *
+    `, userArr)
+    .then((result) => result.rows[0])}
 
 exports.userRegistration = userRegistration;
