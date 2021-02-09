@@ -59,7 +59,7 @@ module.exports = (db) => {
       res.status(500)
         .json({ error: err.message });
     })
-    res.status(202).send({
+    res.status(202).JSON({
       success: "Thanks for registering!"})
 });
 

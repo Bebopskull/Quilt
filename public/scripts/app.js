@@ -99,14 +99,11 @@ $(() => { //the jquery document.on ready function
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
-      })
+      }).fail((e) => {console.log(e)})
     })
   })
-<<<<<<< HEAD
-=======
 
 
->>>>>>> be549ae0ecacd1c0e7ab5bca94ae7cbf9836c786
 
   //on click "patch"
   //fetches the existing comments and appends into #patch_id (/get)
