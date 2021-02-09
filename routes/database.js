@@ -79,11 +79,14 @@ const getPatchCreator = function (patch_id) {
 
 // adds newly registered user to database
 // takes in an array of the user's name, email, password and inserts entry into to the db
+
 const userRegistration = function(user) {
-  return pool.query(
+
+  pool.query(
     `INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
     `, [user])
+
 }
 
 exports.userRegistration = userRegistration;

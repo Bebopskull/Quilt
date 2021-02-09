@@ -8,9 +8,11 @@ $(() => { //the jquery document.on ready function
 
   //ON LOAD
 
+  //function to clear the display area
   const clearPage = function() {
     $("section.board").empty()
   }
+
   //displays all patches
   ajaxGetAllPatches()
   .then (res => {
@@ -37,14 +39,13 @@ $(() => { //the jquery document.on ready function
     });
   })
 
-
-  //When log in, do this.
+  //When logging in, do this.
   $(".login").on("submit","#login_form", function(event) {
     event.preventDefault();
 
     const data = $(this).serialize();
 
-    ajaxGetUserPatches(data) //adds user.id to cookies
+    ajaxGetUserPatches(data) //adds user.id to cookies, returns patches by user
     .then (res => {
       if (!res) {
         console.log('No such user')
@@ -54,9 +55,9 @@ $(() => { //the jquery document.on ready function
       }
     })
     .then(() => {
-      ajaxGetUser()   //returns userobj or null.
+      ajaxGetUser()   //returns user obj or null.
       .then(res => {
-        loginOrLogout(res) //renders login or logout, depending.
+        loginOrLogout(res) //renders login or logout options, depending.
       })
     })
   });
@@ -67,9 +68,9 @@ $(() => { //the jquery document.on ready function
     event.preventDefault();
     clearPage();
 
-    ajaxLogout();
-    loginOrLogout();
-    ajaxGetAllPatches()
+    ajaxLogout(); // clears cookies
+    loginOrLogout(); // renders login form again
+    ajaxGetAllPatches() // gets all patches
     .then (res => {
     renderPatches(res)
     })
