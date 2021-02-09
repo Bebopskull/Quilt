@@ -1,3 +1,39 @@
+.registration-section {
+  display: none;
+}
+
+.success-message {
+  display: none;
+  text-align: center;
+}
+
+#signup {
+  color: white;
+}
+
+.registration {
+  margin: 1em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.registration-field {
+  border: 0.5px dashed black;
+  padding: 0.5em;
+}
+
+#registration-button {
+  display: flex;
+  justify-content: center;
+  border: 0.5px dashed black;
+  padding: 0.5em;
+  background-color: #444C5C;
+  color: white;
+}
+
 @media only screen and (min-width: 500px) {
   .registration-form {
     /* display: flex;
@@ -6,31 +42,7 @@
     align-items: center;
     padding: 5em;
     width: 90%;
-
   }
-  .registration {
-    margin: 1em;
-    padding-top: 2em;
-    padding-bottom: 2em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-
-  .registration-field {
-    border: 0.5px dashed black;
-    padding: 0.5em;
-  }
-
-  #registration-button {
-    display: flex;
-    justify-content: center;
-    border: 0.5px dashed black;
-    padding: 0.5em;
-    background-color: #444C5C;
-    color: white;
-  }
-
 }
 
 @media only screen and (min-width: 992px) {
@@ -40,7 +52,7 @@
     flex-direction: row;
     justify-content: center;
   }
-  .registration {
+  /* .registration {
     margin: 1em;
     padding-top: 2em;
     padding-bottom: 2em;
@@ -61,5 +73,7 @@
     padding: 0.5em;
     background-color: #444C5C;
     color: white;
-  }
+  } */
+
 }
+

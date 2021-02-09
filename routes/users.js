@@ -50,7 +50,6 @@ module.exports = (db) => {
     } else {
     database.getUserWithId(userId)
     .then ((user) => {
-      console.log(user)
       res.json(user)
     })
     }
@@ -60,9 +59,8 @@ module.exports = (db) => {
 
   router.post('/logout', (req,res) => {
     console.log("logging out")
-    req.session.userId = null;
-    console.log("IN COOKIE",req.session.userId)
+    req.session = null;
+    res.send(null)
   })
-
   return router;
 };

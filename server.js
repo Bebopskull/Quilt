@@ -23,7 +23,7 @@ app.use(cookieSession({
   name: 'session',
   keys: ['key1']
 }));
-app.set("view engine", "ejs");
+// app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
   src: __dirname + "/styles",

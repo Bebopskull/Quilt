@@ -33,11 +33,12 @@
               <div class='patchinfoLeft'>
                 <p>${patchObj.description}</p>
                 <p>timetag</p>
-                
+
               </div>
               <div class='patchinfoRight'>
-                <p>${ave_rating}</p> 
-                <p class = 'saveflag'> 
+                <p>${ave_rating}</p>
+                <p class = 'saveflag'>
+                <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit"><i class="far fa-bookmark"></i></button></form> </p>
                   <i class="fab fa-laravel"></i>
                   <i class="far fa-bookmark"></i>
                   <i class="fas fa-bookmark"></i>
@@ -46,28 +47,12 @@
 
             </div>
           </div>
-        </div>`
-  //   `<div class= "frame">
-  //   <div class = 'patch' id=${patchObj.id}>
-  //     <div class = 'thumbnail'>
-  //       <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-  //     </div>
-  //     <div class = 'patchinfo'>
-  //     <a class='sourceUrl' href='${patchObj.url}'>
-  //     <p>URL: ${patchObj.title}</p>
-  //     </a>
-  //     <p>${patchObj.description}</p>
-  //     <p>${patchObj.category}</p>
-  //     <p>${patchObj.ave_rating}</p>
-  //      </div>
-  //    </div>
-  // </div>
-  // `
-  ;
+        </div>`;
+
   return patchEl;
   }
 
-  //takes in an array of patch objects and renders html into the <section> 
+  //takes in an array of patch objects and renders html into the <section>
   // element in the document
   const renderPatches = function(patchesArr) {
     let render = '';
@@ -78,20 +63,35 @@
     $('section.board').append(render);
   }
 
-//optionally takes in a user obj and renders either the "Logged-in" HTML to the navbar or the default login state.
+//optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
 const loginOrLogout = function (user = null) {
   let outputHTML = ''
   if (!user) {
     outputHTML = `<form class="form-inline" action="/login" method="POST" id="login_form">
     <input type="text" name="email" placeholder='email'>
-    <button type="submit" class="btn btn-primary">Log In</a>
+    <button type="submit" class="btn nav-btn">Log In</a>
   </form>`
   } else {
     outputHTML = `
-    <form class="form-inline" action="/logout" method="POST" id="logout_form">
-    <a class="navbar-brand" style='color:whitesmoke'>Welcome ${user.name} !</a>
-    <button type="submit" class="btn btn-primary" style = "justify-self:self-end;float: right"> 🚫 Logout</button>
-    </form>`
+    <div class= nav-item>
+     <div class="username"><span>Hi <b>${user.name}&nbsp</b></span></div>
+        <div class="dropdown">
+          <button class="dropbtn"><i class="fas fa-user"></i></button>
+          <ul class="dropdown-content user-links">
+            <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
+              <button type="submit" class="btn nav-btn">Logout</button>
+              </form></li>
+            <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
+              <button type="submit" class="btn nav-btn">My Patches</button>
+              </form></li>
+            <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
+              <button type="submit" class="btn nav-btn">Saved Patches</button>
+              </form></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    `
   }
 
   $(".login div").html(outputHTML)

@@ -1,20 +1,20 @@
 
 /*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Roboto&display=swap');*/
 /*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=PT+Serif&family=Roboto&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500;700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
 /*font-family: 'Josefin Slab', serif;
 font-family: 'Roboto', sans-serif;*/
 
 
 * {
-<<<<<<< HEAD
+
 				box-sizing: border-box;
 				-moz-box-sizing: border-box;
 			}
 
 			body {
-				background-color: rgb(245, 222, 222);
+				background-color: #e6dacf;
 				color: #444;
 				/*display: flex;*/
 
@@ -57,7 +57,7 @@ font-family: 'Roboto', sans-serif;*/
 				width: 200px;
 				margin-top: 0.5em;
 			}
-=======
+
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
 }
@@ -73,7 +73,7 @@ a {
 	pointer-events: hand;
 	text-decoration: none;
 }
->>>>>>> feature_wireframe
+
 
 #content {
 	position: absolute;
@@ -112,9 +112,11 @@ nav{
 	background-color: #444C5C;
 	width: 100vw;
 	height: 10vh;
-	padding: .5vw;
+	padding: 1vw;
 	font-family: 'Josefin Slab', serif;
-	font-weight: 900;
+	font-weight: 500;
+  font-size: 24px;
+  color: #e6dacf;
 	display:flex;
 	flex-direction:  row;
 	justify-content: space-between;
@@ -127,21 +129,23 @@ nav{
 
 .typo{
 	margin-left: 20px;
-<<<<<<< HEAD
+
   color:rgb(245, 222, 222);
-=======
+
 	pointer-events: none;
->>>>>>> feature_wireframe
+
+  color:#e6dacf;
+
 }
 
 /*ITEM A*/
 .board{
-<<<<<<< HEAD
+
 
 	width:99vw;
-=======
+
 	width:98vw;
->>>>>>> feature_wireframe
+
 	height: 85vh;
 	display:flex;
 	justify-content: flex-start;
@@ -152,7 +156,7 @@ nav{
 	margin: 5px 15px;
 	flex-wrap: wrap;
 	overflow: scroll;
-<<<<<<< HEAD
+
 }
 
 .frame{
@@ -199,6 +203,9 @@ nav{
   max-height: 100%;
   margin: 10px;
 }
+.thumbnail img {
+  max-width: 70%;
+}
 
 .thumbnailContent{
 	max-width: 100%;
@@ -214,20 +221,10 @@ nav{
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: space-between;
-<<<<<<< HEAD
-	padding:0px;
-=======
 	padding:5px;
   margin: 5px;
 
->>>>>>> 27d2a55507142fa37af024475be5c45ef319aa33
 }
-=======
-}
-
-
-
->>>>>>> feature_wireframe
 
 
 
