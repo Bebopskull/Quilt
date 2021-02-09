@@ -19,9 +19,10 @@ $(() => { //the jquery document.on ready function
     renderPatches(res)
   });
 
-  //displays log-in/log-out depending if user is logged in
+  //If a user if logged in, resolves the user obj, else resolves null.
   ajaxGetUser()
   .then (res => {
+    //displays log-in/log-out depending if user is logged in
     navState(res);
   });
 
@@ -29,10 +30,9 @@ $(() => { //the jquery document.on ready function
 
   //loads in all patches when click on home
   $(".to-home").on("click", function (event) {
+
     event.preventDefault();
-
     clearPage();
-
     ajaxGetAllPatches()
     .then (res => {
     renderPatches(res)
@@ -55,6 +55,7 @@ $(() => { //the jquery document.on ready function
       ajaxGetUserPatches(user)
       .then(patches => {
         clearPage();
+        console.log('loggedin patches', patches);
         renderPatches(patches);
       });
 
@@ -105,6 +106,7 @@ $(() => { //the jquery document.on ready function
               ajaxGetUserPatches(user)
               .then(patches => {
                 clearPage();
+                console.log("patches",patches);
                 renderPatches(patches);
               });
             })
@@ -132,6 +134,19 @@ $(() => { //the jquery document.on ready function
  //on click submit of "Add review"
   //1.adds into review database (/post)
   //2.clears comments and re-fetches the comments and appends into #patch_id (/get)
+
+  $(".login").on("submit","#getPatches", function (event) {
+
+    event.preventDefault();
+    ajaxGetUser()
+    .then(user => {
+      ajaxGetUserPatches(user)
+      .then(patches => {
+        clearPage();
+        renderPatches(patches)
+      })
+    })
+  });
 
 });
 

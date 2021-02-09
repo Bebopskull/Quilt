@@ -14,7 +14,6 @@ const getAllPatches = function () {
     LIMIT 12;`
   )
   .then (res => {
-
     return res.rows
   })
   .catch(err => console.log(err))

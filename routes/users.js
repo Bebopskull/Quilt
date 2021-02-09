@@ -40,7 +40,6 @@ module.exports = (db) => {
   router.get('/login', (req, res) => {
     const userId = req.session.userId;
     if (!userId) {
-      console.log('null');
       res.send(null)
     } else {
       database.getUserWithId(userId)
@@ -60,7 +59,6 @@ module.exports = (db) => {
   // route is actually /api/users/register
   router.post("/register", (req, res) => {
     // front end to back end
-    console.log(req.body);
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
@@ -68,26 +66,13 @@ module.exports = (db) => {
     // backend to database
     database.userRegistration([name, email, password])
       .then((user) => {
-        console.log(user)
         res.json(user)
-      //   //setting the cookie
-      //   req.session.userId = user.id;
-
-      //   //send back a response to front end
-      //   // 201 : resource created
-      //   res.status(201).json(
-      //     {
-      //       message: "User has been added to db!",
-      //       user: user
-      //     }
-      //   )
       })
       .catch(err => {
         res.status(500)
           .json({ error: err.message });
       })
   })
-
 
   // endpoint; router is a middleware
   return router;

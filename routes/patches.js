@@ -13,6 +13,7 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     database.getAllPatches()
       .then(patches => {
+        console.log("here")
         res.json(patches);
       })
       .catch(err => {
@@ -22,12 +23,10 @@ module.exports = (db) => {
       });
   });
 
-  
   router.post("/user", (req,res) => {
     const user = req.body;
     database.getPatchesWithUser(user)
     .then (patches => {
-      console.log("in post route",patches);
       res.json(patches)
     })
     .catch(err => console.log(err))

@@ -55,37 +55,17 @@
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
   const renderPatches = function(patchesArr) {
+
     let render = '';
+    if (patchesArr.length === 0) {
+      render = 'no patches here yet'
+    }
     for (patchObj of patchesArr) {
       $patch = createPatchElement(patchObj);
       render = $patch + render;
     }
     $('section.board').append(render);
   }
-
-const loggedInNav = function (user) {
-  const outputHTML = `
-  <div class= nav-item>
-   <div class="username"><span>Hi <b>${user.name}&nbsp</b></span></div>
-      <div class="dropdown">
-        <button class="dropbtn"><i class="fas fa-user"></i></button>
-        <ul class="dropdown-content user-links">
-          <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
-            <button type="submit" class="btn nav-btn">Logout</button>
-            </form></li>
-          <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
-            <button type="submit" class="btn nav-btn">My Patches</button>
-            </form></li>
-          <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
-            <button type="submit" class="btn nav-btn">Saved Patches</button>
-            </form></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  `
-  return outputHTML;
-}
 
 //optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
 const loginOrLogout = function (user = null) {
@@ -102,15 +82,15 @@ const loginOrLogout = function (user = null) {
         <div class="dropdown">
           <button class="dropbtn"><i class="fas fa-user"></i></button>
           <ul class="dropdown-content user-links">
-            <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
-              <button type="submit" class="btn nav-btn">Logout</button>
-              </form></li>
-            <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
-              <button type="submit" class="btn nav-btn">My Patches</button>
-              </form></li>
-            <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
-              <button type="submit" class="btn nav-btn">Saved Patches</button>
-              </form></li>
+          <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
+          <button type="submit" class="btn nav-btn">My Patches</button>
+          </form></li>
+          <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
+          <button type="submit" class="btn nav-btn">Saved Patches</button>
+          </form></li>
+          <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
+            <button type="submit" class="btn nav-btn">Logout</button>
+            </form></li>
           </ul>
         </div>
       </div>
@@ -140,3 +120,5 @@ const navState = function (user = null) {
   signupOrAddPatch(user);
 }
 //variable to store the html of ADDPATCH form
+
+
