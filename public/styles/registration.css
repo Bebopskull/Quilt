@@ -1,3 +1,16 @@
+.registration-section {
+  display: none;
+}
+
+.success-message {
+  display: none;
+  text-align: center;
+}
+
+#signup {
+  color: white;
+}
+
 @media only screen and (min-width: 500px) {
   .registration-form {
     /* display: flex;
@@ -64,10 +77,4 @@
   }
 
 }
-
-.success-message {
-  display: none;
-  text-align: center;
-}
-
 
