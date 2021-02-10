@@ -45,14 +45,27 @@
           </div>
 
           <div class='addendum' id = 'addend_${patchObj.id}'>
+            <div class = 'addendumhead'>
+              <p class='closingBtn'>X</p>
+            </div>
             <div class='description' id = 'descr_${patchObj.id}'>
               <p>${patchObj.description}</p>
             </div>
             <div class='new_comment'>
+            <form method = 'POST' action = '/tweets'/>
+              <textarea name="text" id="tweet-text" placeholder="What do you think about this Patch?"></textarea>
+              <br>
+              <footer class = 'bajoTextInput' id='bajoTextInput'>
+                <button id='tweetBtn'type="submit">Tweet</button>
+                <output name="counter" class="counter" id="counter" for="tweet-text">140</output>
+              </footer> 
+              </form>
 
             </div>
 
-            <div class = 'comments' ></div>
+            <div class = 'comments' >
+
+            </div>
 
           </div>
         </div>`;

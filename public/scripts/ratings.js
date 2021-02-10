@@ -16,7 +16,9 @@ $(".fa-angle-double-down").on('click',function(event){
   $('.error').slideUp(300);
 
 });
+ 
 
+// Dealing with Textarea Height
 
 ///form behaviour
 $('form').on('submit', function(event){

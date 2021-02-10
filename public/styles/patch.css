@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
 .board{
-	
+
 	width:99vw;
 	width:98vw;
 	height: 85vh;
@@ -68,6 +68,7 @@
   max-height: 100%;
   padding:20px;
   mix-blend-mode: hard-light;
+  box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.25);
 }
 
 
@@ -146,9 +147,7 @@
 /*.saveflag{
 	z-index:1;
 }*/
-.addendum{
-	display:none;
-}
+
 
 @media screen and (min-width: 375px){
 

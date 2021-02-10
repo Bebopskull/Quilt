@@ -8,6 +8,7 @@ $(()=>{
 
 	$(document).on('click', '.frame' ,function(){
 
+
 		const frameID = $(`#frame_${patchObj.id}`);
 		// $(this).toggleClass('frameExpanded');
 		$(this).addClass('frameExpanded');
@@ -23,15 +24,26 @@ $(()=>{
 		console.log(`addendum`,addendum);
 		addendum.show();
 
+		const closeBtn = addendum.find('.closingBtn');
+
+		closeBtn.on('click', function(event){
+
+			event.preventDefault();
+
+			const $frame = $(this).closest('.frame');
+
+			$frame.removeClass('frameExpanded');
+			$frame.css('z-index', '0');
+			$frame.css('position', 'static');
+			$frame.css('width', '47vw');
+			$frame.css('height', '60vh');
+			// $frame.css('overflow', 'hidden');
+			addendum.hide();
 
 
+			event.stopPropagation();
+		})
 
-
-
-
-		// on('click','.addendum', function(event){
-		// 	$(this).css('display','flex');
-		// })
 
 
 
@@ -42,7 +54,7 @@ $(()=>{
 
 ///this way the behaviour is assigned to the dinamic element 
 	$(document).on('click', '.saveflag' ,function(){
-		
+
 		const patchid = $(this).data('patchid');
 		///this  is a toogle class, quite usefull for icons.
 		$('i', this).toggleClass('fas').toggleClass('far');
