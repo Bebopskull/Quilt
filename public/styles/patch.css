@@ -28,8 +28,8 @@
 	display:flex;
 	border-style: solid;
 	border-color: black;
-	background-color: #FF5555;
-	
+	background-color: #CE5A57;
+
 }
 
 .frame.frameExpanded{
@@ -55,7 +55,7 @@
 	font-family: 'Josefin Slab', serif;
 	max-width:47vw;
 	max-height: 60vw;
-	
+
 }
 
 .thumbnail{
@@ -92,12 +92,14 @@
 	justify-content: space-between;
 	width: 100%;
 	padding: 0em 1em;
-	font-size: 1.5rem;
 	text-decoration: none;
 	min-height: 48px;
 	align-items: flex-end;
-	padding-bottom: 5px; 
-	
+	padding-bottom: 5px;
+
+}
+.frameExpanded .infoHeader{
+  font-size: 1.5rem;
 }
 
 .sourceUrl p{
@@ -112,10 +114,15 @@
 .usertag{
 	margin: 0px;
 	padding: 0px;
-	font-size: 1rem;
+	font-size: 0.5rem;
 	display: flex;
 	text-align: end;
 }
+
+.frameExpanded .usertag{
+	font-size: 1rem;
+}
+
 .patchinfo{
 	display: flex;
 	flex-direction: row;
@@ -147,7 +154,7 @@
   width: 30%;
   justify-content: center;
   align-items: flex-end;
-  
+
 
 }
 
@@ -162,7 +169,6 @@
 		width: 23.7vw;
 		height: 30vw;
 	};
-
 
 
 

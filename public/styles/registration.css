@@ -2,6 +2,12 @@
   display: none;
 }
 
+#registration-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .success-message {
   display: none;
   text-align: center;
@@ -12,17 +18,16 @@
 }
 
 .registration {
-  margin: 1em;
-  padding-top: 2em;
-  padding-bottom: 2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
 }
 
 .registration-field {
   border: 0.5px dashed black;
   padding: 0.5em;
+  margin: 0.5em;
 }
 
 #registration-button {
@@ -30,18 +35,21 @@
   justify-content: center;
   border: 0.5px dashed black;
   padding: 0.5em;
+  margin: 0.5em;
   background-color: #444C5C;
   color: white;
 }
 
 #exit-button {
-  text-align: right;
-  padding: 10px;
+  padding: 20px;
+  margin: 18px;
   font-size: 18px;
   font-weight: bold;
 }
 
-@media only screen and (min-width: 500px) {
+
+
+@media only screen and (max-width: 600px) {
   .registration-form {
     /* display: flex;
     flex-direction: row;
@@ -54,11 +62,11 @@
 
 @media only screen and (min-width: 992px) {
 
-  .registration-form {
+  /* .registration-form {
     display: flex;
     flex-direction: row;
     justify-content: center;
-  }
+  } */
   /* .registration {
     margin: 1em;
     padding-top: 2em;

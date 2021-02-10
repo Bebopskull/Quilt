@@ -1,4 +1,8 @@
 INSERT INTO collections (name, user_id)
-  VALUES ('JS resources', 1);
-INSERT INTO collections (name, user_id)
-  VALUES ('My favourite recipes', 2);
+VALUES
+('My Saved Patches',1),
+('My Saved Patches',2),
+('My Saved Patches',3),
+('My Saved Patches',4);
+
+

@@ -30,33 +30,89 @@ module.exports = (db) => {
       res.json(patches)
     })
     .catch(err => console.log(err))
+  });
+
+  //create new patch
+  router.post('/', (req, res) => {
+    // extract information out of the form
+    const userId = req.session.userId;
+    const title = req.body.title;
+    const url = req.body.url;
+    const description = req.body.description;
+    const categoryId = req.body.category_id;
+    const mediaTypeId = req.body.media_type_id;
+
+    console.log(`req.body`, req.body)
+    const newPatchArr = [userId, title, url, description, categoryId, mediaTypeId];
+    // send that info to the db to be added (function call) - need to send userID from cookie
+    database.addNewPatch(newPatchArr)
+    .then(patch => {
+      // receive information back from db
+      // send info to front end
+      res.status(201).json(patch)
+    })
+    // error handling
+    .catch(err => console.log(err))
   })
 
-  // ============================ POST ROUTE FOR USER REGISTRATION
+  router.post("/collections", (req, res)=> {
+    const user = req.body;
+    database.getUserCollections(user)
+    .then (collections => {
+      console.log(collections);
+      res.json(collections);
+    })
+    .catch(err => console.log(err));
+  })
 
-  // const userRegistration = function(user) {
-  //   return pool.query(
-  //     `INSERT INTO users (name, email, password)
-  //     VALUES ($1, $2, $3)
-  //     `, [user])
-  // }
+  router.get("/:search", (req,res) => {
+    const searchStr = req.params.search;
+    database.getSearchResults(searchStr)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
 
-  // create a POST route for catching the "add patch"
-    // function that will do the SQL query
-  // happy path:
-    // send back a response to the client side "Pin added!"
-    // send back information: all patches user has created
-  // error:
+  router.get("/collections/:id", (req, res) => {
+    const collId = req.params.id;
+    database.getPatchesByCollectionId(collId)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
 
-  // if front end isn't ready yet:
-    // use Postman or Insomnia to test the backend routes
+  router.post("/collections/new", (req,res) => {
+    const { user_id,patch_id } = req.body;
+    const name = "My Saved Patches";
+    database.getCollectionIdByName(name,user_id)
+    .then (id => {
+      console.log("patch id is:",typeof patch_id,"id is:", typeof id.id)
+      database.savePatch(parseInt(patch_id),parseInt(id.id))
+      .then (output => res.json(output))
+      .catch(err => console.log('at router',err))
+    })
+    .catch(err => console.log('err in router', err))
+  });
 
-// test feature: make the necessary changes. once test is successful, merge to master
+
+  router.get("/category/:category", (req,res) => {
+
+    const category = req.params.category;
+    console.log("from router category:", category);
+
+    database.getPatchesByCategory(category)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log("from router get by fn:", err))
+  });
 
 
 
 
-  //takes in a patch_id and does a query for all the reviews for that patch, returns the array of reviews {comment,user_id,created_at, etc}
+
 
   return router;
 

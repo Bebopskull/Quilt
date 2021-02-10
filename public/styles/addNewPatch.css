@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
+
+#add-new-patch-section {
+  display: none;
+}
+#new-patch {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2em;
+  padding-top: 2em;
+  padding-bottom: 5px;
+}
+
+#create-new-exit-button {
+  font-weight: bold;
+  text-align: center;
+  padding: 1em;
+}
+.success-message-new-patch {
+  display: none;
+  text-align: center;
+}
+
+.new-patch-field {
+  font: 'Roboto', sans-serif;
+}
+
+#create-patch-button {
+  display: flex;
+  justify-content: center;
+  border: 0.5px dashed black;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: #444C5C;
+  color: white;
+}
+

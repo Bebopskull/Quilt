@@ -79,6 +79,33 @@ $(() => { //the jquery document.on ready function
 
   })
 
+  // ADD PATCH FORM
+  $('#user-option').on("click", "#add-patch", function(event) {
+    console.log("Click!");
+    $('#add-new-patch-section').slideDown(500);
+    $('#new-patch').submit(function(event) {
+      event.preventDefault();
+      const data = $(this).serialize();
+      //console.log(data)
+
+      $.ajax({
+        method: "POST",
+        url: "/api/patches/",
+        data
+      })
+        //function to append patch list
+        .done(patchObj => {
+          console.log(patchObj);
+          renderPatches([patchObj])
+        })
+        $('#add-new-patch-section').slideUp(1000);
+        $('.success-message-new-patch').fadeIn(100).delay(1000).fadeOut(1000);
+    })
+    $('#create-new-exit-button').on("click", function() {
+      $('#add-new-patch-section').slideUp(500)
+    })
+  })
+
   //REGISTRATION FORM
   $('#user-option').on("click","#signup", function(event) {
    console.log("click!");
@@ -93,8 +120,8 @@ $(() => { //the jquery document.on ready function
         method: "POST",
         url: "/api/users/register",
         data,
-        // the .done takes what the server sends back
       })
+      // the .done takes what the server sends back
         .done(user => {
           ajaxLogin(user)
             .then(user => {
@@ -109,16 +136,12 @@ $(() => { //the jquery document.on ready function
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
-        //users.js
-        // const loggedInHtml = loggedInNav(serverResponse.user);
-        // $(".login div").html(loggedInHtml);
       })
     })
   });
   $('#exit-button').on("click", function() {
     $('.registration-section').slideUp(500)
-  }
-  )
+  })
 
   //on click of "Add Patch" in the Navbar:
   $('#user-option').on("click","#add-patch", function(event) {
@@ -147,6 +170,78 @@ $(() => { //the jquery document.on ready function
       })
     })
   });
+
+
+  $(".login").on("submit","#getSaved", function (event) {
+
+    event.preventDefault();
+
+    ajaxGetUser()   //fetch the user that is logged in
+    .then (user => {
+      ajaxGetCollections(user) //get the collections
+      .then(collections => {
+        clearPage();
+        if(collections.length === 0) {
+          $("section.board").append('<p>No Collections</p>')
+        }
+        for(coll of collections) {   //loops through the collections and does ajax request for each one
+          const appendName = coll.name;
+          const getPatches = ajaxGetPatchesByColl(coll.id);
+          Promise.all([appendName,getPatches])
+          .then(([name,patches]) => {
+            // CollectionHeader(name);
+            renderPatches(patches);
+          })
+        }
+      })
+    })
+  });
+
+  //event listener for clicking on bookmark
+  $("section.board").on("click",".fa-bookmark",function(event){
+
+    event.preventDefault()
+    const patchId = $(this).closest(".saveflag").attr("data-patchid");
+    console.log(patchId)
+    ajaxGetUser()
+    .then (user => {
+      ajaxSavePatch({user_id: user.id,patch_id: parseInt(patchId)})
+      .then(res => console.log(res))
+      .catch(err => console.log('err in ajax save patch', err))
+    })
+    .catch(err => console.log('err at app.js', err))
+
+    $("#flash-save").fadeIn("fast").delay(300).fadeOut("fast");
+  })
+
+  $("#search-form").on("submit", function(event) {
+    event.preventDefault()
+
+    const searchStr = $(this).find("input").val()
+    encodedStr = encodeURIComponent(searchStr)
+    ajaxSearch(encodedStr)
+    .then(patches => {
+      clearPage();
+      renderPatches(patches)
+    })
+
+  })
+
+
+
+  $(".category-link").on("click", function(event){
+
+    event.preventDefault();
+    const category = $(this).text();
+
+    ajaxPatchesByCategory(category)
+    .then (patches => {
+      clearPage();
+      renderPatches(patches)
+    })
+
+
+  })
 
 });
 

@@ -8,10 +8,11 @@
     <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/registration.css" type="text/css" />
-    
     <!-- custom style -->
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
     <link rel="stylesheet" href="/styles/patch.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/categorySearch.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/addNewPatch.css" type="text/css" />
     <link rel="stylesheet" href="/styles/addendum.css" type="text/css" />
 
 
@@ -22,6 +23,8 @@
     <script type="text/javascript" src="/scripts/02-components.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
     <script type="text/javascript" src="/scripts/patchBehaviour.js"></script>
+    <!-- Other api scripts -->
+
     <script type="text/javascript" src="/scripts/ratings.js"></script>
     <!-- <script type="text/javascript" src="/scripts/comments.js"></script> -->
 
@@ -34,13 +37,13 @@
     <nav>
       <div class = 'typo'>
         <h1 class="to-home">Quilt</h1>
-      </div>
 
-      <div id="search-container">
-        <form method="POST">
-          <input type="text" placeholder="Search..." name="search">
-          <button type="submit">Search<i class=""></i></button>
-        </form>
+        <div id="search-container">
+          <form method="POST" id="search-form">
+            <input type="text" placeholder="Search..." name="search">
+            <button type="submit"><i class="fas fa-search"></i><i class=""></i></button>
+          </form>
+        </div>
       </div>
 
       <div class="nav-item" id="user-option">
@@ -53,26 +56,62 @@
         </div>
       </div>
     </nav>
-          
+          <header>
+          </header>
     <section class="registration-section">
-      <div class="registration"></div>
       <div>
         <form method="get" class="registration" id="registration-form">
-          <p id="exit-button">X</p>
           <input type="text" placeholder="Name" class="registration-field" id="registration-name" name="name"><br><br>
           <input type="email" placeholder="Email" class="registration-field" id="registration-email" name="email"><br><br>
           <input type="text" placeholder="Password" class="registration-field" id="registration-password" name="password"><br><br>
-          <input type="submit" value="Register" id="registration-button">
+          <input type="submit" value="Register!" id="registration-button">
+          <p id="exit-button">X</p>
         </form>
-        <div class="success-message animate__flash"><h2>Success!</h2></div>
+        <div class="success-message"><h2>Lets get Quilting!</h2></div>
       </div>
-      <div class="registration"></div>
-
     </section>
+
+    <div id="add-new-patch-section">
+      <!-- Add new patch form -->
+      <div class="success-message-new-patch"><h2>New Patch Added!</h2></div>
+      <form id="new-patch">
+        <input type="text" placeholder="Title" class="new-patch-field" id="new-patch-title" name="title"><br>
+        <input type="url" placeholder="URL" class="new-patch-field" id="new-patch-url" name="url"><br>
+        <input type="text" placeholder="Description" class="new-patch-field" id="new-patch-description" name="description"><br>
+        <select name="category" id="category-new-patch">
+          <option selected="selected" id="category-type-new-patch">Choose Category</option>
+          <option value="1">Software Development</option>
+          <option value="2">Food</option>
+          <option value="3">Art</option>
+          <option value="4">Languages</option>
+          <option value="5">Travel</option>
+          <option value="6">Personal Development</option>
+        </select><br><br>
+        <input type="submit" value="Create Patch!" id="create-patch-button">
+        <p id="create-new-exit-button">X</p>
+      </form>
+    </div>
+
+
+    <div class="dropdown-cat">
+      <!-- category search dropdown goes here -->
+      <button class="dropbtn-cat">CATEGORIES</button>
+      <div class="dropdown-categories">
+        <a href="#" class="category-link">Software Development</a>
+        <a href="#" class="category-link">Food</a>
+        <a href="#" class="category-link">Art</a>
+        <a href="#" class="category-link">Travel</a>
+        <a href="#" class="category-link">Personal Development</a>
+        <a href="#" class="category-link">Languages</a>
+      </div>
+    </div>
+
     <section class="board">
       <!-- patches go here -->
-      
     </section>
+    <div class="flash-save" id=flash-save>
+      <p>&nbspSaved to Collection!</p>
+    </div>
 
     <footer>
 

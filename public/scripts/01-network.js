@@ -62,3 +62,47 @@ return $.ajax({
   url: "/api/users/login",
 })
 }
+
+//takes in a user obj and returns the collections owned by user
+function ajaxGetCollections(data) {
+  return $.ajax({
+    url: "/api/patches/collections",
+    method: "POST",
+    data,
+  })
+}
+
+//takes in a collection id and returns the patches in that collection
+function ajaxGetPatchesByColl(id) {
+  return $.ajax({
+    url: `/api/patches/collections/${id}`,
+  })
+}
+
+//takes in object {user_id, patch_id} key-value pairs with INTEGER values, and saves entry in patches_collections table.
+function ajaxSavePatch(data) {
+  return $.ajax({
+    method: "POST",
+    url: '/api/patches/collections/new',
+    data,
+  })
+}
+
+
+function ajaxSearch(searchStr) {
+  return $.ajax({
+    method: "GET",
+    url: `/api/patches/${searchStr}`
+  })
+}
+
+//takes in category string, does a url based get
+function ajaxPatchesByCategory(category) {
+  return $.ajax({
+    method: "GET",
+    url: `/api/patches/category/${category}`
+  })
+
+
+
+}
