@@ -211,7 +211,7 @@ $(() => { //the jquery document.on ready function
     })
     .catch(err => console.log('err at app.js', err))
 
-    $("#flash-save").fadeIn("slow").delay(500).fadeOut("slow");
+    $("#flash-save").fadeIn("fast").delay(300).fadeOut("fast");
   })
 
   $("#search-form").on("submit", function(event) {
