@@ -56,10 +56,19 @@ function ajaxGetPatchesByColl(id) {
   })
 }
 
+//takes in object {user_id, patch_id} key-value pairs with INTEGER values, and saves entry in patches_collections table.
 function ajaxSavePatch(data) {
   return $.ajax({
     method: "POST",
     url: '/api/patches/collections/new',
     data,
+  })
+}
+
+
+function ajaxSearch(searchStr) {
+  return $.ajax({
+    method: "GET",
+    url: `/api/patches/${searchStr}`
   })
 }

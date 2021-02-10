@@ -42,6 +42,15 @@ module.exports = (db) => {
     .catch(err => console.log(err));
   })
 
+  router.get("/:search", (req,res) => {
+    const searchStr = req.params.search;
+    database.getSearchResults(searchStr)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
+
   router.get("/collections/:id", (req, res) => {
     const collId = req.params.id;
     database.getPatchesByCollectionId(collId)
@@ -62,7 +71,12 @@ module.exports = (db) => {
       .catch(err => console.log('at router',err))
     })
     .catch(err => console.log('err in router', err))
-  })
+  });
+
+
+
+
+
 
   return router;
 

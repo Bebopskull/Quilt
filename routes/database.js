@@ -71,14 +71,6 @@ const getPatchesWithUser = function (user) {
 
 exports.getPatchesWithUser = getPatchesWithUser;
 
-//still WIP
-const getPatchCreator = function (patch_id) {
-  return pool.query(
-    `SELECT * FROM USERS
-    JOIN patches ON users.id = user_id
-    WHERE patches.id = $1
-    `,[patch_id])
-}
 
 // adds newly registered user to database
 // takes in an array of the user's name, email, password and inserts entry into to the db\
@@ -148,7 +140,7 @@ const addDefaultCollection = function(user) {
 
 exports.addDefaultCollection = addDefaultCollection;
 
-
+//takes in a patch id, collection id, and saves the key-pair to patches_collections database table.
 const savePatch = function(patchId,collectionId) {
   return pool.query(`
   INSERT INTO patches_collections (patch_id,collection_id)
@@ -159,6 +151,7 @@ const savePatch = function(patchId,collectionId) {
 
 exports.savePatch = savePatch;
 
+//takes in a collection name (string) and a user Id, and returns the collection id of the collection with that name owned by the user.
 const getCollectionIdByName = function (name,userId) {
   return pool.query(`
   SELECT id FROM collections
@@ -168,3 +161,21 @@ const getCollectionIdByName = function (name,userId) {
   .then(res => res.rows[0])
 }
 exports.getCollectionIdByName = getCollectionIdByName;
+
+//takes in a string, and queries the database for patches that have the string in it's name or description
+const getSearchResults = function (string) {
+
+  console.log("in database:", string)
+  return pool.query(`
+  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name
+    FROM patches
+    JOIN users ON users.id = patches.user_id
+    LEFT JOIN reviews ON reviews.patch_id = patches.id
+    JOIN patches_collections ON patches_collections.patch_id = patches.id
+    WHERE LOWER(patches.title) LIKE LOWER($1) OR LOWER(patches.description) LIKE LOWER($1)
+    GROUP BY collection_id,users.id,patches.id
+    ORDER BY patches.created_at`,[`%${string}%`])
+  .then(res => res.rows );
+}
+
+exports.getSearchResults = getSearchResults;

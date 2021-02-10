@@ -191,12 +191,17 @@ $(() => { //the jquery document.on ready function
     $("#flash-save").fadeIn("slow").delay(500).fadeOut("slow");
   })
 
+  $("#search-form").on("submit", function(event) {
+    event.preventDefault()
 
+    const searchStr = $(this).find("input").val()
+    encodedStr = encodeURIComponent(searchStr)
+    ajaxSearch(encodedStr)
+    .then(patches => {
+      clearPage();
+      renderPatches(patches)
+    })
 
-
-
-
-
-
+  })
 
 });
