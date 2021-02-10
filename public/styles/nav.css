@@ -27,8 +27,6 @@ ul.dropdown-content {
 .nav-item .username {
   display:flex;
   align-items:center;
-
-
   padding-right:0.5em;
 }
 
@@ -37,19 +35,16 @@ ul.dropdown-content {
 
 /* The dropdown container */
 .dropdown {
-
   overflow-y: hidden;
   z-index: 2;
 }
 
 /* Dropdown button */
 .dropdown .dropbtn {
-
-
   color: #E1B16A;
   padding: 2px 2px;
   background-color: inherit;
-  font-family: inherit; /* Important for vertical align on mobile phones */
+  font-family: inherit;
   margin: 1em 1em 1em 0em; /* Important for vertical align on mobile phones */
 }
 
@@ -86,3 +81,46 @@ ul.dropdown-content {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+
+/* wrapper for search bar */
+#search-container {
+  background-color: whitesmoke;
+  margin: 0 1em;
+}
+#search-container:focus-within {
+  border: solid #2f2f30;
+}
+#search-form input {
+  outline:none;
+  border: none;
+  background-color: inherit;
+  max-width: 15vw;
+}
+#search-form button {
+  outline:none;
+  border:none;
+  font-size:0.8em;
+  color: #616366;
+  background-color: inherit;
+}
+#search-form button:hover {
+  cursor:pointer;
+}
+#search-form {
+  display:flex;
+}
+
+/* email input bar to login*/
+#login_form input {
+  border:none;
+  outline:none;
+  background-color: whitesmoke;
+  max-width: 20vw;
+}
+
+#login_form input:focus {
+  border: solid #2f2f30;
+}
+
+

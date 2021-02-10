@@ -188,7 +188,7 @@ $(() => { //the jquery document.on ready function
   $("section.board").on("click",".fa-bookmark",function(event){
 
     event.preventDefault()
-    const patchId = $(this).closest(".patch").attr("data-patchId");
+    const patchId = $(this).closest(".saveflag").attr("data-patchid");
     console.log(patchId)
     ajaxGetUser()
     .then (user => {

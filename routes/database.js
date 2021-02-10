@@ -101,7 +101,6 @@ const userRegistration = function (userArr) {
 
 exports.userRegistration = userRegistration;
 
-<<<<<<< HEAD
 const getCategories = function() {
   return pool.query(
     `SELECT name
@@ -122,7 +121,6 @@ const addNewPatch = function(newPatchArr) {
 }
 
 exports.addNewPatch = addNewPatch;
-=======
 
 //accepts a user object with "id" property and returns collections owned by that user
 const getUserCollections = function(user) {
@@ -201,4 +199,3 @@ const getSearchResults = function (string) {
 }
 
 exports.getSearchResults = getSearchResults;
->>>>>>> 66c1ce8d5a7f30cbbc4900ef30ab9d45696773bf

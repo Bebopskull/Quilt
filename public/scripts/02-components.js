@@ -53,10 +53,7 @@
         <br>
         <footer class = 'bajoTextInput' id='bajoTextInput'>
           <button id='commentBtn'type="submit">Post</button>
-
-
           </div>
-
         </footer>
         </form>
       </div>
