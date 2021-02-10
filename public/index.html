@@ -11,6 +11,8 @@
     <!-- custom style -->
     <link rel="stylesheet" href="/styles/styles.css" type="text/css" />
     <link rel="stylesheet" href="/styles/patch.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/categorySearch.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/addNewPatch.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -57,13 +59,46 @@
           <input type="text" placeholder="Name" class="registration-field" id="registration-name" name="name"><br><br>
           <input type="email" placeholder="Email" class="registration-field" id="registration-email" name="email"><br><br>
           <input type="text" placeholder="Password" class="registration-field" id="registration-password" name="password"><br><br>
-          <input type="submit" value="Register" id="registration-button">
+          <input type="submit" value="Register!" id="registration-button">
           <p id="exit-button">X</p>
         </form>
         <div class="success-message animate__flash"><h2>Lets get Quilting!</h2></div>
       </div>
-
     </section>
+
+    <div id="add-new-patch-section">
+      <!-- Add new patch form -->
+      <form id="new-patch">
+        <input type="text" placeholder="Title" class="new-patch-field" id="new-patch-title" name="title"><br>
+        <input type="url" placeholder="URL" class="new-patch-field" id="new-patch-url" name="email"><br>
+        <input type="text" placeholder="Description" class="new-patch-field" id="new-patch-description" name="description"><br>
+        <select name="category" id="category-new-patch">
+          <option selected="selected" id="category-type-new-patch">Choose Category</option>
+          <option value="1">Software Development</option>
+          <option value="2">Food</option>
+          <option value="3">Art</option>
+          <option value="4">Languages</option>
+          <option value="5">Travel</option>
+          <option value="6">Personal Development</option>
+        </select><br><br>
+        <input type="submit" value="Create Patch!" id="create-patch-button">
+        <p id="create-new-exit-button">X</p>
+      </form>
+    </div>
+
+
+    <div class="dropdown-cat">
+      <!-- category search dropdown goes here -->
+      <button class="dropbtn-cat">CATEGORIES</button>
+      <div class="dropdown-categories">
+        <a href="#">Software Development</a>
+        <a href="#">Food</a>
+        <a href="#">Art</a>
+        <a href="#">Travel</a>
+        <a href="#">Personal Development</a>
+      </div>
+    </div>
+
     <section class="board">
       <!-- patches go here -->
     </section>

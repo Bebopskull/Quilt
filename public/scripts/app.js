@@ -79,6 +79,16 @@ $(() => { //the jquery document.on ready function
 
   })
 
+  // ADD PATCH FORM
+  $('#new-patch').on("click", function(event) {
+    console.log("Click!");
+    $('#add-new-patch-section').slideDown(500);
+    $('#new-patch').submit(function(event) {
+
+    })
+  })
+
+
   //REGISTRATION FORM
   $('#user-option').on("click","#signup", function(event) {
    console.log("click!");

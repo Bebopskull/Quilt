@@ -30,6 +30,27 @@ module.exports = (db) => {
       res.json(patches)
     })
     .catch(err => console.log(err))
+  });
+
+  router.post('/', (req, res) => {
+    // extract information out of the form
+    const userId = req.session.userId;
+    const title = req.body.title;
+    const url = req.body.url;
+    const description = req.body.description;
+    const categoryId = req.body.category_id;
+    const mediaTypeId = req.body.media_type_id;
+
+    const newPatchArr = [userId, title, url, description, categoryId, mediaTypeId];
+    // send that info to the db to be added (function call) - need to send userID from cookie
+    database.addNewPatch(newPatchArr)
+    .then(patch => {
+      // receive information back from db
+      // send info to front end
+      res.status(201).json(patch)
+    })
+    // error handling
+    .catch(err => console.log(err))
   })
 
   // ============================ POST ROUTE FOR USER REGISTRATION

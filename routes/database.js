@@ -98,3 +98,24 @@ console.log(userArr);
     .then((result) => result.rows[0])}
 
 exports.userRegistration = userRegistration;
+
+const getCategories = function() {
+  return pool.query(
+    `SELECT name
+    FROM categories`
+  )
+}
+
+exports.getCategories = getCategories;
+
+const addNewPatch = function(newPatchArr) {
+  // create a new patch in the db
+  return pool.query(
+    `INSERT INTO patches (user_id, title, url, description, category_id, media_type_id)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING *`,
+    newPatchArr)
+    .then((result) => result.rows[0])
+}
+
+exports.addNewPatch = addNewPatch;
