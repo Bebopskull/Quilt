@@ -39,8 +39,8 @@ CREATE TABLE patches (
   url VARCHAR(255) NOT NULL,
   description TEXT DEFAULT '',
   category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
-  media_type_id INTEGER REFERENCES media_types(id) ON DELETE CASCADE,
-  created_at DATE NOT NULL
+  media_type_id INTEGER REFERENCES, media_types(id) ON DELETE CASCADE,
+  created_at DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE reviews (

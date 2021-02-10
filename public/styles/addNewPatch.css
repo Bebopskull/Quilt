@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
+#add-new-patch-section {
+  display: none;
+}
 #new-patch {
   display: flex;
   flex-direction: column;
@@ -11,9 +14,10 @@
 
 #create-new-exit-button {
   font-weight: bold;
-  text-align: right;
+  text-align: center;
+  padding: 1em;
 }
-.success-message {
+.success-message-new-patch {
   display: none;
   text-align: center;
 }

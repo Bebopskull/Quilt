@@ -80,14 +80,31 @@ $(() => { //the jquery document.on ready function
   })
 
   // ADD PATCH FORM
-  $('#new-patch').on("click", function(event) {
+  $('#user-option').on("click", function(event) {
     console.log("Click!");
     $('#add-new-patch-section').slideDown(500);
     $('#new-patch').submit(function(event) {
+      event.preventDefault();
+      const data = $(this).serialize();
+      //console.log(data)
 
+      $.ajax({
+        method: "POST",
+        url: "/api/patches/",
+        data
+      })
+        //function to append patch list
+        .done(patchObj => {
+          console.log(patchObj);
+          renderPatches([patchObj])
+        })
+        $('#add-new-patch-section').slideUp(1000);
+        $('.success-message-new-patch').fadeIn(100).delay(1000).fadeOut(1000);
+    })
+    $('#create-new-exit-button').on("click", function() {
+      $('#add-new-patch-section').slideUp(500)
     })
   })
-
 
   //REGISTRATION FORM
   $('#user-option').on("click","#signup", function(event) {
@@ -103,8 +120,8 @@ $(() => { //the jquery document.on ready function
         method: "POST",
         url: "/api/users/register",
         data,
-        // the .done takes what the server sends back
       })
+      // the .done takes what the server sends back
         .done(user => {
           ajaxLogin(user)
             .then(user => {
@@ -119,16 +136,12 @@ $(() => { //the jquery document.on ready function
         $('#registration-form').slideUp(500);
         $('.success-message').fadeIn(100).delay(1000).fadeOut(1000);
         $('.registration-section').slideUp(2200);
-        //users.js
-        // const loggedInHtml = loggedInNav(serverResponse.user);
-        // $(".login div").html(loggedInHtml);
       })
     })
   });
   $('#exit-button').on("click", function() {
     $('.registration-section').slideUp(500)
-  }
-  )
+  })
 
   //on click of "Add Patch" in the Navbar:
   $('#user-option').on("click","#add-patch", function(event) {

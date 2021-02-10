@@ -32,6 +32,7 @@ module.exports = (db) => {
     .catch(err => console.log(err))
   });
 
+  //create new patch
   router.post('/', (req, res) => {
     // extract information out of the form
     const userId = req.session.userId;
@@ -41,6 +42,7 @@ module.exports = (db) => {
     const categoryId = req.body.category_id;
     const mediaTypeId = req.body.media_type_id;
 
+    console.log(`req.body`, req.body)
     const newPatchArr = [userId, title, url, description, categoryId, mediaTypeId];
     // send that info to the db to be added (function call) - need to send userID from cookie
     database.addNewPatch(newPatchArr)
