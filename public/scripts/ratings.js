@@ -52,7 +52,7 @@ $('form').on('submit', function(event){
 	///ajax POST request///
 	$.ajax({
   	method: 'POST',
-  	url: '/tweets',
+  	url: '/comments',
   	data: tweetContent
 	})	
 	.done(function(result) {
@@ -73,8 +73,6 @@ $('form').on('submit', function(event){
       // console.log(req.header);
     });
 
-
-
 });
 
 
@@ -84,12 +82,12 @@ $('form').on('submit', function(event){
 
 $('.error').hide();
 //renderTweets
-const renderTweets = function(tweets) {
+const renderComments = function(comments) {
   // loops through tweets
 
-  tweets.forEach(function(tweet) {
+  comments.forEach(function(comment) {
   // calls createTweetElement for each tweet
-  	let tweeto = createTweetElement(tweet);
+  	let commento = createCommentElement(comment);
   // takes return value and appends it to the tweets container
   	// $("<p>").text(textFromUser);
   	const container = $(".tweetsContainer");
@@ -101,62 +99,31 @@ const renderTweets = function(tweets) {
   return 
 };
 ///build the tweet html structure
-const createTweetElement = function(tweet) {
-  let $tweet = /* Your code for creating the tweet element */
+const createCommentElement = function(comment) {
+  let $comment = /* Your code for creating the tweet element */
   // ...
-  			$(`<article class="tweet">
-          <header class="tweetHead">
+  			$(`<article class="comment">
+          <header class="commentHead">
             <div class='authorPresentation'>
-              <img class='tweetAvatar' src="${tweet.user.avatars}">
-              <p class="tweetAuthorName"> ${tweet.user.name} </p>
+              <p class="commentAuthorName"> ${comment.user.name} </p>
             </div>
-
-            <p class="tweetAuthorTag">${tweet.user.handle}</p>
           
           </header>
-          <div class="tweetContent">
-            <p id='tweetFrom${tweet.user.name}'>${escapa(tweet.content.text)}</p>
+          <div class="commentContent">
+            <p id='commentFrom${comment.user.name}'>${escapa(comment.content.text)}</p>
           </div>
           <footer class='tweetFooter'>
-            <p class='date'>${Date(tweet.created_at)}</p>
-
-            <div class='tweetActions'>
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="far fa-heart"></i>
-            </div>
+            <p class='date'>${Date(comment.created_at)}</p>
           </footer>
           
         </article>`)
 
   // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
-  return $tweet;
+  return $comment;
 }
 
 
-const loadTweets = function() {
 
-		$.ajax({
-	  	method: 'GET',
-	  	url: '/tweets',
-		})	
-		.done(function(result) {
-	      
-	      console.log();
-
-	      renderTweets(result.reverse());
-	    })
-	    .fail(function(error) {
-	      // Problem with the request
-	      console.log(`Error with the request: ${error.message}`);
-	    })
-	    .always(function() {
-	      // This will always run
-	      console.log('request completed');
-	      // console.log(req.header);
-	    });
-	// });
-}
 
 const escapa =  function(str) {
   let p = document.createElement('p');
@@ -166,4 +133,4 @@ const escapa =  function(str) {
 
 
 
-loadTweets();
+// loadTweets();
