@@ -1,23 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
 
+.board{
 
+	width:99vw;
+	width:98vw;
+	height: 85vh;
+	display:flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	border-style: solid;
+	border-color: black;
+	background-color:white;
+	margin: 5px 15px;
+	flex-wrap: wrap;
+	overflow: scroll;
+
+}
 
 .frame{
 	display:flex;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	margin:5px;
 	border-style: solid;
 	width:47vw;
 	height: 60vw;
 	display:flex;
-	justify-content: center;
-	align-items: center;
 	border-style: solid;
 	border-color: black;
 	background-color: #FF5555;
-
+	
 }
+
+.frame.frameExpanded{
+	width:98vw;
+	height: 84vw;
+}
+
 
 .frame:hover{
 	box-shadow: 5px 5px #545149;
@@ -31,6 +50,9 @@
 	align-items: center;
 	overflow: hidden;
 	font-family: 'Josefin Slab', serif;
+	max-width:47vw;
+	max-height: 60vw;
+	
 }
 
 .thumbnail{
@@ -38,8 +60,6 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-	max-width: 100%;
-  max-height: 100%;
   margin: 10px;
 }
 
@@ -48,6 +68,7 @@
   max-height: 100%;
   padding:20px;
   mix-blend-mode: hard-light;
+  box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.25);
 }
 
 
@@ -71,6 +92,8 @@
 	font-size: 1.5rem;
 	text-decoration: none;
 	min-height: 48px;
+	align-items: flex-end;
+	padding-bottom: 5px; 
 	
 }
 
@@ -87,6 +110,8 @@
 	margin: 0px;
 	padding: 0px;
 	font-size: 1rem;
+	display: flex;
+	text-align: end;
 }
 .patchinfo{
 	display: flex;
@@ -122,6 +147,10 @@
   
 
 }
+
+/*.saveflag{
+	z-index:1;
+}*/
 
 
 @media screen and (min-width: 375px){

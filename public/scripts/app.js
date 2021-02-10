@@ -158,5 +158,60 @@ $(() => { //the jquery document.on ready function
     })
   });
 
-});
 
+  $(".login").on("submit","#getSaved", function (event) {
+
+    event.preventDefault();
+
+    ajaxGetUser()   //fetch the user that is logged in
+    .then (user => {
+      ajaxGetCollections(user) //get the collections
+      .then(collections => {
+        clearPage();
+        if(collections.length === 0) {
+          $("section.board").append('<p>No Collections</p>')
+        }
+        for(coll of collections) {   //loops through the collections and does ajax request for each one
+          const appendName = coll.name;
+          const getPatches = ajaxGetPatchesByColl(coll.id);
+          Promise.all([appendName,getPatches])
+          .then(([name,patches]) => {
+            CollectionHeader(name);
+            renderPatches(patches);
+          })
+        }
+      })
+    })
+  });
+
+  //event listener for clicking on bookmark
+  $("section.board").on("click",".fa-bookmark",function(event){
+
+    event.preventDefault()
+    const patchId = $(this).closest(".patch").attr("data-patchId");
+    console.log(patchId)
+    ajaxGetUser()
+    .then (user => {
+      ajaxSavePatch({user_id: user.id,patch_id: parseInt(patchId)})
+      .then(res => console.log(res))
+      .catch(err => console.log('err in ajax save patch', err))
+    })
+    .catch(err => console.log('err at app.js', err))
+
+    $("#flash-save").fadeIn("slow").delay(500).fadeOut("slow");
+  })
+
+  $("#search-form").on("submit", function(event) {
+    event.preventDefault()
+
+    const searchStr = $(this).find("input").val()
+    encodedStr = encodeURIComponent(searchStr)
+    ajaxSearch(encodedStr)
+    .then(patches => {
+      clearPage();
+      renderPatches(patches)
+    })
+
+  })
+
+});

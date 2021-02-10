@@ -53,31 +53,51 @@ module.exports = (db) => {
     .catch(err => console.log(err))
   })
 
-  // ============================ POST ROUTE FOR USER REGISTRATION
+  router.post("/collections", (req, res)=> {
+    const user = req.body;
+    database.getUserCollections(user)
+    .then (collections => {
+      console.log(collections);
+      res.json(collections);
+    })
+    .catch(err => console.log(err));
+  })
 
-  // const userRegistration = function(user) {
-  //   return pool.query(
-  //     `INSERT INTO users (name, email, password)
-  //     VALUES ($1, $2, $3)
-  //     `, [user])
-  // }
+  router.get("/:search", (req,res) => {
+    const searchStr = req.params.search;
+    database.getSearchResults(searchStr)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
 
-  // create a POST route for catching the "add patch"
-    // function that will do the SQL query
-  // happy path:
-    // send back a response to the client side "Pin added!"
-    // send back information: all patches user has created
-  // error:
+  router.get("/collections/:id", (req, res) => {
+    const collId = req.params.id;
+    database.getPatchesByCollectionId(collId)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
 
-  // if front end isn't ready yet:
-    // use Postman or Insomnia to test the backend routes
+  router.post("/collections/new", (req,res) => {
+    const { user_id,patch_id } = req.body;
+    const name = "My Saved Patches";
+    database.getCollectionIdByName(name,user_id)
+    .then (id => {
+      console.log("patch id is:",typeof patch_id,"id is:", typeof id.id)
+      database.savePatch(parseInt(patch_id),parseInt(id.id))
+      .then (output => res.json(output))
+      .catch(err => console.log('at router',err))
+    })
+    .catch(err => console.log('err in router', err))
+  });
 
-// test feature: make the necessary changes. once test is successful, merge to master
 
 
 
 
-  //takes in a patch_id and does a query for all the reviews for that patch, returns the array of reviews {comment,user_id,created_at, etc}
 
   return router;
 

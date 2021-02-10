@@ -66,11 +66,12 @@ module.exports = (db) => {
     // backend to database
     database.userRegistration([name, email, password])
       .then((user) => {
+        database.addDefaultCollection(user);
         res.json(user)
       })
       .catch(err => {
         res.status(500)
-          .json({ error: err.message });
+          .json({ error: "email already exists" });
       })
   })
 

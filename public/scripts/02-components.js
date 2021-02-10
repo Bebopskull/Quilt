@@ -17,40 +17,61 @@
     //the html of a single patch
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}'>
-          <div class = 'patch' id='patch_${patchObj.id}''>
-            <div class='infoHeader' id='patchHeader_${patchObj.id}'>
-              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-              <p class = 'usertag'>${patchObj.user_id}</p>
-            </div>
+    <div class = 'patch' id='patch_${patchObj.id}''>
+      <div class='infoHeader' id='patchHeader_${patchObj.id}'>
+        <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+        <p class = 'usertag'>${patchObj.name}</p>
+      </div>
+      <div class = 'tumbnail'>
+        <!--a class='sourceUrl' href='${patchObj.url}'-->
+          <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+        <!--</a>-->
+      </div>
+      <div class = 'patchinfo'>
+        <div class='patchinfoLeft'>
 
-            <div class = 'tumbnail'>
-              <!--a class='sourceUrl' href='${patchObj.url}'-->
-                <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-              <!--</a>-->
-            </div>
+          <p>${patchObj.date}</p>
+        </div>
+        <div class='patchinfoRight'>
+          <p>${ave_rating}</p>
+          <p class = 'saveflag' data-patchid = "${patchObj.id}" >
+            <i class="far fa-bookmark"></i>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class='addendum' id = 'addend_${patchObj.id}'>
+      <div class = 'addendumhead'>
+        <p class='closingBtn'>X</p>
+      </div>
+      <div class='description' id = 'descr_${patchObj.id}'>
+        <p>${patchObj.description}</p>
+      </div>
+      <div class='new_comment'>
+      <form method = 'POST' action = '/comments'/>
+        <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
+        <br>
+        <footer class = 'bajoTextInput' id='bajoTextInput'>
+          <button id='commentBtn'type="submit">Post</button>
 
-            <div class = 'patchinfo'>
-              <div class='patchinfoLeft'>
-                <p>${patchObj.description}</p>
-                <p>timetag</p>
 
-              </div>
-              <div class='patchinfoRight'>
-                <p>${ave_rating}</p>
-                <p class = 'saveflag'>
-                <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit"><i class="far fa-bookmark"></i></button></form> </p>
-                  <i class="fab fa-laravel"></i>
-                  <i class="far fa-bookmark"></i>
-                  <i class="fas fa-bookmark"></i>
-                </p>
-              </div>
-
-            </div>
           </div>
-        </div>`;
+
+        </footer>
+        </form>
+      </div>
+      <div class = 'comments' >
+      </div>
+    </div>
+  </div>
+  `;
 
   return patchEl;
   }
+
+  // <form method="POST" action="/collection">
+  // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">
+  // <i class="far fa-bookmark"></i></button></form> </p>
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
@@ -58,7 +79,7 @@
 
     let render = '';
     if (patchesArr.length === 0) {
-      render = 'no patches here yet'
+      render = '<p>no patches here yet</p>'
     }
     for (patchObj of patchesArr) {
       $patch = createPatchElement(patchObj);
@@ -121,4 +142,11 @@ const navState = function (user = null) {
 }
 //variable to store the html of ADDPATCH form
 
+
+const CollectionHeader = function(name) {
+  $("section.board").append(`
+  <div class="coll-name">
+  <b>${name}</b>
+  </div>`)
+}
 
