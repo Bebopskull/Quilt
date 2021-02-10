@@ -91,7 +91,7 @@ const renderComments = function(comments) {
   // takes return value and appends it to the tweets container
   	// $("<p>").text(textFromUser);
   	const container = $(".tweetsContainer");
-  	container.append(tweeto);
+  	container.append(commento);
 
 
   })
@@ -105,12 +105,12 @@ const createCommentElement = function(comment) {
   			$(`<article class="comment">
           <header class="commentHead">
             <div class='authorPresentation'>
-              <p class="commentAuthorName"> ${comment.user.name} </p>
+              <p class="commentAuthorName"> ${comment.name} </p>
             </div>
           
           </header>
           <div class="commentContent">
-            <p id='commentFrom${comment.user.name}'>${escapa(comment.content.text)}</p>
+            <p id='commentFrom${comment.name}'>${escapa(comment.comment)}</p>
           </div>
           <footer class='tweetFooter'>
             <p class='date'>${Date(comment.created_at)}</p>

@@ -21,9 +21,12 @@ const getAllPatches = function () {
 
 exports.getAllPatches = getAllPatches;
 
+
+//fetch all comments for a pacth
 const fetchComments = function (patch_id) {
-  return pool.query(
-    `SELECT * FROM reviews
+  return pool.query(`
+    SELECT * FROM reviews
+    JOIN users On users.id =  user_id
     WHERE patch_id = ${patch_id}
     ORDER BY created_at;`
   )
