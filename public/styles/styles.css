@@ -80,6 +80,7 @@ nav{
   color:rgb(245, 222, 222);
 
   color:#e6dacf;
+  display:flex;
 
 }
 
@@ -118,7 +119,7 @@ nav{
 
 	border-style: solid;
 	border-color: black;
-	background-color: #FF5555;
+	background-color: #CE5A57;
 
 
 }

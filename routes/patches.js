@@ -97,6 +97,19 @@ module.exports = (db) => {
   });
 
 
+  router.get("/category/:category", (req,res) => {
+
+    const category = req.params.category;
+    console.log("from router category:", category);
+
+    database.getPatchesByCategory(category)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log("from router get by fn:", err))
+  });
+
+
 
 
 

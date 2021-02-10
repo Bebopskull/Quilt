@@ -72,3 +72,14 @@ function ajaxSearch(searchStr) {
     url: `/api/patches/${searchStr}`
   })
 }
+
+//takes in category string, does a url based get
+function ajaxPatchesByCategory(category) {
+  return $.ajax({
+    method: "GET",
+    url: `/api/patches/category/${category}`
+  })
+
+
+
+}

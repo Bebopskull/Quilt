@@ -123,10 +123,10 @@ const loginOrLogout = function (user = null) {
 const signupOrAddPatch = function (user = null) {
   let outputHTML = ''
   if (!user) {
-    outputHTML = `<p>New Quilter? <a id="signup">Sign up!</a>`
+    outputHTML = `<p>New Quilter? <a id="signup"><b>Sign up!</b></a>`
   } else {
     outputHTML = `
-    <p><a id="add-patch">Add Patch</a>
+    <p><a id="add-patch"><b>Add Patch</b></a>
     `
   }
   $("#user-option").html(outputHTML)
