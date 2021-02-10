@@ -92,6 +92,8 @@
 	font-size: 1.5rem;
 	text-decoration: none;
 	min-height: 48px;
+	align-items: flex-end;
+	padding-bottom: 5px; 
 	
 }
 
@@ -108,6 +110,8 @@
 	margin: 0px;
 	padding: 0px;
 	font-size: 1rem;
+	display: flex;
+	text-align: end;
 }
 .patchinfo{
 	display: flex;

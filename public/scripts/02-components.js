@@ -32,7 +32,7 @@
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
                 
-                <p>timetag</p>
+                <p>${patchObj.date}</p>
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
@@ -52,12 +52,31 @@
               <p>${patchObj.description}</p>
             </div>
             <div class='new_comment'>
-            <form method = 'POST' action = '/tweets'/>
-              <textarea name="text" id="tweet-text" placeholder="What do you think about this Patch?"></textarea>
+            <form method = 'POST' action = '/comments'/>
+              <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
               <br>
               <footer class = 'bajoTextInput' id='bajoTextInput'>
-                <button id='tweetBtn'type="submit">Tweet</button>
-                <output name="counter" class="counter" id="counter" for="tweet-text">140</output>
+                <button id='commentBtn'type="submit">Post</button>
+                
+                <div class= nav-item>
+                 <div class="rate"><span>Rate <b>&nbsp</b></span></div>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class="fas fa-user"></i></button>
+                      <ul class="dropdown-content user-links">
+                        <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
+                          <button type="submit" class="btn nav-btn">Logout</button>
+                          </form></li>
+                        <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
+                          <button type="submit" class="btn nav-btn">My Patches</button>
+                          </form></li>
+                        <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
+                          <button type="submit" class="btn nav-btn">Saved Patches</button>
+                          </form></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+  
               </footer> 
               </form>
 

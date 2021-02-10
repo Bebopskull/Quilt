@@ -27,27 +27,33 @@
 }
 
 
+.description{
+	padding: 2vw 2vh;
+	/*color:#E6DACF;*/
+	color:white;
+	font-size: 1.2rem;
+}
 
-
-
-.new-tweet{
+.new-comment{
 	display:flex;
 	flex-direction:column;
 	align-items: center;
+	margin-left: 2vw;
 }
 
-#tweet-text{
+#comment-text{
 	background-color: #f4f1ec;
 	border: none;
   border-bottom: 4px solid #545149;
-  width: 90vw;
+  width: 60vw;
   height: 10vw;
   resize: none;
 
   margin: 20px 0px; 
+  padding-left: 2vw;
 }
 
-#tweet-text:focus {
+#comment-text:focus {
 	outline:none;
 }
 
