@@ -33,8 +33,11 @@
 }
 
 .frame.frameExpanded{
-	width:98vw;
-	height: 84vw;
+	z-index :1;
+	position: absolute;
+	width: 97vw;
+	height:84vh;
+	overflow: scroll;
 }
 
 

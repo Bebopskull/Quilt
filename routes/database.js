@@ -21,6 +21,20 @@ const getAllPatches = function () {
 
 exports.getAllPatches = getAllPatches;
 
+const fetchComments = function (patch_id) {
+  return pool.query(
+    `SELECT * FROM reviews
+    WHERE patch_id = ${patch_id}
+    ORDER BY created_at;`
+  )
+  .then (res => {
+    return res.rows
+  })
+  .catch(err => console.log(err))
+}
+
+exports.fetchComments = fetchComments;
+
 //Receives email string as a paramter and queries database to return the user obj associated with that email.
 const getUserWithEmail = function (email) {
   return pool.query(`

@@ -51,7 +51,9 @@
             <div class='description' id = 'descr_${patchObj.id}'>
               <p>${patchObj.description}</p>
             </div>
+
             <div class='new_comment'>
+
               <form method = 'POST' action = '/comments'/>
                 <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
                 <br>
@@ -59,15 +61,16 @@
                   <button id='commentBtn'type="submit">Post</button>
                   <div class='rateSection'>
                     <p class='rateLegend'>rate this Patch from 0 to 5!</p>
-                    <input class ='rateInput' ></input>
+                    <input class ='rateInput' placeholer="0-5" ></input>
                   </div>
                   
                 </footer> 
               </form>
 
             </div>
-
+            <br>
             <div class = 'comments' >
+              <button class='newCommentBtn'>NewComment</button>
 
             </div>
 

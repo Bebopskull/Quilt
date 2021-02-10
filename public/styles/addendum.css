@@ -29,17 +29,19 @@
 
 .description{
 	padding: 2vw 2vh;
+
 	/*color:#E6DACF;*/
 	color:white;
 	font-size: 1.2rem;
 }
 
-.new-comment{
-	display:none;
+.new_comment{
+	
 	display:flex;
 	flex-direction:column;
 	align-items: center;
-	margin-left: 2vw;
+	/*justify-content: flex-start;*/
+	
 
 }
 
@@ -47,11 +49,12 @@
 	background-color: #f4f1ec;
 	border: none;
   border-bottom: 4px solid #545149;
-  width: 60vw;
+  width: 58vw;
   height: 10vw;
   resize: none;
 
   margin: 20px 0px; 
+  margin-bottom: 0vh;
   padding: 2vw;
 }
 
@@ -65,7 +68,7 @@
 	flex-direction: row;
 	justify-content: space-between;
 	margin: 0px; 
-	width: 60vw;
+	width: 58vw;
 
 	
 }
@@ -110,6 +113,11 @@
 	background: #f4f1ec;
 	
 	mix-blend-mode: normal;
+
+}
+
+.newCommentBtn{
+	margin: 0vw 2vh;
 }
 
 

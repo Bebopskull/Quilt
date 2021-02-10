@@ -8,6 +8,14 @@ return $.ajax({
 })
 }
 
+//returns the res.send of the route in routes/comments: "GET /"
+function ajaxGetAllcomments(patchId) {
+return $.ajax({
+  method: "GET",
+  url: `api/comments/${patchId}`
+})
+}
+
 //takes in form data (must have email) and returns the user obj
 function ajaxLogin(data) {
 return $.ajax({

@@ -1,28 +1,33 @@
 
 $(()=>{
-	//frame resize
 	
-	// $(document).on('load','.addendum', function(event){
-	// 	$(this).hide();
-	// });
+	//colors
+	const patchColors = [];
+	
+
 
 	$(document).on('click', '.frame' ,function(){
 
+		const patch_id = $(this).find('.saveflag').data('patchid');
 
 		const frameID = $(`#frame_${patchObj.id}`);
-		// $(this).toggleClass('frameExpanded');
-		$(this).addClass('frameExpanded');
-		$(this).css('z-index', '1');
-		$(this).css('position', 'absolute');
-		$(this).css('width', '97vw');
-		$(this).css('height', '84vh');
-		$(this).css('overflow', 'scroll');
+		
 
-		// $(this).animate()
+		$(this).addClass('frameExpanded');
+
+		
 
 		const addendum = $(this).find(".addendum");
 		console.log(`addendum`,addendum);
 		addendum.show();
+
+		////display patches
+
+		ajaxGetAllcomments(patch_id)
+			.then(res => console.log(res));
+
+
+		////
 
 		const closeBtn = addendum.find('.closingBtn');
 
@@ -33,17 +38,31 @@ $(()=>{
 			const $frame = $(this).closest('.frame');
 
 			$frame.removeClass('frameExpanded');
-			$frame.css('z-index', '0');
-			$frame.css('position', 'static');
-			$frame.css('width', '47vw');
-			$frame.css('height', '60vh');
-			// $frame.css('overflow', 'hidden');
+			// $frame.css('z-index', '0');
+			// $frame.css('position', 'static');
+			// $frame.css('width', '47vw');
+			// $frame.css('height', '60vh');
+			// // $frame.css('overflow', 'hidden');
 			addendum.hide();
 
 
 			event.stopPropagation();
 		})
 
+		const new_comment = $(this).find(".new_comment");
+		
+		new_comment.hide();
+
+		const newComBtn = addendum.find('.newCommentBtn');
+
+		newComBtn.on('click', function(event){
+
+			event.preventDefault();
+
+			new_comment.slideDown();
+
+			event.stopPropagation();
+		})
 
 
 

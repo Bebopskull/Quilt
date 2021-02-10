@@ -37,12 +37,15 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const patchRoutes = require("./routes/patches");
+const commentsRoutes = require("./routes/comments");
+
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // connects this filepath to the database - any routes in the /usersRoutes will be prepended with this filepath
 app.use("/api/users", usersRoutes(db));
 app.use("/api/patches", patchRoutes(db));
+app.use("/api/comments", commentsRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
