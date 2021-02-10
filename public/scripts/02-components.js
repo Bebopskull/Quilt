@@ -31,7 +31,7 @@
 
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                <p>${patchObj.description}</p>
+                
                 <p>timetag</p>
               </div>
               <div class='patchinfoRight'>
@@ -49,7 +49,7 @@
               <p>${patchObj.description}</p>
             </div>
             <div class='new_comment'>
-            
+
             </div>
 
             <div class = 'comments' ></div>

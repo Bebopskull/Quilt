@@ -25,6 +25,10 @@ $(()=>{
 
 
 
+
+
+
+
 		// on('click','.addendum', function(event){
 		// 	$(this).css('display','flex');
 		// })
@@ -38,10 +42,11 @@ $(()=>{
 
 ///this way the behaviour is assigned to the dinamic element 
 	$(document).on('click', '.saveflag' ,function(){
+		
 		const patchid = $(this).data('patchid');
 		///this  is a toogle class, quite usefull for icons.
 		$('i', this).toggleClass('fas').toggleClass('far');
-
+		document.stopPropagation();
 
 	})
 });
