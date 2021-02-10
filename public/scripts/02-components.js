@@ -14,6 +14,8 @@
     ///added this line, so the average ratings are limited to 1 decimal.
     let ave_rating = Math.round(patchObj.ave_rating * 10 )/10;
 
+    // const date = Date(patchObj.created_at)
+    // console.log(date);
     //the html of a single patch
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}'>
@@ -31,7 +33,7 @@
 
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                <p>${patchObj.date}</p>
+                <p>${patchObj.created_at}</p>
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
