@@ -28,8 +28,8 @@
 	display:flex;
 	border-style: solid;
 	border-color: black;
-	background-color: #FF5555;
-	
+	background-color: #CE5A57;
+
 }
 
 .frame.frameExpanded{
@@ -52,7 +52,7 @@
 	font-family: 'Josefin Slab', serif;
 	max-width:47vw;
 	max-height: 60vw;
-	
+
 }
 
 .thumbnail{
@@ -93,8 +93,8 @@
 	text-decoration: none;
 	min-height: 48px;
 	align-items: flex-end;
-	padding-bottom: 5px; 
-	
+	padding-bottom: 5px;
+
 }
 
 .sourceUrl p{
@@ -144,7 +144,7 @@
   width: 30%;
   justify-content: center;
   align-items: flex-end;
-  
+
 
 }
 
