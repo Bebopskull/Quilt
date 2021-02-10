@@ -79,11 +79,13 @@ ul.dropdown-content {
   position: absolute;
   top:8vh;
   right:1vw;
-  background-color: #f9f9f9;
+  background-color: #E6DACF;
 }
 
 /* Links inside the dropdown */
 .dropdown-content li {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
   float: none;
   color: #444C5C;
   padding: 2px 2px;
@@ -92,9 +94,13 @@ ul.dropdown-content {
   text-align: left;
 }
 
+.dropdown-content .user-filter {
+  text-decoration: none;
+}
+
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content li:hover {
-  background-color: #e6dacf;
+  background-color: #faf2eb;
 }
 
 /* Show the dropdown menu on hover */

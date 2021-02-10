@@ -106,10 +106,10 @@ const loginOrLogout = function (user = null) {
           <button class="dropbtn"><i class="fas fa-user"></i></button>
           <ul class="dropdown-content user-links">
           <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
-          <button type="submit" class="btn nav-btn">My Patches</button>
+          <button type="submit" class="btn nav-btn user-filter">My Patches</button>
           </form></li>
           <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
-          <button type="submit" class="btn nav-btn">Saved Patches</button>
+          <button type="submit" class="btn nav-btn user-filter">Saved Patches</button>
           </form></li>
           <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
             <button type="submit" class="btn nav-btn">Logout</button>
