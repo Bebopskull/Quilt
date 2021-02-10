@@ -81,16 +81,31 @@ const getPatchCreator = function (patch_id) {
 }
 
 // adds newly registered user to database
-// takes in an array of the user's name, email, password and inserts entry into to the db
+// takes in an array of the user's name, email, password and inserts entry into to the db\
 
-const userRegistration = function(userArr) {
-console.log(userArr);
-  return pool.query(
-    `INSERT INTO users (name, email, password)
+const userRegistration = function (userArr) {
+
+  return pool.query(`
+  SELECT * FROM users
+  WHERE email = $1;`, [userArr[1]])
+    .then(res => {
+      if (res.rows[0]) {
+        throw new Error('user exists');
+      }
+    })
+    .then(() => {
+      return pool.query(
+        `INSERT INTO users (name, email, password)
     VALUES ($1, $2, $3)
     RETURNING *
     `, userArr)
-    .then((result) => result.rows[0])}
+      .then((result) => {
+        console.log(result)
+        return result.rows[0]
+      })
+    })
+    .catch(err => console.log(err))
+}
 
 exports.userRegistration = userRegistration;
 
@@ -122,3 +137,34 @@ const getPatchesByCollectionId = function(id) {
 }
 exports.getPatchesByCollectionId = getPatchesByCollectionId;
 
+//takes in a user and adds in a collection "My Saved Patches" for that user
+const addDefaultCollection = function(user) {
+  const id = user.id;
+  pool.query(
+    `INSERT INTO collections (name, user_id)
+    VALUES ('My Saved Patches', $1)
+    `,[id])
+}
+
+exports.addDefaultCollection = addDefaultCollection;
+
+
+const savePatch = function(patchId,collectionId) {
+  return pool.query(`
+  INSERT INTO patches_collections (patch_id,collection_id)
+  VALUES ($1, $2)
+  RETURNING *;
+  `,[patchId,collectionId])
+}
+
+exports.savePatch = savePatch;
+
+const getCollectionIdByName = function (name,userId) {
+  return pool.query(`
+  SELECT id FROM collections
+  WHERE name LIKE $1 AND user_id = $2
+  LIMIT 1;
+  `,[`%${name}%`,userId])
+  .then(res => res.rows[0])
+}
+exports.getCollectionIdByName = getCollectionIdByName;

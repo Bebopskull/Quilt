@@ -17,13 +17,13 @@
     //the html of a single patch
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}'>
-          <div class = 'patch' id='patch_${patchObj.id}''>
+          <div class = 'patch' id='patch_${patchObj.id}' data-patchid="${patchObj.id}">
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
               <p class = 'usertag'>${patchObj.user_id}</p>
             </div>
 
-            <div class = 'tumbnail'>
+            <div class = 'thumbnail'>
               <!--a class='sourceUrl' href='${patchObj.url}'-->
                 <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
               <!--</a>-->
@@ -38,7 +38,7 @@
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
                 <p class = 'saveflag'>
-                <p><form method="POST" action="/collection"><input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit"><i class="far fa-bookmark"></i></button></form> </p>
+                <p><i class="far fa-bookmark"></i></p>
                   <i class="fab fa-laravel"></i>
                   <i class="far fa-bookmark"></i>
                   <i class="fas fa-bookmark"></i>
@@ -58,7 +58,7 @@
 
     let render = '';
     if (patchesArr.length === 0) {
-      render = 'no patches here yet'
+      render = '<p>no patches here yet</p>'
     }
     for (patchObj of patchesArr) {
       $patch = createPatchElement(patchObj);

@@ -55,3 +55,11 @@ function ajaxGetPatchesByColl(id) {
     url: `/api/patches/collections/${id}`,
   })
 }
+
+function ajaxSavePatch(data) {
+  return $.ajax({
+    method: "POST",
+    url: '/api/patches/collections/new',
+    data,
+  })
+}

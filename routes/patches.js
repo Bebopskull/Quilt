@@ -51,31 +51,18 @@ module.exports = (db) => {
     .catch(err => console.log(err))
   })
 
-  // ============================ POST ROUTE FOR USER REGISTRATION
-
-  // const userRegistration = function(user) {
-  //   return pool.query(
-  //     `INSERT INTO users (name, email, password)
-  //     VALUES ($1, $2, $3)
-  //     `, [user])
-  // }
-
-  // create a POST route for catching the "add patch"
-    // function that will do the SQL query
-  // happy path:
-    // send back a response to the client side "Pin added!"
-    // send back information: all patches user has created
-  // error:
-
-  // if front end isn't ready yet:
-    // use Postman or Insomnia to test the backend routes
-
-// test feature: make the necessary changes. once test is successful, merge to master
-
-
-
-
-  //takes in a patch_id and does a query for all the reviews for that patch, returns the array of reviews {comment,user_id,created_at, etc}
+  router.post("/collections/new", (req,res) => {
+    const { user_id,patch_id } = req.body;
+    const name = "My Saved Patches";
+    database.getCollectionIdByName(name,user_id)
+    .then (id => {
+      console.log("patch id is:",typeof patch_id,"id is:", typeof id.id)
+      database.savePatch(parseInt(patch_id),parseInt(id.id))
+      .then (output => res.json(output))
+      .catch(err => console.log('at router',err))
+    })
+    .catch(err => console.log('err in router', err))
+  })
 
   return router;
 
