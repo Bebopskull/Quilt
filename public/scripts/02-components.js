@@ -20,7 +20,7 @@
           <div class = 'patch' id='patch_${patchObj.id}' data-patchid="${patchObj.id}">
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-              <p class = 'usertag'>${patchObj.user_id}</p>
+              <p class = 'usertag'>${patchObj.name}</p>
             </div>
 
             <div class = 'thumbnail'>
@@ -31,26 +31,76 @@
 
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                <p>${patchObj.description}</p>
-                <p>timetag</p>
-
+                
+                <p>${patchObj.date}</p>
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
+<<<<<<< HEAD
                 <p class = 'saveflag'>
                 <p><i class="far fa-bookmark"></i></p>
                   <i class="fab fa-laravel"></i>
+=======
+                <p class = 'saveflag' data-patchid = "${patchObj.id}" >
+>>>>>>> 045ebafd62122c354aab869279a51ca39c0d16f4
                   <i class="far fa-bookmark"></i>
-                  <i class="fas fa-bookmark"></i>
                 </p>
               </div>
 
             </div>
           </div>
+
+          <div class='addendum' id = 'addend_${patchObj.id}'>
+            <div class = 'addendumhead'>
+              <p class='closingBtn'>X</p>
+            </div>
+            <div class='description' id = 'descr_${patchObj.id}'>
+              <p>${patchObj.description}</p>
+            </div>
+            <div class='new_comment'>
+            <form method = 'POST' action = '/comments'/>
+              <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
+              <br>
+              <footer class = 'bajoTextInput' id='bajoTextInput'>
+                <button id='commentBtn'type="submit">Post</button>
+                
+                <div class= nav-item>
+                 <div class="rate"><span>Rate <b>&nbsp</b></span></div>
+                    <div class="dropdown">
+                      <button class="dropbtn"><i class="fas fa-user"></i></button>
+                      <ul class="dropdown-content user-links">
+                        <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
+                          <button type="submit" class="btn nav-btn">Logout</button>
+                          </form></li>
+                        <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
+                          <button type="submit" class="btn nav-btn">My Patches</button>
+                          </form></li>
+                        <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
+                          <button type="submit" class="btn nav-btn">Saved Patches</button>
+                          </form></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+  
+              </footer> 
+              </form>
+
+            </div>
+
+            <div class = 'comments' >
+
+            </div>
+
+          </div>
         </div>`;
 
   return patchEl;
   }
+
+  // <form method="POST" action="/collection">
+  // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">
+  // <i class="far fa-bookmark"></i></button></form> </p>
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
