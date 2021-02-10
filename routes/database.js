@@ -199,3 +199,23 @@ const getSearchResults = function (string) {
 }
 
 exports.getSearchResults = getSearchResults;
+
+
+const getPatchesByCategory = function(category) {
+
+  return pool.query(`
+  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name
+    FROM patches
+    JOIN users ON users.id = patches.user_id
+    LEFT JOIN reviews ON reviews.patch_id = patches.id
+    JOIN patches_collections ON patches_collections.patch_id = patches.id
+    JOIN categories ON category_id = categories.id
+    WHERE categories.name = $1
+    GROUP BY collection_id,users.id,patches.id
+    ORDER BY patches.created_at;
+  `,[category])
+  .then (res => res.rows)
+  .catch(err => console.log('database err:',err))
+}
+
+exports.getPatchesByCategory = getPatchesByCategory;

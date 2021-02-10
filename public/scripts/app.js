@@ -189,7 +189,7 @@ $(() => { //the jquery document.on ready function
           const getPatches = ajaxGetPatchesByColl(coll.id);
           Promise.all([appendName,getPatches])
           .then(([name,patches]) => {
-            CollectionHeader(name);
+            // CollectionHeader(name);
             renderPatches(patches);
           })
         }
@@ -227,4 +227,21 @@ $(() => { //the jquery document.on ready function
 
   })
 
+
+
+  $(".category-link").on("click", function(event){
+
+    event.preventDefault();
+    const category = $(this).text();
+
+    ajaxPatchesByCategory(category)
+    .then (patches => {
+      clearPage();
+      renderPatches(patches)
+    })
+
+
+  })
+
 });
+
