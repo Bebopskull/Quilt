@@ -54,21 +54,7 @@ a {
 	margin-top: 0.5em;
 }
 
-nav{
-	background-color: #444C5C;
-	width: 100vw;
-	height: 10vh;
-	padding: 1vw;
-	font-family: 'Josefin Slab', serif;
-	font-weight: 500;
-  font-size: 24px;
-  color: #e6dacf;
-	display:flex;
-	flex-direction:  row;
-	justify-content: space-between;
-	align-items: center;
-	z-index: 2;
-}
+
 
 /* #search-container {
 
@@ -106,7 +92,6 @@ nav{
 }
 
 .frame{
-
 	display:flex;
 	justify-content: center;
 	align-items: center;
