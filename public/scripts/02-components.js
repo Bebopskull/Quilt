@@ -31,7 +31,6 @@
 
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                
                 <p>${patchObj.date}</p>
               </div>
               <div class='patchinfoRight'>
@@ -71,7 +70,9 @@
             <br>
             <div class = 'comments' >
               <button class='newCommentBtn'>NewComment</button>
+              <div class='commentsContainer'>
 
+              </div>
             </div>
 
           </div>
@@ -87,6 +88,8 @@
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
   const renderPatches = function(patchesArr) {
+    
+    const patchColors = [];
 
     let render = '';
     if (patchesArr.length === 0) {
@@ -97,7 +100,9 @@
       render = $patch + render;
     }
     $('section.board').append(render);
-  }
+
+
+};
 
 //optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
 const loginOrLogout = function (user = null) {

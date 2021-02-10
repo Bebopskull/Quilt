@@ -10,20 +10,18 @@ $('form').hide();
 
 /////new tweet form button behaviour/////
 
-$(".fa-angle-double-down").on('click',function(event){
+// $(".fa-angle-double-down").on('click',function(event){
   
-  $('form').slideToggle('300');
-  $('.error').slideUp(300);
+//   $('form').slideToggle('300');
+//   $('.error').slideUp(300);
 
-});
+// });
  
 
 // Dealing with Textarea Height
 
 ///form behaviour
 $('form').on('submit', function(event){
-
-
 
 	event.preventDefault();
 
@@ -48,12 +46,12 @@ $('form').on('submit', function(event){
 	
 	const safeText = neewTweetTextBox.text();
 
-	const tweetContent = neewTweetTextBox.serialize();
+	const commentContent = neewTweetTextBox.serialize();
 	///ajax POST request///
 	$.ajax({
   	method: 'POST',
   	url: '/comments',
-  	data: tweetContent
+  	data: commentContent
 	})	
 	.done(function(result) {
       $(".tweetsContainer").empty();
@@ -90,19 +88,20 @@ const renderComments = function(comments) {
   	let commento = createCommentElement(comment);
   // takes return value and appends it to the tweets container
   	// $("<p>").text(textFromUser);
-  	const container = $(".tweetsContainer");
+  	const container = $(".commentsContainer");
   	container.append(commento);
 
 
   })
   // console.log(container)
-  return 
+  // return 
 };
 ///build the tweet html structure
 const createCommentElement = function(comment) {
   let $comment = /* Your code for creating the tweet element */
   // ...
-  			$(`<article class="comment">
+  			$(
+          `<article class="comment">
           <header class="commentHead">
             <div class='authorPresentation'>
               <p class="commentAuthorName"> ${comment.name} </p>
@@ -116,7 +115,8 @@ const createCommentElement = function(comment) {
             <p class='date'>${Date(comment.created_at)}</p>
           </footer>
           
-        </article>`)
+        </article> <br>`
+        )
 
   // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
   return $comment;

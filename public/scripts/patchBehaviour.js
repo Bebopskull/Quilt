@@ -2,8 +2,8 @@
 $(()=>{
 	
 	//colors
-	const patchColors = [];
 	
+	let hidden = true;
 
 
 	$(document).on('click', '.frame' ,function(){
@@ -24,17 +24,23 @@ $(()=>{
 		////display patches
 
 		ajaxGetAllcomments(patch_id)
-			.then(res => console.log(res));
+			.then((res) => {
+				console.log(res);
+				renderComments(res);
+			});
+
+		
 
 
-		////
+
 
 		const closeBtn = addendum.find('.closingBtn');
 
 		closeBtn.on('click', function(event){
 
 			event.preventDefault();
-
+			//hidden for the comment box
+			hidden = true;
 			const $frame = $(this).closest('.frame');
 
 			$frame.removeClass('frameExpanded');
@@ -46,16 +52,23 @@ $(()=>{
 			addendum.hide();
 
 
+
+
 			event.stopPropagation();
 		})
 
 		const new_comment = $(this).find(".new_comment");
 		
-		new_comment.hide();
-
+		if(hidden){
+			new_comment.hide();
+		}
+		
 		const newComBtn = addendum.find('.newCommentBtn');
 
 		newComBtn.on('click', function(event){
+
+			hidden = false;
+			///set it to true again when doing que post request.
 
 			event.preventDefault();
 
@@ -63,8 +76,6 @@ $(()=>{
 
 			event.stopPropagation();
 		})
-
-
 
 	});
 
