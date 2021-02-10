@@ -39,6 +39,7 @@ ul.dropdown-content {
 .dropdown {
 
   overflow-y: hidden;
+  z-index: 2;
 }
 
 /* Dropdown button */
