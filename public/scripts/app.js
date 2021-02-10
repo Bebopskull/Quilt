@@ -148,5 +148,35 @@ $(() => { //the jquery document.on ready function
     })
   });
 
-});
 
+  $(".login").on("submit","#getSaved", function (event) {
+
+    event.preventDefault();
+
+    ajaxGetUser()   //fetch the user that is logged in
+    .then (user => {
+      ajaxGetCollections(user) //get the collections
+      .then(collections => {
+        clearPage()
+        for(coll of collections) {   //loops through the collections and does ajax request for each one
+          const appendName = coll.name;
+          const getPatches = ajaxGetPatchesByColl(coll.id);
+          Promise.all([appendName,getPatches])
+          .then(([name,patches]) => {
+            CollectionHeader(name);
+            renderPatches(patches);
+          })
+        }
+      })
+    })
+  })
+
+
+
+
+
+
+
+
+
+});

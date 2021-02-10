@@ -39,3 +39,19 @@ return $.ajax({
   url: "/api/users/login",
 })
 }
+
+//takes in a user obj and returns the collections owned by user
+function ajaxGetCollections(data) {
+  return $.ajax({
+    url: "/api/patches/collections",
+    method: "POST",
+    data,
+  })
+}
+
+//takes in a collection id and returns the patches in that collection
+function ajaxGetPatchesByColl(id) {
+  return $.ajax({
+    url: `/api/patches/collections/${id}`,
+  })
+}

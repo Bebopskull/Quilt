@@ -32,6 +32,25 @@ module.exports = (db) => {
     .catch(err => console.log(err))
   })
 
+  router.post("/collections", (req, res)=> {
+    const user = req.body;
+    database.getUserCollections(user)
+    .then (collections => {
+      console.log(collections);
+      res.json(collections);
+    })
+    .catch(err => console.log(err));
+  })
+
+  router.get("/collections/:id", (req, res) => {
+    const collId = req.params.id;
+    database.getPatchesByCollectionId(collId)
+    .then (patches => {
+      res.json(patches)
+    })
+    .catch(err => console.log(err))
+  })
+
   // ============================ POST ROUTE FOR USER REGISTRATION
 
   // const userRegistration = function(user) {

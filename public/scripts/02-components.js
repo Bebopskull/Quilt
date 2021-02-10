@@ -122,3 +122,9 @@ const navState = function (user = null) {
 //variable to store the html of ADDPATCH form
 
 
+const CollectionHeader = function(name) {
+  $("section.board").append(`
+  <div class="coll-name">
+  <b>${name}</b>
+  </div>`)
+}

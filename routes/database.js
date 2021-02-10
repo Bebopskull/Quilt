@@ -84,11 +84,6 @@ const getPatchCreator = function (patch_id) {
 // takes in an array of the user's name, email, password and inserts entry into to the db
 
 const userRegistration = function(userArr) {
-// this query is a promise of a future value ~ queries db but don't know when we'll get the result back
-
-//CONSUME the promise - needs a .then() - can be here or on users.js
-// return returns a promise in the function call
-
 console.log(userArr);
   return pool.query(
     `INSERT INTO users (name, email, password)
@@ -98,3 +93,32 @@ console.log(userArr);
     .then((result) => result.rows[0])}
 
 exports.userRegistration = userRegistration;
+
+
+//accepts a user object with "id" property and returns collections owned by that user
+const getUserCollections = function(user) {
+  return pool.query(`
+  SELECT * from collections
+  WHERE user_id = $1
+  `,[user.id])
+  .then (res => {
+    return res.rows;
+  })
+}
+exports.getUserCollections = getUserCollections;
+
+//accepts a collection id and returns the patches in that collection
+const getPatchesByCollectionId = function(id) {
+  return pool.query(`
+  SELECT patches.*, avg(rating) as ave_rating, users.name
+    FROM patches
+    JOIN users ON users.id = patches.user_id
+    LEFT JOIN reviews ON reviews.patch_id = patches.id
+    JOIN patches_collections ON patches_collections.patch_id = patches.id
+    WHERE collection_id = $1
+    GROUP BY collection_id,users.id,patches.id
+    ORDER BY patches.created_at`,[id])
+  .then(res => res.rows);
+}
+exports.getPatchesByCollectionId = getPatchesByCollectionId;
+
