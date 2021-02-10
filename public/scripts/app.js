@@ -80,7 +80,7 @@ $(() => { //the jquery document.on ready function
   })
 
   // ADD PATCH FORM
-  $('#user-option').on("click", function(event) {
+  $('#user-option').on("click", "#add-patch", function(event) {
     console.log("Click!");
     $('#add-new-patch-section').slideDown(500);
     $('#new-patch').submit(function(event) {
