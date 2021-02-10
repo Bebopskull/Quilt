@@ -31,18 +31,12 @@
 
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                
+
                 <p>${patchObj.date}</p>
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
-<<<<<<< HEAD
-                <p class = 'saveflag'>
-                <p><i class="far fa-bookmark"></i></p>
-                  <i class="fab fa-laravel"></i>
-=======
                 <p class = 'saveflag' data-patchid = "${patchObj.id}" >
->>>>>>> 045ebafd62122c354aab869279a51ca39c0d16f4
                   <i class="far fa-bookmark"></i>
                 </p>
               </div>
@@ -63,7 +57,7 @@
               <br>
               <footer class = 'bajoTextInput' id='bajoTextInput'>
                 <button id='commentBtn'type="submit">Post</button>
-                
+
                 <div class= nav-item>
                  <div class="rate"><span>Rate <b>&nbsp</b></span></div>
                     <div class="dropdown">
@@ -82,8 +76,8 @@
                     </div>
                   </div>
                 </div>
-  
-              </footer> 
+
+              </footer>
               </form>
 
             </div>
