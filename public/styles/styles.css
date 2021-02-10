@@ -163,8 +163,6 @@ nav{
 	width:30vw;
 	height: 40vh;
 	display:flex;
-	justify-content: center;
-	align-items: center;
   padding: 0.5em;
 
 	border-style: solid;
