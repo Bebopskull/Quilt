@@ -92,12 +92,14 @@
 	justify-content: space-between;
 	width: 100%;
 	padding: 0em 1em;
-	font-size: 1.5rem;
 	text-decoration: none;
 	min-height: 48px;
 	align-items: flex-end;
 	padding-bottom: 5px;
 
+}
+.frameExpanded .infoHeader{
+  font-size: 1.5rem;
 }
 
 .sourceUrl p{
@@ -112,10 +114,15 @@
 .usertag{
 	margin: 0px;
 	padding: 0px;
-	font-size: 1rem;
+	font-size: 0.5rem;
 	display: flex;
 	text-align: end;
 }
+
+.frameExpanded .usertag{
+	font-size: 1rem;
+}
+
 .patchinfo{
 	display: flex;
 	flex-direction: row;
