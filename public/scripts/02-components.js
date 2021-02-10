@@ -17,50 +17,55 @@
     //the html of a single patch
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}'>
-    <div class = 'patch' id='patch_${patchObj.id}''>
-      <div class='infoHeader' id='patchHeader_${patchObj.id}'>
-        <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-        <p class = 'usertag'>${patchObj.name}</p>
-      </div>
-      <div class = 'tumbnail'>
-        <!--a class='sourceUrl' href='${patchObj.url}'-->
-          <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
-        <!--</a>-->
-      </div>
-      <div class = 'patchinfo'>
-        <div class='patchinfoLeft'>
-
-          <p>${patchObj.date}</p>
-        </div>
-        <div class='patchinfoRight'>
-          <p>${ave_rating}</p>
-          <p class = 'saveflag' data-patchid = "${patchObj.id}" >
-            <i class="far fa-bookmark"></i>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div class='addendum' id = 'addend_${patchObj.id}'>
-      <div class = 'addendumhead'>
-        <p class='closingBtn'>X</p>
-      </div>
-      <div class='description' id = 'descr_${patchObj.id}'>
-        <p>${patchObj.description}</p>
-      </div>
-      <div class='new_comment'>
-      <form method = 'POST' action = '/comments'/>
-        <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
-        <br>
-        <footer class = 'bajoTextInput' id='bajoTextInput'>
-          <button id='commentBtn'type="submit">Post</button>
+         <div class = 'patch' id='patch_${patchObj.id}''>
+            <div class='infoHeader' id='patchHeader_${patchObj.id}'>
+             <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+             <p class = 'usertag'>${patchObj.name}</p>
+            </div>
+            <div class = 'tumbnail'>
+                  <!--a class='sourceUrl' href='${patchObj.url}'-->
+                   <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+                   <!--</a>-->
+            </div>
+            <div class = 'patchinfo'>
+                <div class='patchinfoLeft'>
+                  <p>${patchObj.date}</p>
+                </div>
+                <div class='patchinfoRight'>
+                    <p>${ave_rating}</p>
+                     <p class = 'saveflag' data-patchid = "${patchObj.id}" >
+                       <i class="far fa-bookmark"></i>
+                       </p>
+                </div>
+            </div>
           </div>
-        </footer>
-        </form>
+          <div class='addendum' id = 'addend_${patchObj.id}'>
+              <div class = 'addendumhead'>
+                   <p class='closingBtn'>X</p>
+              </div>
+              <div class='description' id = 'descr_${patchObj.id}'>
+                   <p>${patchObj.description}</p>
+              </div>
+              <div class='new_comment'>
+                   <form method = 'POST' action = '/comments'/>
+                     <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
+                      <br>
+                   <footer class = 'bajoTextInput' id='bajoTextInput'>
+                       <button id='commentBtn'type="submit">Post</button>
+                <div class='rateSection'>
+                       <p class='rateLegend'>rate this Patch from 0 to 5!</p>
+                       <input class ='rateInput' placeholer="0-5" ></input>
+                </div>
+
+                     </footer>
+                     </form>
+              </div>
+                    <br>
+              <div class = 'comments' >
+                      <button class='newCommentBtn'>NewComment</button>
+              </div>
+          </div>
       </div>
-      <div class = 'comments' >
-      </div>
-    </div>
-  </div>
   `;
 
   return patchEl;

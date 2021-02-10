@@ -29,28 +29,33 @@
 
 .description{
 	padding: 2vw 2vh;
+
 	/*color:#E6DACF;*/
 	color:white;
 	font-size: 1.2rem;
 }
 
-.new-comment{
+.new_comment{
+	
 	display:flex;
 	flex-direction:column;
 	align-items: center;
-	margin-left: 2vw;
+	/*justify-content: flex-start;*/
+	
+
 }
 
 #comment-text{
 	background-color: #f4f1ec;
 	border: none;
   border-bottom: 4px solid #545149;
-  width: 60vw;
+  width: 58vw;
   height: 10vw;
   resize: none;
 
   margin: 20px 0px; 
-  padding-left: 2vw;
+  margin-bottom: 0vh;
+  padding: 2vw;
 }
 
 #comment-text:focus {
@@ -62,7 +67,25 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	size: 90vw;
+	margin: 0px; 
+	width: 58vw;
+
+	
+}
+.rateSection{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+}
+.rateLegend{
+	margin: 0em;
+	padding: 0em;
+	padding-right: 1em;
+	color:#f4f1ec;;
+}
+
+.rateInput{
+	width: 5em;
 }
 
 .error{
@@ -83,13 +106,18 @@
 	margin-right: 5px;
 }
 
-#tweetBtn{
+#commentBtn{
 
-	color:#ffffff;
+	color:#444C5C;
 	
-	background: #F0F0F000;
+	background: #f4f1ec;
 	
 	mix-blend-mode: normal;
+
+}
+
+.newCommentBtn{
+	margin: 0vw 2vh;
 }
 
 
@@ -122,7 +150,7 @@
 		flex-direction: row;
 		justify-content: space-between;
 		size: 55vw;
-		margin-left: 5vw;
+		margin-left: 0vw;
 	}
 
 	.error{
