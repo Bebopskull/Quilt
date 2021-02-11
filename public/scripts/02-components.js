@@ -85,7 +85,7 @@ const createCommentElement = function(comment) {
                 <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
                 <br>
                 <footer class = 'bajoTextInput' id='bajoTextInput'>
-                  <button id='commentBtn'type="submit">Post</button>
+                  <button class='commentBtn' id='commentBtn'type="submit">Post</button>
                   <div class='rateSection'>
                     <p class='rateLegend'>rate this Patch from 0 to 5!</p>
                     <input class ='rateInput' placeholer="0-5" ></input>
@@ -97,7 +97,7 @@ const createCommentElement = function(comment) {
             </div>
             <br>
             <div class = 'comments' >
-              <button class='newCommentBtn'>NewComment</button>
+              <button class='newCommentBtn' >NewComment</button>
               <br>
               <div class='commentsContainer'>
 
@@ -112,24 +112,26 @@ const createCommentElement = function(comment) {
 
 
 
+
+
   // <form method="POST" action="/collection">
   // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">
   // <i class="far fa-bookmark"></i></button></form> </p>
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
-  const renderPatches = function(patchesArr) {
+const renderPatches = function(patchesArr) {
     
-    const patchColors = [];
+  const patchColors = [];
 
-    let render = '';
-    if (patchesArr.length === 0) {
-      render = 'no patches here yet'
-    }
-    for (patchObj of patchesArr) {
-      $patch = createPatchElement(patchObj);
-      render = $patch + render;
-    }
+  let render = '';
+  if (patchesArr.length === 0) {
+    render = 'no patches here yet'
+  }
+  for (patchObj of patchesArr) {
+    $patch = createPatchElement(patchObj);
+    render = $patch + render;
+  }
     $('section.board').append(render);
 
 

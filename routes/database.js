@@ -38,6 +38,20 @@ const fetchComments = function (patch_id) {
 
 exports.fetchComments = fetchComments;
 
+
+
+// create a new comment in the db
+const addNewComment = function(newCommentArr) {
+  return pool.query(
+    `INSERT INTO comments (comment, created_at, email, id, name, password, patch_id, rating: 3, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING *`,
+    newCommentArr)
+    .then((result) => result.rows[0])
+}
+
+exports.addNewComment = addNewComment;
+
 //Receives email string as a paramter and queries database to return the user obj associated with that email.
 const getUserWithEmail = function (email) {
   return pool.query(`

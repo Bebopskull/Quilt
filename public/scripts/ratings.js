@@ -27,23 +27,16 @@ $('form').on('submit', function(event){
 
 	console.log('submiting tweet!');
 
-	const neewTweetTextBox = $(this).children('#tweet-text');
-	$('.error').slideUp(300);
+	// const neewCommentTextBox = $(this).children('#comment-text');
+	// $('.error').slideUp(300);
 
 
-	if(!neewTweetTextBox.val()){
-		$('.error').slideDown(500);
-		$('.error').html("<i class='fas fa-exclamation-triangle'></i> Actually, type it out loud before sharing...!!");
-		return
-	}
+	// if(!neewCommentTextBox.val()){
+	// 	$('.error').slideDown(500);
+	// 	$('.error').html("<i class='fas fa-exclamation-triangle'></i> Actually, type it out loud before sharing...!!");
+	// 	return
+	// }
 
-	if(neewTweetTextBox.val().length > 140){
-		$('.error').slideDown(500);
-		$('.error').html("<i class='fas fa-exclamation-triangle'></i> Well, look at the number under your text, you overthe limit...");
-		return
-	}
-
-	
 	const safeText = neewTweetTextBox.text();
 
 	const commentContent = neewTweetTextBox.serialize();
@@ -95,7 +88,29 @@ const renderComments = function(comments) {
   // return 
 };
 
+const loadComments = function() {
 
+    $.ajax({
+      method: 'GET',
+      url: '/comments',
+    })  
+    .done(function(result) {
+        
+        console.log();
+
+        renderTweets(result.reverse());
+      })
+      .fail(function(error) {
+        // Problem with the request
+        console.log(`Error with the request: ${error.message}`);
+      })
+      .always(function() {
+        // This will always run
+        console.log('request completed');
+        // console.log(req.header);
+      });
+  // });
+}
 
 
 
