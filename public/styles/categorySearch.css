@@ -3,7 +3,7 @@
 .dropbtn-cat {
   background-color: #78a5a3;
   color: #E6DACF;
-  padding: 16px;
+  padding: 2px 1rem 2px 1rem;
   font-size: 20px;
   font-family: 'Roboto', sans-serif;
   border: 2px dashed #2c3d3c;
@@ -13,7 +13,7 @@
 .dropdown-cat {
   position: relative;
   display: inline-block;
-  margin: 1em;
+  margin: 2px 1rem 2px 1rem;
 }
 
 /* Dropdown Content (Hidden by Default) */

@@ -4,10 +4,22 @@
     let imgSrc = '';
     switch (category) {
       case 'Software Development':
-        imgSrc = "./media/software.jpg";
+        imgSrc = "./media/software.png";
         break;
       case 'Food':
-        imgSrc = "./media/food.jpg";
+        imgSrc = "./media/food.png";
+        break;
+      case 'Art':
+        imgSrc = "./media/art.png";
+        break;
+      case 'Languages':
+        imgSrc = "./media/languages.png";
+        break;
+      case 'Personal Development':
+        imgSrc = "./media/personal.png";
+        break;
+      case 'Travel':
+        imgSrc = "./media/travel.png";
         break;
       default:
         imgSrc = "./media/thumbnail_demo.png";
@@ -16,6 +28,32 @@
     return imgSrc;
   };
 
+///build the comments html structure
+const createCommentElement = function(comment) {
+  let $comment = /* Your code for creating the tweet element */
+  // ...
+        $(
+          `<br>
+          <article class="comment">
+            <header class="commentHead">
+              <div class='authorPresentation'>
+                <p class="commentAuthorName"> ${comment.name} </p>
+              </div>
+
+            </header>
+            <div class="commentContent">
+              <p id='commentFrom${comment.name}'>${escapa(comment.comment)}</p>
+            </div>
+            <footer class='tweetFooter'>
+              <p class='date'>${Date(comment.created_at)}</p>
+            </footer>
+
+          </article>`
+        )
+
+  // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
+  return $comment;
+}
 
   //Takes in a patch obj and returns html
   const createPatchElement = function(patchObj) {
@@ -30,62 +68,78 @@
     ///added this line, so the average ratings are limited to 1 decimal.
     let ave_rating = Math.round(patchObj.ave_rating * 10 )/10;
 
+    // const date = Date(patchObj.created_at)
+    // console.log(date);
     //the html of a single patch
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}' data-category="${patchObj.category}">
          <div class = 'patch' id='patch_${patchObj.id}''>
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
-             <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
-             <p class = 'usertag'>${patchObj.name}</p>
+              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+              <p class = 'usertag'>${patchObj.name}</p>
             </div>
             <div class = 'thumbnail'>
                   <!--a class='sourceUrl' href='${patchObj.url}'-->
                    <img class = 'thumbnailContent' src="${replaceThumbnail(patchObj.category)}">
                    <!--</a>-->
             </div>
+
             <div class = 'patchinfo'>
-                <div class='patchinfoLeft'>
-                  <p>${patchObj.date}</p>
-                </div>
-                <div class='patchinfoRight'>
-                    <p>${ave_rating}</p>
-                     <p class = 'saveflag' data-patchid = "${patchObj.id}" >
-                       <i class="far fa-bookmark"></i>
-                       </p>
-                </div>
+              <div class='patchinfoLeft'>
+                <p>${patchObj.created_at}</p>
+              </div>
+              <div class='patchinfoRight'>
+                <p>${ave_rating}</p>
+                <p class = 'saveflag' data-patchid = "${patchObj.id}" >
+                  <i class="far fa-bookmark"></i>
+                </p>
+              </div>
+
             </div>
           </div>
-          <div class='addendum' id = 'addend_${patchObj.id}'>
-              <div class = 'addendumhead'>
-                   <p class='closingBtn'>X</p>
-              </div>
-              <div class='description' id = 'descr_${patchObj.id}'>
-                   <p>${patchObj.description}</p>
-              </div>
-              <div class='new_comment'>
-                   <form method = 'POST' action = '/comments'/>
-                     <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
-                      <br>
-                   <footer class = 'bajoTextInput' id='bajoTextInput'>
-                       <button id='commentBtn'type="submit">Post</button>
-                <div class='rateSection'>
-                       <p class='rateLegend'>rate this Patch from 0 to 5!</p>
-                       <input class ='rateInput' placeholer="0-5" ></input>
-                </div>
 
-                     </footer>
-                     </form>
+          <div class='addendum' id = 'addend_${patchObj.id}'>
+            <div class = 'addendumhead'>
+              <p class='closingBtn'>X</p>
+            </div>
+            <div class='description' id = 'descr_${patchObj.id}'>
+              <p>${patchObj.description}</p>
+            </div>
+
+            <div class='new_comment'>
+
+              <form method = 'POST' action = '/comments'/>
+                <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
+                <br>
+                <footer class = 'bajoTextInput' id='bajoTextInput'>
+                  <button class='commentBtn' id='commentBtn'type="submit">Post</button>
+                  <div class='rateSection'>
+                    <p class='rateLegend'>rate this Patch from 0 to 5!</p>
+                    <input class ='rateInput' placeholer="0-5" ></input>
+                  </div>
+
+                </footer>
+              </form>
+
+            </div>
+            <br>
+            <div class = 'comments' >
+              <button class='newCommentBtn' >NewComment</button>
+              <br>
+              <div class='commentsContainer'>
+
               </div>
-                    <br>
-              <div class = 'comments' >
-                      <button class='newCommentBtn'>NewComment</button>
-              </div>
+            </div>
+
           </div>
-      </div>
-  `;
+        </div>`;
 
   return patchEl;
   }
+
+
+
+
 
   // <form method="POST" action="/collection">
   // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">
@@ -93,19 +147,22 @@
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
+const renderPatches = function(patchesArr) {
 
+  const patchColors = [];
 
-  const renderPatches = function(patchesArr) {
-    let render = '';
-    if (patchesArr.length === 0) {
-      render = '<p>no patches here yet</p>'
-    }
-    for (patchObj of patchesArr) {
-      $patch = createPatchElement(patchObj);
-      render = $patch + render;
-    }
-    $('section.board').append(render);
+  let render = '';
+  if (patchesArr.length === 0) {
+    render = 'no patches here yet'
   }
+  for (patchObj of patchesArr) {
+    $patch = createPatchElement(patchObj);
+    render = $patch + render;
+  }
+    $('section.board').append(render);
+
+
+};
 
 
 //optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
@@ -124,10 +181,10 @@ const loginOrLogout = function (user = null) {
           <button class="dropbtn"><i class="fas fa-user"></i></button>
           <ul class="dropdown-content user-links">
           <li><form class="form-inline" action="/patches/:userid" method="GET" id="getPatches">
-          <button type="submit" class="btn nav-btn user-filter">My Patches</button>
+          <button type="submit" class="btn nav-btn">My Patches</button>
           </form></li>
           <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
-          <button type="submit" class="btn nav-btn user-filter">Saved Patches</button>
+          <button type="submit" class="btn nav-btn">Saved Patches</button>
           </form></li>
           <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
             <button type="submit" class="btn nav-btn">Logout</button>
@@ -146,10 +203,10 @@ const loginOrLogout = function (user = null) {
 const signupOrAddPatch = function (user = null) {
   let outputHTML = ''
   if (!user) {
-    outputHTML = `<p>New Quilter? <a id="signup"><b>Sign up!</b></a>`
+    outputHTML = `<p>New Quilter? <a id="signup">Sign up!</a>`
   } else {
     outputHTML = `
-    <p><a id="add-patch"><b>Add Patch</b></a>
+    <p><a id="add-patch">Add Patch</a>
     `
   }
   $("#user-option").html(outputHTML)

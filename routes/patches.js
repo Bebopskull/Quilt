@@ -14,7 +14,6 @@ module.exports = (db) => {
   router.get("/", (req, res) => {
     database.getAllPatches()
       .then(patches => {
-        console.log("here")
         res.json(patches);
       })
       .catch(err => {
@@ -60,7 +59,7 @@ module.exports = (db) => {
     const user = req.body;
     database.getUserCollections(user)
     .then (collections => {
-      console.log(collections);
+
       res.json(collections);
     })
     .catch(err => console.log(err));
@@ -89,7 +88,6 @@ module.exports = (db) => {
     const name = "My Saved Patches";
     database.getCollectionIdByName(name,user_id)
     .then (id => {
-      console.log("patch id is:",typeof patch_id,"id is:", typeof id.id)
       database.savePatch(parseInt(patch_id),parseInt(id.id))
       .then (output => res.json(output))
       .catch(err => console.log('at router',err))

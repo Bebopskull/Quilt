@@ -10,12 +10,12 @@ $('form').hide();
 
 /////new tweet form button behaviour/////
 
-$(".fa-angle-double-down").on('click',function(event){
+// $(".fa-angle-double-down").on('click',function(event){
   
-  $('form').slideToggle('300');
-  $('.error').slideUp(300);
+//   $('form').slideToggle('300');
+//   $('.error').slideUp(300);
 
-});
+// });
  
 
 // Dealing with Textarea Height
@@ -23,37 +23,28 @@ $(".fa-angle-double-down").on('click',function(event){
 ///form behaviour
 $('form').on('submit', function(event){
 
-
-
 	event.preventDefault();
 
 	console.log('submiting tweet!');
 
-	const neewTweetTextBox = $(this).children('#tweet-text');
-	$('.error').slideUp(300);
+	// const neewCommentTextBox = $(this).children('#comment-text');
+	// $('.error').slideUp(300);
 
 
-	if(!neewTweetTextBox.val()){
-		$('.error').slideDown(500);
-		$('.error').html("<i class='fas fa-exclamation-triangle'></i> Actually, type it out loud before sharing...!!");
-		return
-	}
+	// if(!neewCommentTextBox.val()){
+	// 	$('.error').slideDown(500);
+	// 	$('.error').html("<i class='fas fa-exclamation-triangle'></i> Actually, type it out loud before sharing...!!");
+	// 	return
+	// }
 
-	if(neewTweetTextBox.val().length > 140){
-		$('.error').slideDown(500);
-		$('.error').html("<i class='fas fa-exclamation-triangle'></i> Well, look at the number under your text, you overthe limit...");
-		return
-	}
-
-	
 	const safeText = neewTweetTextBox.text();
 
-	const tweetContent = neewTweetTextBox.serialize();
+	const commentContent = neewTweetTextBox.serialize();
 	///ajax POST request///
 	$.ajax({
   	method: 'POST',
   	url: '/comments',
-  	data: tweetContent
+  	data: commentContent
 	})	
 	.done(function(result) {
       $(".tweetsContainer").empty();
@@ -76,8 +67,6 @@ $('form').on('submit', function(event){
 });
 
 
-
-
 ////error behaviour////
 
 $('.error').hide();
@@ -90,38 +79,38 @@ const renderComments = function(comments) {
   	let commento = createCommentElement(comment);
   // takes return value and appends it to the tweets container
   	// $("<p>").text(textFromUser);
-  	const container = $(".tweetsContainer");
-  	container.append(tweeto);
+  	const container = $(".commentsContainer");
+  	container.append(commento);
 
 
   })
   // console.log(container)
-  return 
+  // return 
 };
-///build the tweet html structure
-const createCommentElement = function(comment) {
-  let $comment = /* Your code for creating the tweet element */
-  // ...
-  			$(`<article class="comment">
-          <header class="commentHead">
-            <div class='authorPresentation'>
-              <p class="commentAuthorName"> ${comment.user.name} </p>
-            </div>
-          
-          </header>
-          <div class="commentContent">
-            <p id='commentFrom${comment.user.name}'>${escapa(comment.content.text)}</p>
-          </div>
-          <footer class='tweetFooter'>
-            <p class='date'>${Date(comment.created_at)}</p>
-          </footer>
-          
-        </article>`)
 
-  // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
-  return $comment;
+const loadComments = function() {
+
+    $.ajax({
+      method: 'GET',
+      url: '/comments',
+    })  
+    .done(function(result) {
+        
+        console.log();
+
+        renderTweets(result.reverse());
+      })
+      .fail(function(error) {
+        // Problem with the request
+        console.log(`Error with the request: ${error.message}`);
+      })
+      .always(function() {
+        // This will always run
+        console.log('request completed');
+        // console.log(req.header);
+      });
+  // });
 }
-
 
 
 

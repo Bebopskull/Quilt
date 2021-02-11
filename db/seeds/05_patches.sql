@@ -21,3 +21,9 @@ INSERT INTO patches (user_id, title, url, description, category_id, media_type_i
 
 INSERT INTO patches (user_id, title, url, description, category_id, media_type_id, created_at)
   VALUES (2, 'user 2 patch 2', 'https://www.youtube.com/watch?v=DHvZLI7Db8E', 'USER 2 PATCH 2', 2, 1, '2021-02-08');
+
+INSERT INTO patches (user_id, title, url, description, category_id, media_type_id)
+  VALUES (3, 'Color palettes', 'https://coolors.co', 'Make your own color palette!', 3, 1),
+  (3, 'Learn Spanish', 'https://www.youtube.com/watch?v=qE-03EATjho', 'Learn SPanish in 4 hours, all the basics', 4, 2),
+  (3, 'Tour Guide Training', 'https://thetripschool.com/2020/04/28/online-learning-resources-for-tour-guides-operators/', 'Free Tour Guide training and learning resources. Become a tour guide in your own town!', 5, 1),
+  (3, '10 ways to improve yourself', 'https://example.com', 'Go to link to find out more', 6, 1);

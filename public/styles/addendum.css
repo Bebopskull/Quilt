@@ -23,6 +23,7 @@
 }
 .closingBtn{
 	margin: 0em;
+	position: relative;
 
 }
 
@@ -36,12 +37,12 @@
 }
 
 .new_comment{
-	
+
 	display:flex;
 	flex-direction:column;
 	align-items: center;
 	/*justify-content: flex-start;*/
-	
+
 
 }
 
@@ -53,7 +54,7 @@
   height: 10vw;
   resize: none;
 
-  margin: 20px 0px; 
+  margin: 20px 0px;
   margin-bottom: 0vh;
   padding: 2vw;
 }
@@ -67,10 +68,10 @@
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	margin: 0px; 
+	margin: 0px;
 	width: 58vw;
 
-	
+
 }
 .rateSection{
 	display: flex;
@@ -93,13 +94,13 @@
 	justify-content: center;
 	background-color: #ff2222;
 	border: none;
-  
+
   width: 70vw;
   font-family: 'Bungee', cursive;
   color:#fafa47;
   padding:20px;
   margin: 20px 0px;
-  font-size: 0.7em; 
+  font-size: 0.7em;
 }
 
 .fa-exclamation-triangle{
@@ -109,9 +110,9 @@
 #commentBtn{
 
 	color:#444C5C;
-	
+
 	background: #f4f1ec;
-	
+
 	mix-blend-mode: normal;
 
 }
@@ -159,15 +160,15 @@
 
 		background-color: #ff2222;
 		border: none;
-	  
+
 	  width: 40vw;
 	  font-family: 'Bungee', cursive;
 	  color:#fafa47;
 	  padding:20px;
 	  margin: 20px 0px 20px 5vw;
-	  font-size: 0.7em; 
+	  font-size: 0.7em;
 	}
-		
+
 
 
 

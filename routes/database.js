@@ -22,9 +22,12 @@ const getAllPatches = function () {
 
 exports.getAllPatches = getAllPatches;
 
+
+//fetch all comments for a pacth
 const fetchComments = function (patch_id) {
-  return pool.query(
-    `SELECT * FROM reviews
+  return pool.query(`
+    SELECT * FROM reviews
+    JOIN users On users.id =  user_id
     WHERE patch_id = ${patch_id}
     ORDER BY created_at;`
   )
@@ -35,6 +38,20 @@ const fetchComments = function (patch_id) {
 }
 
 exports.fetchComments = fetchComments;
+
+
+
+// create a new comment in the db
+const addNewComment = function(newCommentArr) {
+  return pool.query(
+    `INSERT INTO comments (comment, created_at, email, id, name, password, patch_id, rating: 3, user_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+    RETURNING *`,
+    newCommentArr)
+    .then((result) => result.rows[0])
+}
+
+exports.addNewComment = addNewComment;
 
 //Receives email string as a paramter and queries database to return the user obj associated with that email.
 const getUserWithEmail = function (email) {
@@ -108,7 +125,6 @@ const userRegistration = function (userArr) {
     RETURNING *
     `, userArr)
       .then((result) => {
-        console.log(result)
         return result.rows[0]
       })
     })
@@ -229,7 +245,7 @@ const getPatchesByCategory = function(category) {
     JOIN patches_collections ON patches_collections.patch_id = patches.id
     JOIN categories ON category_id = categories.id
     WHERE categories.name = $1
-    GROUP BY collection_id,users.id,patches.id
+    GROUP BY category, collection_id,users.id,patches.id
     ORDER BY patches.created_at;
   `,[category])
   .then (res => res.rows)
