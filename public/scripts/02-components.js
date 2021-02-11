@@ -152,3 +152,16 @@ const CollectionHeader = function(name) {
   </div>`)
 }
 
+//takes in an array of patch ids and matches to toggle saved state
+const showSavedByUser = function (patchIds) {
+
+  const allSaveFlags = $("section.board").find(".saveflag")
+  allSaveFlags.each(function(){
+    if ($.inArray(parseInt($(this).attr("data-patchid")), patchIds) >= 0) {
+      const icon = $(this).find("i");
+      icon.removeClass("far");
+      icon.addClass("fas")
+    }
+  })
+
+}

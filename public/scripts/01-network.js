@@ -12,10 +12,10 @@ return $.ajax({
 function ajaxGetAllcomments(patchId) {
 return $.ajax({
   method: "GET",
-  url: `api/comments/${patchId}`  
+  url: `api/comments/${patchId}`
 })
 .done(function(result) {
-        
+
         console.log();
 
         renderComments(result.reverse());
@@ -102,7 +102,13 @@ function ajaxPatchesByCategory(category) {
     method: "GET",
     url: `/api/patches/category/${category}`
   })
+}
 
+//takes in patchid and userid and deletes the patch from user's collection
 
-
+function ajaxDeleteFromColl(userId, patchId) {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/patches/delete/${userId}/${patchId}`
+  })
 }

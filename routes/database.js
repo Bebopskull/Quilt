@@ -233,3 +233,20 @@ const getPatchesByCategory = function(category) {
 }
 
 exports.getPatchesByCategory = getPatchesByCategory;
+
+//Deletes the first instance of patchid in user's collection
+const deleteFromCollection = function(patchId, collectionId) {
+
+  console.log("patchid:",patchId,"collection id:",collectionId)
+  return pool.query(`
+  DELETE from patches_collections
+  WHERE id IN
+  (SELECT id FROM patches_collections
+  WHERE patch_id = $1 AND collection_id = $2
+  LIMIT 10)
+  RETURNING *`,[parseInt(patchId),parseInt(collectionId.id)])
+  .then (res => res.rows)
+  .catch(err => console.log('database query error:', err))
+}
+
+exports.deleteFromCollection = deleteFromCollection;

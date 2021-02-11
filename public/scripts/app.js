@@ -6,17 +6,40 @@
 
 $(() => { //the jquery document.on ready function
 
-  //ON LOAD
-
-  //function to clear the display area
+  //HELPER jquery/AJAX FUNCTIONS
   const clearPage = function() {
     $("section.board").empty()
   }
+
+  const savedByUser = function () {
+    return ajaxGetUser()   //fetch the user that is logged in
+    .then(user => {
+      return ajaxGetCollections(user) //get the collections
+      .then(collections => {
+          return ajaxGetPatchesByColl(collections[0].id)
+          .then(patches => {
+            const patchIds = [];
+            for (patch of patches) {
+              patchIds.push(patch.id)
+            }
+            return patchIds
+          })
+      })
+    })
+  }
+
+  //ON LOAD
 
   //displays all patches
   ajaxGetAllPatches()
   .then (res => {
     renderPatches(res)
+  })
+  .then (() => {
+    savedByUser()
+    .then(patchIds => {
+      showSavedByUser(patchIds)
+    })
   });
 
   //If a user if logged in, resolves the user obj, else resolves null.
@@ -36,6 +59,12 @@ $(() => { //the jquery document.on ready function
     ajaxGetAllPatches()
     .then (res => {
     renderPatches(res)
+    })
+    .then (() => {
+      savedByUser()
+      .then(patchIds => {
+        showSavedByUser(patchIds)
+      })
     });
   });
 
@@ -56,7 +85,13 @@ $(() => { //the jquery document.on ready function
       .then(patches => {
         clearPage();
         console.log('loggedin patches', patches);
-        renderPatches(patches);
+        renderPatches(patches)
+      })
+      .then (() => {
+        savedByUser()
+        .then(patchIds => {
+          showSavedByUser(patchIds)
+        })
       });
 
       navState(user);
@@ -130,7 +165,7 @@ $(() => { //the jquery document.on ready function
               .then(patches => {
                 clearPage();
                 console.log("patches",patches);
-                renderPatches(patches);
+                renderPatches(patches)
               });
             })
         $('#registration-form').slideUp(500);
@@ -168,6 +203,12 @@ $(() => { //the jquery document.on ready function
         clearPage();
         renderPatches(patches)
       })
+      .then (() => {
+        savedByUser()
+        .then(patchIds => {
+          showSavedByUser(patchIds)
+        })
+      });
     })
   });
 
@@ -190,15 +231,21 @@ $(() => { //the jquery document.on ready function
           Promise.all([appendName,getPatches])
           .then(([name,patches]) => {
             // CollectionHeader(name);
-            renderPatches(patches);
+            renderPatches(patches)
           })
+          .then (() => {
+            savedByUser()
+            .then(patchIds => {
+              showSavedByUser(patchIds)
+            })
+          });
         }
       })
     })
   });
 
   //event listener for clicking on bookmark
-  $("section.board").on("click",".fa-bookmark",function(event){
+  $("section.board").on("click",".far.fa-bookmark",function(event){
 
     event.preventDefault()
     const patchId = $(this).closest(".saveflag").attr("data-patchid");
@@ -214,6 +261,20 @@ $(() => { //the jquery document.on ready function
     $("#flash-save").fadeIn("fast").delay(300).fadeOut("fast");
   })
 
+  $("section.board").on("click",".fas.fa-bookmark",function(event){
+
+    event.preventDefault()
+    const patchId = $(this).closest(".saveflag").attr("data-patchid");
+    console.log(patchId)
+    ajaxGetUser()
+    .then (user => {
+      ajaxDeleteFromColl(user.id,parseInt(patchId))
+      .then(res => console.log("deleted:",res))
+      .catch(err => console.log('err in ajax delete', err))
+    })
+    .catch(err => console.log('err at getuser.js', err))
+  })
+
   $("#search-form").on("submit", function(event) {
     event.preventDefault()
 
@@ -224,6 +285,12 @@ $(() => { //the jquery document.on ready function
       clearPage();
       renderPatches(patches)
     })
+    .then (() => {
+      savedByUser()
+      .then(patchIds => {
+        showSavedByUser(patchIds)
+      })
+    });
 
   })
 
@@ -239,9 +306,22 @@ $(() => { //the jquery document.on ready function
       clearPage();
       renderPatches(patches)
     })
-
+    .then (() => {
+      savedByUser()
+      .then(patchIds => {
+        showSavedByUser(patchIds)
+      })
+    });
 
   })
 
+
+
+
+
+
 });
+
+
+
 

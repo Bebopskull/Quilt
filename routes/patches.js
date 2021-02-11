@@ -6,6 +6,7 @@
  */
 
 const express = require('express');
+const { user } = require('pg/lib/defaults');
 const router  = express.Router();
 const database = require('./database') //database queries
 
@@ -108,6 +109,22 @@ module.exports = (db) => {
     })
     .catch(err => console.log("from router get by fn:", err))
   });
+
+
+  router.delete("/delete/:userId/:patchId", (req, res) => {
+    const userId = req.params.userId;
+    const patchId = req.params.patchId;
+    console.log("userid:",userId, "patchid:", patchId);
+    const name = "My Saved Patches";
+    database.getCollectionIdByName(name, userId)
+    .then(id => {
+      database.deleteFromCollection(patchId,id)
+      .then (output => res.json(output))
+      .catch(err => console.log("route delete:", err))
+    })
+    .catch(err => console.log("err in router:", err))
+
+  })
 
 
 
