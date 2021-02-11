@@ -78,10 +78,9 @@ const createCommentElement = function(comment) {
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
               <p class = 'usertag'>${patchObj.name}</p>
             </div>
-            <div class = 'tumbnail'>
-                  <!--a class='sourceUrl' href='${patchObj.url}'-->
+            <div class = 'thumbnail'>
                    <img class = 'thumbnailContent' src="${replaceThumbnail(patchObj.category)}">
-                   <!--</a>-->
+
             </div>
 
             <div class = 'patchinfo'>
@@ -104,18 +103,21 @@ const createCommentElement = function(comment) {
             </div>
             <div class='description' id = 'descr_${patchObj.id}'>
               <p>${patchObj.description}</p>
+              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.url}</a>
             </div>
 
             <div class='new_comment'>
 
-              <form method = 'POST' action = '/comments'/>
-                <textarea name="text" id="comment-text" placeholder="What do you think about this Patch?"></textarea>
+              <form method = "POST" action = "/reviews" data-patchid=${patchObj.id} class="patchcomment">
+                <textarea name="comment" id="comment-text" placeholder="What do you think about this Patch?" name="comment"></textarea>
                 <br>
                 <footer class = 'bajoTextInput' id='bajoTextInput'>
                   <button class='commentBtn' id='commentBtn'type="submit">Post</button>
                   <div class='rateSection'>
                     <p class='rateLegend'>rate this Patch from 0 to 5!</p>
-                    <input class ='rateInput' placeholer="0-5" ></input>
+                    <input class ='rateInput' placeholder="0-5" name="rating"></input>
+                    <input type="hidden" name="userId" value="0" class="user-id">
+                    <input type="hidden" name ="patchId" value="${patchObj.id}">
                   </div>
 
                 </footer>

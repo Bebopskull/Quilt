@@ -331,8 +331,40 @@ $(() => { //the jquery document.on ready function
 
   })
 
+
+
+  //on form submit
+  // const data = this.serialize()
+  // ajaxPostReview(data)
+  //.then (res => console.log res)
+  //empty the comment box $(#comment box).empty() and reload the comments for that patch.
+
+
+  $("section.board").on("submit", ".patchcomment", function (event){
+
+    event.preventDefault();
+
+    ajaxGetUser()
+    .then (user => {
+      return user.id
+    })
+    .then((userId) => {
+      $(this).find(".user-id").val(`${userId}`);
+      const data = $(this).serialize();
+      ajaxPostReview(data)
+      .then(() => {
+        $(this).find("textarea").val("")
+      })
+    })
+    .then(()=> {
+      const patchId = $(this).attr("data-patchid");
+      ajaxGetAllcomments(patchId)
+
+    })
+    .then(()=> {
+      $(".new_comment").slideUp();
+    })
+
+  })
+
 });
-
-
-
-

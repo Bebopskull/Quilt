@@ -3,6 +3,7 @@
 .board{
 
 	width:99vw;
+  height:85vh;
 	display:flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -21,12 +22,11 @@
 	justify-content: flex-start;
 	align-items: center;
 	margin:5px;
-	border-style: solid;
-	width:47vw;
-	height: 60vw;
+	width: 22vw;
+	height: 30vw;
 	display:flex;
-	border-style: solid;
-	border-color: transparent;
+  padding: 0.5em;
+	border:none;
 	background-color: #CE5A57;
 }
 
@@ -71,9 +71,8 @@
 	align-items: center;
 	overflow: hidden;
 	font-family: 'Josefin Slab', serif;
-	max-width:47vw;
-	max-height: 60vw;
-
+	max-width: 50vw;
+	max-height: 40vw;
 }
 
 .thumbnail{
@@ -81,6 +80,8 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0;
 }
 
@@ -100,7 +101,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding:0px;
+	padding:5px;
+  margin: 5px;
 }
 
 .infoHeader{
@@ -181,13 +183,9 @@
 }*/
 
 
-@media screen and (min-width: 375px){
-
+/* @media screen and (min-width: 375px){
 	.frame{
-		width: 23.7vw;
+		width: 22vw;
 		height: 30vw;
 	};
-
-
-
-};
+}; */

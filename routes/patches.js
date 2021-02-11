@@ -125,6 +125,16 @@ module.exports = (db) => {
   })
 
 
+  router.post("/review", (req, res) => {
+    const {patchId, userId, rating, comment} = req.body;
+    console.log("req body from post route:",req.body)
+
+    database.insertReview(patchId,userId,rating,comment)
+    .then (output => res.json(output))
+    .catch (err => console.log("err from post route:",err))
+  })
+
+
 
 
 

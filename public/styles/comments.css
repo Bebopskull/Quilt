@@ -3,7 +3,7 @@
 
 .commentsContainer{
    max-height: 55vh;
-   overflow: scroll;
+   overflow-y: scroll;
 
 }
 .comment{

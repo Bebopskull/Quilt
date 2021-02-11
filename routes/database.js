@@ -271,3 +271,22 @@ const deleteFromCollection = function(patchId, collectionId) {
 }
 
 exports.deleteFromCollection = deleteFromCollection;
+
+
+//post a review (with patch id, user id, rating, comment)
+
+//database query to INSERT INTO reviews tables
+//RETURNING * to return what was inserted
+//res => res.rows
+
+const insertReview = function (patchId, userId, rating, comment) {
+
+  return pool.query(`
+  INSERT INTO reviews (patch_id, user_id,rating,comment)
+  VALUES ( $1, $2, $3, $4)
+  RETURNING *`, [patchId,userId,rating,comment])
+  .then (res => res.rows[0])
+  .catch( err => console.log("database insert review err:", err))
+}
+
+exports.insertReview = insertReview;

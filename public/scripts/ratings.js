@@ -11,12 +11,12 @@ $('form').hide();
 /////new tweet form button behaviour/////
 
 // $(".fa-angle-double-down").on('click',function(event){
-  
+
 //   $('form').slideToggle('300');
 //   $('.error').slideUp(300);
 
 // });
- 
+
 
 // Dealing with Textarea Height
 
@@ -45,7 +45,7 @@ $('form').on('submit', function(event){
   	method: 'POST',
   	url: '/comments',
   	data: commentContent
-	})	
+	})
 	.done(function(result) {
       $(".tweetsContainer").empty();
       neewTweetTextBox.val('');
@@ -70,9 +70,11 @@ $('form').on('submit', function(event){
 ////error behaviour////
 
 $('.error').hide();
-//renderTweets
+//takes in an array of review Objs
 const renderComments = function(comments) {
   // loops through tweets
+
+  $(".commentsContainer").empty()
 
   comments.forEach(function(comment) {
   // calls createTweetElement for each tweet
@@ -82,10 +84,9 @@ const renderComments = function(comments) {
   	const container = $(".commentsContainer");
   	container.append(commento);
 
-
   })
   // console.log(container)
-  // return 
+  // return
 };
 
 const loadComments = function() {
@@ -93,9 +94,9 @@ const loadComments = function() {
     $.ajax({
       method: 'GET',
       url: '/comments',
-    })  
+    })
     .done(function(result) {
-        
+
         console.log();
 
         renderTweets(result.reverse());
