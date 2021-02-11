@@ -20,57 +20,6 @@ $('form').hide();
 
 // Dealing with Textarea Height
 
-///form behaviour
-$('form').on('submit', function(event){
-
-	event.preventDefault();
-
-	console.log('submiting tweet!');
-
-	// const neewCommentTextBox = $(this).children('#comment-text');
-	// $('.error').slideUp(300);
-
-
-	// if(!neewCommentTextBox.val()){
-	// 	$('.error').slideDown(500);
-	// 	$('.error').html("<i class='fas fa-exclamation-triangle'></i> Actually, type it out loud before sharing...!!");
-	// 	return
-	// }
-
-	const safeText = neewTweetTextBox.text();
-
-	const commentContent = neewTweetTextBox.serialize();
-	///ajax POST request///
-	$.ajax({
-  	method: 'POST',
-  	url: '/comments',
-  	data: commentContent
-	})
-	.done(function(result) {
-      $(".tweetsContainer").empty();
-      neewTweetTextBox.val('');
-      neewTweetTextBox.val().length;
-      $('.counter').html(140);
-      loadTweets();
-
-    })
-    .fail(function(error) {
-      // Problem with the request
-      console.log(`Error with the request: ${error.message}`);
-    })
-    .always(function() {
-      // This will always run
-      console.log('request completed');
-      // console.log(req.header);
-    });
-
-});
-
-
-////error behaviour////
-
-$('.error').hide();
-//takes in an array of review Objs
 const renderComments = function(comments) {
   // loops through tweets
 
