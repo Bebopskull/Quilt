@@ -74,8 +74,6 @@ $('form').on('submit', function(event){
 });
 
 
-
-
 ////error behaviour////
 
 $('.error').hide();
@@ -96,31 +94,7 @@ const renderComments = function(comments) {
   // console.log(container)
   // return 
 };
-///build the tweet html structure
-const createCommentElement = function(comment) {
-  let $comment = /* Your code for creating the tweet element */
-  // ...
-  			$(
-          `<article class="comment">
-          <header class="commentHead">
-            <div class='authorPresentation'>
-              <p class="commentAuthorName"> ${comment.name} </p>
-            </div>
-          
-          </header>
-          <div class="commentContent">
-            <p id='commentFrom${comment.name}'>${escapa(comment.comment)}</p>
-          </div>
-          <footer class='tweetFooter'>
-            <p class='date'>${Date(comment.created_at)}</p>
-          </footer>
-          
-        </article> <br>`
-        )
 
-  // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
-  return $comment;
-}
 
 
 

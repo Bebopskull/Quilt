@@ -1,5 +1,31 @@
   //patchObj is {id,title,url,user_id,description,category_id,media_type_id,created_at, avg_rating}
 
+///build the comments html structure
+const createCommentElement = function(comment) {
+  let $comment = /* Your code for creating the tweet element */
+  // ...
+        $(
+          `<br>
+          <article class="comment">
+            <header class="commentHead">
+              <div class='authorPresentation'>
+                <p class="commentAuthorName"> ${comment.name} </p>
+              </div>
+            
+            </header>
+            <div class="commentContent">
+              <p id='commentFrom${comment.name}'>${escapa(comment.comment)}</p>
+            </div>
+            <footer class='tweetFooter'>
+              <p class='date'>${Date(comment.created_at)}</p>
+            </footer>
+          
+          </article>`
+        )
+
+  // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
+  return $comment;
+}
 
   //Takes in a patch obj and returns html
   const createPatchElement = function(patchObj) {
@@ -72,6 +98,7 @@
             <br>
             <div class = 'comments' >
               <button class='newCommentBtn'>NewComment</button>
+              <br>
               <div class='commentsContainer'>
 
               </div>
@@ -82,6 +109,8 @@
 
   return patchEl;
   }
+
+
 
   // <form method="POST" action="/collection">
   // <input type="hidden" name="patch_id" value="${patchObj.id}"><button type="submit">

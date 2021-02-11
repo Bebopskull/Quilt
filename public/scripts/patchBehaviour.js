@@ -87,7 +87,9 @@ $(()=>{
 
 		const patchid = $(this).data('patchid');
 		///this  is a toogle class, quite usefull for icons.
+		
 		$('i', this).toggleClass('fas').toggleClass('far');
+
 		document.stopPropagation();
 
 	})
