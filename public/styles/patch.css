@@ -20,7 +20,7 @@
 .frame{
 	display:flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	margin:5px;
 	width: 22vw;
 	height: 30vw;

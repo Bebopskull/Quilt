@@ -31,9 +31,6 @@ $(()=>{
 
 
 
-
-
-
 		const closeBtn = addendum.find('.closingBtn');
 
 		closeBtn.on('click', function(event){
@@ -44,11 +41,8 @@ $(()=>{
 			const $frame = $(this).closest('.frame');
 
 			$frame.removeClass('frameExpanded');
-			
+
 			addendum.hide();
-
-
-
 
 			event.stopPropagation();
 		})

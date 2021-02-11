@@ -364,7 +364,23 @@ $(() => { //the jquery document.on ready function
     .then(()=> {
       $(".new_comment").slideUp();
     })
-
   })
+
+    // STAR rating on each comment form
+  $("section.board").on("click","div.star-rating > s", function(e) {
+
+    // remove all active classes first, needed if user clicks multiple times
+    $(this).closest('div').find('.active').removeClass('active');
+
+    $(e.target).parentsUntil("div").addClass('active'); // all elements up from the clicked one excluding self
+    $(e.target).addClass('active');  // the element user has clicked on
+
+        var numStars = $(e.target).parentsUntil("div").length+1;
+        $('.show-result').text(numStars + (numStars == 1 ? " star" : " stars!"));
+
+    const rating = $(this).attr("data-star");
+    $(this).closest(".rateSection").find(".rateInput").val(rating);
+
+    });
 
 });

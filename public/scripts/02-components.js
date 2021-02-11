@@ -80,12 +80,10 @@ const createCommentElement = function(comment) {
             </div>
             <div class = 'thumbnail'>
                    <img class = 'thumbnailContent' src="${replaceThumbnail(patchObj.category)}">
-
             </div>
-
             <div class = 'patchinfo'>
               <div class='patchinfoLeft'>
-                <p>${patchObj.created_at}</p>
+                <p>created on: ${patchObj.created_at.substring(0,10)}</p>
               </div>
               <div class='patchinfoRight'>
                 <p>${ave_rating}</p>
@@ -93,7 +91,6 @@ const createCommentElement = function(comment) {
                   <i class="far fa-bookmark"></i>
                 </p>
               </div>
-
             </div>
           </div>
 
@@ -114,8 +111,18 @@ const createCommentElement = function(comment) {
                 <footer class = 'bajoTextInput' id='bajoTextInput'>
                   <button class='commentBtn' id='commentBtn'type="submit">Post</button>
                   <div class='rateSection'>
-                    <p class='rateLegend'>rate this Patch from 0 to 5!</p>
-                    <input class ='rateInput' placeholder="0-5" name="rating"></input>
+
+                  <!-- star rating -->
+                  <div class="star-rating">
+                  <s data-star="1">
+                    <s data-star="1">
+                      <s data-star="1">
+                         <s data-star="1">
+                            <s data-star="1">
+                  </s></s></s></s></s>
+                  </div>
+
+                    <input type="hidden" class='rateInput' name="rating" value="0">
                     <input type="hidden" name="userId" value="0" class="user-id">
                     <input type="hidden" name ="patchId" value="${patchObj.id}">
                   </div>

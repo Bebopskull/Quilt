@@ -13,11 +13,11 @@
 .addendumhead{
 	display:flex;
 	font-family: 'Josefin Slab', serif;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: 600;
 	color:white;
 	justify-content: flex-end;
-	padding: 1em 1em;
+	padding: 1rem 1rem;
 }
 
 .closingBtn{
