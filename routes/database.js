@@ -5,7 +5,7 @@ const pool = require("../db/pool.js");
 //queries the database for all patches + their average rating.
 const getAllPatches = function () {
   return pool.query(
-    `SELECT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
+    `SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
@@ -15,6 +15,7 @@ const getAllPatches = function () {
     LIMIT 12;`
   )
   .then (res => {
+    // console.log("testing database getall",res.rows)
     return res.rows
   })
   .catch(err => console.log(err))
@@ -85,7 +86,7 @@ const getPatchesWithUser = function (user) {
   const id = user.id;
   return pool.query(
     `
-    SELECT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
+    SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
@@ -149,7 +150,11 @@ const addNewPatch = function(newPatchArr) {
     VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *`,
     newPatchArr)
-    .then((result) => result.rows[0])
+    .then((result) => {
+
+      // console.log("database addnewpatch fn:",result.rows)
+     return result.rows[0]
+    })
 }
 
 exports.addNewPatch = addNewPatch;
@@ -292,3 +297,21 @@ const updateUser = function(userArr) {
 }
 
 exports.updateUser = updateUser;
+
+//post a review (with patch id, user id, rating, comment)
+
+//database query to INSERT INTO reviews tables
+//RETURNING * to return what was inserted
+//res => res.rows
+
+const insertReview = function (patchId, userId, rating, comment) {
+
+  return pool.query(`
+  INSERT INTO reviews (patch_id, user_id,rating,comment)
+  VALUES ( $1, $2, $3, $4)
+  RETURNING *`, [patchId,userId,rating,comment])
+  .then (res => res.rows[0])
+  .catch( err => console.log("database insert review err:", err))
+}
+
+exports.insertReview = insertReview;

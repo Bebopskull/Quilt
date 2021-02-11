@@ -3,8 +3,7 @@
 .board{
 
 	width:99vw;
-	width:98vw;
-	height: 85vh;
+  height:85vh;
 	display:flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -12,24 +11,22 @@
 	border-color: transparent;
   border-top-color: #444C5C;
 	background-color:#faf9f7;
-	margin: 5px 1rem 0 0;
+	margin: 5px 0 0 0;
   padding:0 1rem 0 1rem;
 	flex-wrap: wrap;
-
-
+  overflow: scroll;
 }
 
 .frame{
 	display:flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	margin:5px;
-	border-style: solid;
-	width:47vw;
-	height: 60vw;
+	width: 22vw;
+	height: 30vw;
 	display:flex;
-	border-style: solid;
-	border-color: transparent;
+  padding: 0.5em;
+	border:none;
 	background-color: #CE5A57;
 }
 
@@ -74,9 +71,8 @@
 	align-items: center;
 	overflow: hidden;
 	font-family: 'Josefin Slab', serif;
-	max-width:47vw;
-	max-height: 60vw;
-
+	max-width: 50vw;
+	max-height: 40vw;
 }
 
 .thumbnail{
@@ -84,6 +80,8 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+  max-width: 100%;
+  max-height: 100%;
   margin: 0;
 }
 
@@ -91,7 +89,6 @@
 	max-width: 100%;
   max-height: 100%;
   padding:20px;
-  /* mix-blend-mode: hard-light; */
   box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.25);
 }
 
@@ -103,7 +100,8 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding:0px;
+	padding:5px;
+  margin: 5px;
 }
 
 .infoHeader{
@@ -117,8 +115,8 @@
 	min-height: 48px;
 	align-items: flex-end;
 	padding-bottom: 5px;
-
 }
+
 .frameExpanded .infoHeader{
   font-size: 1.5rem;
 }
@@ -128,8 +126,6 @@
 	padding: 0px;
 	color: white;
 	pointer-events: hand;
-
-
 }
 
 .usertag{
@@ -152,11 +148,11 @@
 	height: 25%;
 	max-height: 50px;
 }
+
 .patchinfo p{
 	color:white;
 	padding: 0em 1em;
 	margin: 0em;
-
 }
 
 .patchinfoLeft{
@@ -175,22 +171,6 @@
   width: 30%;
   justify-content: center;
   align-items: flex-end;
-
-
 }
 
-/*.saveflag{
-	z-index:1;
-}*/
 
-
-@media screen and (min-width: 375px){
-
-	.frame{
-		width: 23.7vw;
-		height: 30vw;
-	};
-
-
-
-};

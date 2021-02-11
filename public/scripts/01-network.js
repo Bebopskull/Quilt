@@ -12,23 +12,23 @@ return $.ajax({
 function ajaxGetAllcomments(patchId) {
 return $.ajax({
   method: "GET",
-  url: `api/comments/${patchId}`
+  url: `api/comments/${patchId}`,
 })
 .done(function(result) {
 
         console.log();
 
         renderComments(result.reverse());
-      })
-      .fail(function(error) {
+  })
+  .fail(function(error) {
         // Problem with the request
-        console.log(`Error with the request: ${error.message}`);
-      })
-      .always(function() {
+    console.log(`Error with the request: ${error.message}`);
+   })
+  .always(function() {
         // This will always run
-        console.log('request completed');
+  console.log('request completed');
         // console.log(req.header);
-      });
+  });
 }
 
 //takes in form data (must have email) and returns the user obj
@@ -119,5 +119,13 @@ function ajaxUpdateUser(id, name, email, password) {
   return $.ajax({
     method: "PUT",
     url: `/api/users/update/${id}/${name}/${email}/${password}`
+  })
+}
+
+function ajaxPostReview(data){
+  return $.ajax({
+    method: "POST",
+    url: "/api/patches/review",
+    data,
   })
 }

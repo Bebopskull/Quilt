@@ -3,37 +3,35 @@
 
 
 .addendum{
-
 	display:none;
 	flex-direction: column;
 	justify-content: flex-start;
 	height: 100%;
-	width:80%;
-
+	width:70%;
 }
 
 .addendumhead{
 	display:flex;
 	font-family: 'Josefin Slab', serif;
-	font-size: 2em;
+	font-size: 2rem;
 	font-weight: 600;
 	color:white;
 	justify-content: flex-end;
-	padding: 1em 1em;
+	padding: 1rem 1rem;
 }
+
 .closingBtn{
 	margin: 0em;
 	position: relative;
-
 }
 
 
 .description{
 	padding: 2vw 2vh;
-
-	/*color:#E6DACF;*/
 	color:white;
 	font-size: 1.2rem;
+	background-color: #a4a4a4;
+	mix-blend-mode: hard-light;
 }
 
 .new_comment{
@@ -41,9 +39,6 @@
 	display:flex;
 	flex-direction:column;
 	align-items: center;
-	/*justify-content: flex-start;*/
-
-
 }
 
 #comment-text{
@@ -53,7 +48,6 @@
   width: 58vw;
   height: 10vw;
   resize: none;
-
   margin: 20px 0px;
   margin-bottom: 0vh;
   padding: 2vw;
@@ -70,14 +64,14 @@
 	justify-content: space-between;
 	margin: 0px;
 	width: 58vw;
-
-
 }
+
 .rateSection{
 	display: flex;
 	flex-direction: row;
 	align-items: flex-end;
 }
+
 .rateLegend{
 	margin: 0em;
 	padding: 0em;
@@ -110,9 +104,7 @@
 #commentBtn{
 
 	color:#444C5C;
-
 	background: #f4f1ec;
-
 	mix-blend-mode: normal;
 
 }
@@ -120,10 +112,6 @@
 .newCommentBtn{
 	margin: 0vw 2vh;
 }
-
-
-
-
 
 
 /*///////DESKTOP MEDIA QUERY////////*/

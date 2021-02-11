@@ -45,10 +45,12 @@ module.exports = (db) => {
     console.log(`req.body`, req.body)
     const newPatchArr = [userId, title, url, description, categoryId, mediaTypeId];
     // send that info to the db to be added (function call) - need to send userID from cookie
+    console.log("newpatArr in router:", newPatchArr)
     database.addNewPatch(newPatchArr)
     .then(patch => {
       // receive information back from db
       // send info to front end
+
       res.status(201).json(patch)
     })
     // error handling
@@ -122,6 +124,16 @@ module.exports = (db) => {
     })
     .catch(err => console.log("err in router:", err))
 
+  })
+
+
+  router.post("/review", (req, res) => {
+    const {patchId, userId, rating, comment} = req.body;
+    console.log("req body from post route:",req.body)
+
+    database.insertReview(patchId,userId,rating,comment)
+    .then (output => res.json(output))
+    .catch (err => console.log("err from post route:",err))
   })
 
 
