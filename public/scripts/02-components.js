@@ -78,7 +78,7 @@ const createCommentElement = function(comment) {
               <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
               <p class = 'usertag'>${patchObj.name}</p>
             </div>
-            <div class = 'thumbnail'>
+            <div class = 'tumbnail'>
                   <!--a class='sourceUrl' href='${patchObj.url}'-->
                    <img class = 'thumbnailContent' src="${replaceThumbnail(patchObj.category)}">
                    <!--</a>-->

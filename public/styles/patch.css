@@ -3,8 +3,6 @@
 .board{
 
 	width:99vw;
-	width:98vw;
-	height: 85vh;
 	display:flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -12,11 +10,10 @@
 	border-color: transparent;
   border-top-color: #444C5C;
 	background-color:#faf9f7;
-	margin: 5px 1rem 0 0;
+	margin: 5px 0 0 0;
   padding:0 1rem 0 1rem;
 	flex-wrap: wrap;
-
-
+  overflow: scroll;
 }
 
 .frame{
