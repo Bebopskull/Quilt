@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500;700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
+
+
+.commentsContainer{
+   max-height: 55vh;
+   overflow: scroll;
+
+}
+.comment{
+  display: flex;
+  background-color:#f4f1ec;
+  flex-direction: column;
+}
+
+.commentHead{
+  color:#f4f1ec;
+  background-color: #444C5C;,
+  box-shadow: 2px 2px #444C5C;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+
+}
+
+.authorPresentation{
+
+
+}
+
+.commentAuthorName{
+
+}
+          
+          
+.commentContent{
+
+  box-shadow: 2px 2px #444C5C;
+  /*margin-bottom: 1rem;*/
+  padding-left: 2rem;
+}
+
+.commentFooter{
+
+}
+
+.date{
+  padding-left: 2rem;
+
+}
