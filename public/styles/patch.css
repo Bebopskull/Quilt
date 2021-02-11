@@ -29,6 +29,9 @@
 	border-style: solid;
 	border-color: black;
 	background-color: #CE5A57;
+}
+
+.frame[data-category~=""] {
 
 }
 
@@ -63,7 +66,7 @@
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
-  margin: 10px;
+  margin: 0;
 }
 
 .thumbnailContent{

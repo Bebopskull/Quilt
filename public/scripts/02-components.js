@@ -1,5 +1,21 @@
   //patchObj is {id,title,url,user_id,description,category_id,media_type_id,created_at, avg_rating}
 
+  const replaceThumbnail = function(category) {
+    let imgSrc = '';
+    switch (category) {
+      case 'Software Development':
+        imgSrc = "./media/software.jpg";
+        break;
+      case 'Food':
+        imgSrc = "./media/food.jpg";
+        break;
+      default:
+        imgSrc = "./media/thumbnail_demo.png";
+        break;
+    }
+    return imgSrc;
+  };
+
 
   //Takes in a patch obj and returns html
   const createPatchElement = function(patchObj) {
@@ -16,15 +32,15 @@
 
     //the html of a single patch
     const patchEl =
-    `<div class= "frame" id = 'frame_${patchObj.id}'>
+    `<div class= "frame" id = 'frame_${patchObj.id}' data-category="${patchObj.category}">
          <div class = 'patch' id='patch_${patchObj.id}''>
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
              <p class = 'usertag'>${patchObj.name}</p>
             </div>
-            <div class = 'tumbnail'>
+            <div class = 'thumbnail'>
                   <!--a class='sourceUrl' href='${patchObj.url}'-->
-                   <img class = 'thumbnailContent' src="./media/thumbnail_demo.png">
+                   <img class = 'thumbnailContent' src="${replaceThumbnail(patchObj.category)}">
                    <!--</a>-->
             </div>
             <div class = 'patchinfo'>
@@ -77,8 +93,9 @@
 
   //takes in an array of patch objects and renders html into the <section>
   // element in the document
-  const renderPatches = function(patchesArr) {
 
+
+  const renderPatches = function(patchesArr) {
     let render = '';
     if (patchesArr.length === 0) {
       render = '<p>no patches here yet</p>'
@@ -89,6 +106,7 @@
     }
     $('section.board').append(render);
   }
+
 
 //optionally takes in a user obj and renders either the "logged in user" HTML to the navbar or the default login form.
 const loginOrLogout = function (user = null) {
@@ -154,7 +172,6 @@ const CollectionHeader = function(name) {
 
 //takes in an array of patch ids and matches to toggle saved state
 const showSavedByUser = function (patchIds) {
-
   const allSaveFlags = $("section.board").find(".saveflag")
   allSaveFlags.each(function(){
     if ($.inArray(parseInt($(this).attr("data-patchid")), patchIds) >= 0) {

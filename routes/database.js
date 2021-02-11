@@ -5,11 +5,12 @@ const pool = require("../db/pool.js");
 //queries the database for all patches + their average rating.
 const getAllPatches = function () {
   return pool.query(
-    `SELECT patches.*, avg(rating) as ave_rating, users.name
+    `SELECT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
-    GROUP BY patches.id, users.id
+    JOIN categories ON categories.id = category_id
+    GROUP BY category, patches.id, users.id
     ORDER BY patches.created_at
     LIMIT 12;`
   )
@@ -67,12 +68,13 @@ const getPatchesWithUser = function (user) {
   const id = user.id;
   return pool.query(
     `
-    SELECT patches.*, avg(rating) as ave_rating, users.name
+    SELECT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON patch_id = patches.id
+    JOIN categories ON categories.id = category_id
     WHERE users.id = $1
-    GROUP BY patches.id, users.id
+    GROUP BY category, patches.id, users.id
     ORDER BY patches.created_at
     LIMIT 12;
     `, [id]
@@ -151,13 +153,14 @@ exports.getUserCollections = getUserCollections;
 //accepts a collection id and returns the patches in that collection
 const getPatchesByCollectionId = function(id) {
   return pool.query(`
-  SELECT patches.*, avg(rating) as ave_rating, users.name
+  SELECT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON reviews.patch_id = patches.id
     JOIN patches_collections ON patches_collections.patch_id = patches.id
+    JOIN categories ON categories.id = category_id
     WHERE collection_id = $1
-    GROUP BY collection_id,users.id,patches.id
+    GROUP BY category, collection_id,users.id,patches.id
     ORDER BY patches.created_at`,[id])
   .then(res => res.rows);
 }
@@ -201,13 +204,14 @@ const getSearchResults = function (string) {
 
   console.log("in database:", string)
   return pool.query(`
-  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name
+  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON reviews.patch_id = patches.id
     JOIN patches_collections ON patches_collections.patch_id = patches.id
+    JOIN categories ON categories.id = category_id
     WHERE LOWER(patches.title) LIKE LOWER($1) OR LOWER(patches.description) LIKE LOWER($1)
-    GROUP BY collection_id,users.id,patches.id
+    GROUP BY category, collection_id,users.id,patches.id
     ORDER BY patches.created_at`,[`%${string}%`])
   .then(res => res.rows );
 }
@@ -218,7 +222,7 @@ exports.getSearchResults = getSearchResults;
 const getPatchesByCategory = function(category) {
 
   return pool.query(`
-  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name
+  SELECT DISTINCT patches.*, avg(rating) as ave_rating, users.name, categories.name as category
     FROM patches
     JOIN users ON users.id = patches.user_id
     LEFT JOIN reviews ON reviews.patch_id = patches.id

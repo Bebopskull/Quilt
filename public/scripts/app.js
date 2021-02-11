@@ -129,9 +129,25 @@ $(() => { //the jquery document.on ready function
         data
       })
         //function to append patch list
-        .done(patchObj => {
-          console.log(patchObj);
-          renderPatches([patchObj])
+        .done(() => {
+          ajaxGetUser()
+          .then(user => {
+            ajaxGetUserPatches(user)
+            .then(patches => {
+            clearPage();
+            renderPatches(patches)
+            })
+            .then (() => {
+              savedByUser()
+              .then(patchIds => {
+               showSavedByUser(patchIds)
+              })
+            });
+    })
+
+
+
+
         })
         $('#add-new-patch-section').slideUp(1000);
         $('.success-message-new-patch').fadeIn(100).delay(1000).fadeOut(1000);
@@ -314,11 +330,6 @@ $(() => { //the jquery document.on ready function
     });
 
   })
-
-
-
-
-
 
 });
 
