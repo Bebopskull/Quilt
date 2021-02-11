@@ -140,19 +140,16 @@ $(() => { //the jquery document.on ready function
             .then (() => {
               savedByUser()
               .then(patchIds => {
-               showSavedByUser(patchIds)
+                showSavedByUser(patchIds)
               })
             });
-    })
-
-
-
+          })
 
         })
-        $('#add-new-patch-section').slideUp(1000);
-        $('.success-message-new-patch').fadeIn(100).delay(1000).fadeOut(1000);
+      $('#add-new-patch-section').slideUp(1000);
+      $('.success-message-new-patch').fadeIn(100).delay(1000).fadeOut(1000);
     })
-    $('#create-new-exit-button').on("click", function() {
+    $('#create-new-exit-button').on("click", function () {
       $('#add-new-patch-section').slideUp(500)
     })
   })
@@ -200,14 +197,33 @@ $(() => { //the jquery document.on ready function
     //render html of the add-patch form
   });
 
+  // UPDATE PROFILE FORM
+  // $('#update-user-section').on('click', '#update-user-section', function(event) {
+  $('#profile-update-form').submit(function (event) {
+    event.preventDefault();
+    const data = $(this).serialize();
 
-  //on click "patch"
-  //fetches the existing comments and appends into #patch_id (/get)
+    var values = {};
+    $.each($('#profile-update-form').serializeArray(), function (i, field) {
+      values[field.name] = field.value;
+    });
+    const name = values.name;
+    const email = values.email;
+    const password = values.password;
+    ajaxGetUser()
+      .then(user => {
+        const id = parseInt(user.id);
+        ajaxUpdateUser(id, name, email, password)
+          .then(res => console.log(res))
+          .catch(err => console.log('err in user update', err))
+      })
 
+    $('.success-message-update-user').slideDown(500).delay(700).slideUp(700);
+    $('#profile-update-form').slideUp(2200);
+  })
 
- //on click submit of "Add review"
-  //1.adds into review database (/post)
-  //2.clears comments and re-fetches the comments and appends into #patch_id (/get)
+  // })
+
 
   $(".login").on("submit","#getPatches", function (event) {
 

@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/styles/addNewPatch.css" type="text/css" />
     <link rel="stylesheet" href="/styles/addendum.css" type="text/css" />
     <link rel="stylesheet" href="/styles/comments.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/updateUser.css" type="text/css" />
 
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -90,6 +91,19 @@
         </select><br><br>
         <input type="submit" value="Create Patch!" id="create-patch-button">
         <p id="create-new-exit-button">X</p>
+      </form>
+    </div>
+
+    <div id="update-user-section">
+      <!-- update profile form -->
+      <div class="success-message-update-user"><h2>Profile Updated Successfully!</h2></div>
+      <form method="PUT" id="profile-update-form">
+        <p id="update-user-message">Please enter the fields you wish to change.</p>
+        <input type="text" placeholder="New Name" class="update-user-field" id="update-user-name" name="name"><br>
+        <input type="email" placeholder="New Email" class="update-user-field" id="update-user-email" name="email"><br>
+        <input type="password" placeholder="New Password" class="update-user-field" id="update-user-password" name="password"><br>
+        <input type="submit" value="Update my information!" id="update-user-button">
+        <p id="update-user-exit-button">X</p>
       </form>
     </div>
 

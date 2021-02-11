@@ -112,3 +112,12 @@ function ajaxDeleteFromColl(userId, patchId) {
     url: `/api/patches/delete/${userId}/${patchId}`
   })
 }
+
+//takes in a user object {id, name, email, password} as a response from router.put('/update')
+
+function ajaxUpdateUser(id, name, email, password) {
+  return $.ajax({
+    method: "PUT",
+    url: `/api/users/update/${id}/${name}/${email}/${password}`
+  })
+}

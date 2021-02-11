@@ -39,7 +39,7 @@ module.exports = (db) => {
     const title = req.body.title;
     const url = req.body.url;
     const description = req.body.description;
-    const categoryId = req.body.category_id;
+    const categoryId = req.body.category;
     const mediaTypeId = req.body.media_type_id;
 
     console.log(`req.body`, req.body)

@@ -1,0 +1,47 @@
+/* #update-user-section {
+  display: none;
+} */
+
+#profile-update-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.success-message-update-user {
+  display: none;
+  text-align: center;
+}
+
+#update-user-message {
+  font-weight: bold;
+  text-align: center;
+  padding: 1em;
+}
+
+.update-user-field {
+  border: 0.5px dashed black;
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+#update-user-button {
+  display: flex;
+  justify-content: center;
+  border: 0.5px dashed black;
+  padding: 0.5em;
+  margin: 0.5em;
+  background-color: #444C5C;
+  color: white;
+}
+
+#update-user-exit-button {
+  padding: 20px;
+  margin: 18px;
+  font-size: 18px;
+  font-weight: bold;
+}
+

@@ -73,9 +73,24 @@ module.exports = (db) => {
         res.status(500)
           .json({ error: "email already exists" });
       })
-  })
+  });
+
+// PUT http method is for updating/modifying
+
+  router.put("/update/:id/:name/:email/:password", (req, res) => {
+    // !POST => can't take data in the body, has to go along url and extract from req.params instead of req.body
+    const id = req.params.id;
+    const name = req.params.name;
+    const email = req.params.email;
+    const password = req.params.password;
+
+    database.updateUser([id, name, email, password])
+    .then((user) => res.json(user))
+    })
+
 
   // endpoint; router is a middleware
   return router;
 };
 
+// curl -X PUT -d 'name=testName&email=test@gmail.com&password=testPass' http://localhost:8080/api/users/update

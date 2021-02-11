@@ -271,3 +271,24 @@ const deleteFromCollection = function(patchId, collectionId) {
 }
 
 exports.deleteFromCollection = deleteFromCollection;
+
+// takes in an array of updated user information
+// [id, name, email, password]
+const updateUser = function(userArr) {
+  console.log("user array: ", userArr)
+
+  return pool.query(
+    `UPDATE users
+      SET name = $2,
+      email = $3,
+      password = $4
+      WHERE users.id = $1
+      RETURNING *`
+      , userArr)
+    .then(result => {
+      return result.rows[0]
+    })
+    .catch(err => console.log('database query error: ', err))
+}
+
+exports.updateUser = updateUser;
