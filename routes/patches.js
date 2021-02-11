@@ -39,16 +39,18 @@ module.exports = (db) => {
     const title = req.body.title;
     const url = req.body.url;
     const description = req.body.description;
-    const categoryId = req.body.category_id;
+    const categoryId = req.body.category;
     const mediaTypeId = req.body.media_type_id;
 
     console.log(`req.body`, req.body)
     const newPatchArr = [userId, title, url, description, categoryId, mediaTypeId];
     // send that info to the db to be added (function call) - need to send userID from cookie
+    console.log("newpatArr in router:", newPatchArr)
     database.addNewPatch(newPatchArr)
     .then(patch => {
       // receive information back from db
       // send info to front end
+
       res.status(201).json(patch)
     })
     // error handling
