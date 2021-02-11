@@ -15,6 +15,8 @@ nav{
 }
 
 nav h1.to-home {
+  font-size:2em;
+  font-family: 'Josefin Slab', serif;
   margin: 2vw 0vh;
   cursor: pointer;
 }
@@ -27,6 +29,11 @@ nav h1.to-home {
   color: inherit;
   text-decoration: underline;
 }
+
+.nav-btn.regular {
+  text-decoration: none;
+}
+
 .nav-btn:hover {
   cursor: pointer;
 }
@@ -84,8 +91,8 @@ ul.dropdown-content {
 
 /* Links inside the dropdown */
 .dropdown-content li {
-  font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-weight: bold;
+  font-size: 1.3rem;
   float: none;
   color: #444C5C;
   padding: 2px 2px;

@@ -5,7 +5,7 @@
   color: #E6DACF;
   padding: 2px 1rem 2px 1rem;
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Josefin Slab', sans-serif;
   border: 2px dashed #2c3d3c;
 }
 
@@ -13,7 +13,7 @@
 .dropdown-cat {
   position: relative;
   display: inline-block;
-  margin: 2px 1rem 2px 1rem;
+  margin: 4px 4px 1px 1.5rem;
 }
 
 /* Dropdown Content (Hidden by Default) */
