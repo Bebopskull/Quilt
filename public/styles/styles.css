@@ -1,17 +1,11 @@
 
-/*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=Roboto&display=swap');*/
-/*@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@700&family=PT+Serif&family=Roboto&display=swap');*/
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:wght@500;700&family=Montserrat:wght@100;900&family=PT+Serif&family=Roboto&display=swap');
-
-/*font-family: 'Josefin Slab', serif;
-font-family: 'Roboto', sans-serif;*/
-
 
 
 body {
 	background-color: #fff;
 	color: #444;
-	/*display: flex;*/
+	
 }
 
 a {
@@ -55,23 +49,11 @@ a {
 }
 
 
-
-/* #search-container {
-
-} */
-
 .typo{
 	margin-left: 20px;
   color:#e6dacf;
   display:flex;
 }
-
-
-/* .board .coll-name {
-  width:100%;
-  margin: 1vw 2vh;
-} */
-
 
 #flash-save {
  font-size:1.5rem;
