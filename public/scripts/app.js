@@ -186,11 +186,7 @@ $(() => { //the jquery document.on ready function
     $('.registration-section').slideUp(500)
   })
 
-  //on click of "Add Patch" in the Navbar:
-  $('#user-option').on("click","#add-patch", function(event) {
-    //clearPage(); to clear the viewport of patches
-    //render html of the add-patch form
-  });
+
 
   // UPDATE PROFILE FORM
   $(document).on('click', '#updateProfile', function(event) {
@@ -210,12 +206,15 @@ $(() => { //the jquery document.on ready function
   $.each($('#profile-update-form').serializeArray(), function (i, field) {
     values[field.name] = field.value;
   });
-  const name = values.name;
-  const email = values.email;
-  const password = values.password;
+  let name = values.name;
+  let email = values.email;
+  let password = values.password;
   ajaxGetUser()
     .then(user => {
       const id = parseInt(user.id);
+      if(!name) name = user.name;
+      if(!email) email = user.email;
+      if(!password) password = user.password;
       ajaxUpdateUser(id, name, email, password)
         .then(res => loginOrLogout(res))
         .catch(err => console.log('err in user update', err))

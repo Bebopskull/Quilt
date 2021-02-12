@@ -30,7 +30,7 @@ module.exports = (db) => {
         } else {
         req.session.userId = user.id;
 
-        res.json({id: user.id, name: user.name, email: user.email});
+        res.json(user);
         }
       })
   });
