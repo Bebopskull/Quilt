@@ -144,6 +144,10 @@ a.sourceUrl {
 	font-size: 1rem;
 }
 
+.patch a {
+  text-decoration: underline;
+}
+
 .patchinfo{
 	display: flex;
 	flex-direction: row;
