@@ -43,6 +43,10 @@
   box-shadow: 2px 2px gray;
 }
 
+.new_comment {
+  display:none;
+}
+
 /* STAR RATING CSS*/
 
 .star-rating s:hover,

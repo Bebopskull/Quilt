@@ -41,15 +41,16 @@ $(()=>{
 			$frame.removeClass('frameExpanded');
 
 			addendum.hide();
+      $(".new_comment").hide();
 
 			event.stopPropagation();
 		})
 
 		const new_comment = $(this).find(".new_comment");
 
-		if(shown){
-			new_comment.hide();
-		}
+		// if(shown){
+		// 	new_comment.hide();
+		// }
 		///newCommentbtn behaviour
 		const newComBtn = addendum.find('.newCommentBtn');
 
