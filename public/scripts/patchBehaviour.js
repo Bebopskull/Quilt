@@ -53,17 +53,17 @@ $(()=>{
 		///newCommentbtn behaviour
 		const newComBtn = addendum.find('.newCommentBtn');
 
-		newComBtn.on('click', function(event){
+		// newComBtn.on('click', function(event){
 
-			shown = false;
-			///set it to true again when doing que post request.
+		// 	event.preventDefault();
+		// 	if (shown) {
+    //     new_comment.slideDown();
+    //   } else {
+    //     new_comment.slideUp();
+    //   }
 
-			event.preventDefault();
-
-			new_comment.slideDown();
-
-			event.stopPropagation();
-		})
+		// 	event.stopPropagation();
+		// })
 
 		///commentBtn behaviour
 		const commentBtn = addendum.find('.commentBtn');

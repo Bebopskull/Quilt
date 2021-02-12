@@ -14,4 +14,6 @@ INSERT INTO reviews (patch_id, user_id, rating, comment, created_at)
   VALUES (3, 2, 5, 'Love it!!!!', '2021-02-09');
 
 INSERT INTO reviews (patch_id, user_id, rating, comment, created_at)
-  VALUES (3, 3, 5, 'Game-changer.', '2021-02-09');
+  VALUES (3, 3, 5, 'Game-changer.', '2021-02-09'),
+  (5, 4, 1, 'Yikes.', '2021-02-11'),
+  (6, 1, 3, 'Go back to this every now and then', '2021-02-10');

@@ -32,6 +32,17 @@
 
 }
 
+.newCommentBtn {
+  color: #474747;
+  padding:5px;
+  border:none;
+  outline:none;
+}
+
+.newCommentBtn:active {
+  box-shadow: 2px 2px gray;
+}
+
 /* STAR RATING CSS*/
 
 .star-rating s:hover,

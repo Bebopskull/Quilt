@@ -358,6 +358,9 @@ $(() => { //the jquery document.on ready function
 
     ajaxGetUser()
     .then (user => {
+      if(!user) {
+        return 1;
+      }
       return user.id
     })
     .then((userId) => {
@@ -402,6 +405,13 @@ $(() => { //the jquery document.on ready function
     $(this).closest(".rateSection").find(".rateInput").val(rating)
 
     });
+
+
+    $("section.board").on("click", ".newCommentBtn", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      $(this).closest(".frame").find(".new_comment").slideToggle();
+    })
 
 
 

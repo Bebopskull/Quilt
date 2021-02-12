@@ -133,7 +133,7 @@ const createCommentElement = function(comment) {
             </div>
             <br>
             <div class = 'comments' >
-              <button class='newCommentBtn' >NewComment</button>
+              <button class='newCommentBtn' >Comment&nbsp<i class="fas fa-sort"></i></button>
               <br>
               <div class='commentsContainer'>
 
