@@ -182,30 +182,29 @@ $(() => { //the jquery document.on ready function
       })
     })
   });
-  $('#exit-button').on("click", function() {
+
+  $(document).on("click",'#exit-button', function() {
     $('.registration-section').slideUp(500)
   })
 
 
 
   // UPDATE PROFILE FORM
-  $(document).on('click', '#updateProfile', function(event) {
+  $(".login").on('click', '#updateProfile', function(event) {
     event.preventDefault();
-    event.stopPropagation();
+    if($("#update-user-section").is(":hidden")){
+      console.log("section is hidden");
+    }
     $('#update-user-section').slideDown(1000);
   });
 
   $(document).on('click','#update-user-exit-button', function(event) {
     event.preventDefault();
-    event.stopPropagation();
     $('#update-user-section').slideUp(500);
   });
 
-  $('#profile-update-form').submit(function (event) {
+  $(document).on("submit",'#profile-update-form', function (event) {
   event.preventDefault();
-  event.stopPropagation();
-
-
   var values = {};
   $.each($('#profile-update-form').serializeArray(), function (i, field) {
     values[field.name] = field.value;
@@ -225,7 +224,8 @@ $(() => { //the jquery document.on ready function
     })
 
   $('.success-message-update-user').slideDown(500).delay(700).slideUp(700);
-  $('#profile-update-form').slideUp(2200);
+  $('#update-user-section').slideUp(2200);
+
   })
 
 
