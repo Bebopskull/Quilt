@@ -195,6 +195,9 @@ const loginOrLogout = function (user = null) {
           <li><form class="form-inline" action="/patches/:collectionid" method="GET" id="getSaved">
           <button type="submit" class="btn nav-btn regular">Saved Patches</button>
           </form></li>
+          <li><form class="form-inline" id="updateProfile">
+          <button type="submit" class="btn nav-btn regular">Update Profile</button>
+          </form></li>
           <li><form class="form-inline" action="/logout" method="POST" id="logout_form">
             <button type="submit" class="btn nav-btn">Logout</button>
             </form></li>

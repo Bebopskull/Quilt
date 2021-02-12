@@ -198,31 +198,34 @@ $(() => { //the jquery document.on ready function
   });
 
   // UPDATE PROFILE FORM
-  // $('#update-user-section').on('click', '#update-user-section', function(event) {
-  $('#profile-update-form').submit(function (event) {
+  $(document).on('click', '#updateProfile', function(event) {
     event.preventDefault();
-    const data = $(this).serialize();
+    $('#update-user-section').slideDown(1000);
+  });
 
-    var values = {};
-    $.each($('#profile-update-form').serializeArray(), function (i, field) {
-      values[field.name] = field.value;
-    });
-    const name = values.name;
-    const email = values.email;
-    const password = values.password;
-    ajaxGetUser()
-      .then(user => {
-        const id = parseInt(user.id);
-        ajaxUpdateUser(id, name, email, password)
-          .then(res => console.log(res))
-          .catch(err => console.log('err in user update', err))
-      })
+  $('#profile-update-form').submit(function (event) {
+  event.preventDefault();
+  const data = $(this).serialize();
 
-    $('.success-message-update-user').slideDown(500).delay(700).slideUp(700);
-    $('#profile-update-form').slideUp(2200);
-  })
+  var values = {};
+  $.each($('#profile-update-form').serializeArray(), function (i, field) {
+    values[field.name] = field.value;
+  });
+  const name = values.name;
+  const email = values.email;
+  const password = values.password;
+  ajaxGetUser()
+    .then(user => {
+      const id = parseInt(user.id);
+      ajaxUpdateUser(id, name, email, password)
+        .then(res => loginOrLogout(res))
+        .catch(err => console.log('err in user update', err))
+    })
 
-  // })
+  $('.success-message-update-user').slideDown(500).delay(700).slideUp(700);
+  $('#profile-update-form').slideUp(2200);
+
+  });
 
 
   $(".login").on("submit","#getPatches", function (event) {
