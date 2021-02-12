@@ -18,14 +18,12 @@ $(()=>{
 
 
 		const addendum = $(this).find(".addendum");
-		console.log(`addendum`,addendum);
 		addendum.show();
 
 		////display patches
 
 		ajaxGetAllcomments(patch_id)
 			.then((res) => {
-				console.log(res);
 				renderComments(res);
 			});
 

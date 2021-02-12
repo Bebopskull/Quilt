@@ -3,22 +3,11 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-// Fake data taken from initial-tweets.json
+
 
 
 $('form').hide();
 
-/////new tweet form button behaviour/////
-
-// $(".fa-angle-double-down").on('click',function(event){
-
-//   $('form').slideToggle('300');
-//   $('.error').slideUp(300);
-
-// });
-
-
-// Dealing with Textarea Height
 
 const renderComments = function(comments) {
   // loops through tweets
@@ -34,33 +23,9 @@ const renderComments = function(comments) {
   	container.append(commento);
 
   })
-  // console.log(container)
-  // return
+
 };
 
-const loadComments = function() {
-
-    $.ajax({
-      method: 'GET',
-      url: '/comments',
-    })
-    .done(function(result) {
-
-        console.log();
-
-        renderTweets(result.reverse());
-      })
-      .fail(function(error) {
-        // Problem with the request
-        console.log(`Error with the request: ${error.message}`);
-      })
-      .always(function() {
-        // This will always run
-        console.log('request completed');
-        // console.log(req.header);
-      });
-  // });
-}
 
 
 

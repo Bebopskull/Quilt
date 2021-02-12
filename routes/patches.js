@@ -137,6 +137,14 @@ module.exports = (db) => {
   })
 
 
+  router.get("/rating/:id", (req,res) => {
+    const patchId = req.params.id;
+    database.getRating(parseInt(patchId))
+    .then (rating => res.json(rating))
+    .catch(err => console.log("router get rating err:", err))
+  })
+
+
 
 
 

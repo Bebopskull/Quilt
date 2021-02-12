@@ -51,7 +51,7 @@ const createCommentElement = function(comment) {
           </article>`
         )
 
-  // $(`#tweetFrom${tweet.user.name}`).text(textFromUser);
+
   return $comment;
 }
 
@@ -68,14 +68,13 @@ const createCommentElement = function(comment) {
     ///added this line, so the average ratings are limited to 1 decimal.
     let ave_rating = Math.round(patchObj.ave_rating * 10 )/10;
 
-    // const date = Date(patchObj.created_at)
-    // console.log(date);
-    //the html of a single patch
+
+    //       THE HTML OF A SINGLE PATCH
     const patchEl =
     `<div class= "frame" id = 'frame_${patchObj.id}' data-category="${patchObj.category}">
          <div class = 'patch' id='patch_${patchObj.id}''>
             <div class='infoHeader' id='patchHeader_${patchObj.id}'>
-              <a class='sourceUrl' href='${patchObj.url}'>${patchObj.title}</a>
+              <a class='sourceUrl' href='${patchObj.url}'><b>${patchObj.title}</b></a>
               <p class = 'usertag'>${patchObj.name}</p>
             </div>
             <div class = 'thumbnail'>
@@ -86,7 +85,7 @@ const createCommentElement = function(comment) {
                 <p>created on: ${patchObj.created_at.substring(0,10)}</p>
               </div>
               <div class='patchinfoRight'>
-                <p>${ave_rating}</p>
+                <p class="ave-rating">${ave_rating}</p>
                 <p class = 'saveflag' data-patchid = "${patchObj.id}" >
                   <i class="far fa-bookmark"></i>
                 </p>
@@ -114,11 +113,12 @@ const createCommentElement = function(comment) {
 
                   <!-- star rating -->
                   <div class="star-rating">
-                  <s data-star="1">
-                    <s data-star="1">
-                      <s data-star="1">
-                         <s data-star="1">
-                            <s data-star="1">
+                  <s data-star="1" class="inactive">
+                    <s data-star="2" class="inactive">
+                      <s data-star="3" class="inactive" >
+                         <s data-star="4" class="inactive">
+                            <s data-star="5" class="inactive">
+                            <span class="innermost"></span>
                   </s></s></s></s></s>
                   </div>
 

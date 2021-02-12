@@ -12,7 +12,7 @@ const getAllPatches = function () {
     JOIN categories ON categories.id = category_id
     GROUP BY category, patches.id, users.id
     ORDER BY patches.created_at
-    LIMIT 12;`
+    ;`
   )
   .then (res => {
     // console.log("testing database getall",res.rows)
@@ -315,3 +315,18 @@ const insertReview = function (patchId, userId, rating, comment) {
 }
 
 exports.insertReview = insertReview;
+
+
+const getRating = function (patchId) {
+
+  return pool.query(`
+  SELECT avg(rating) as rating
+  FROM patches
+  LEFT JOIN reviews ON patches.id = patch_id
+  WHERE patches.id = $1
+  GROUP BY patches.id;`,[patchId])
+  .then (res => res.rows[0])
+  .catch (err => console.log('database error:',err))
+}
+
+exports.getRating = getRating;
