@@ -192,9 +192,6 @@ $(() => { //the jquery document.on ready function
   // UPDATE PROFILE FORM
   $(".login").on('click', '#updateProfile', function(event) {
     event.preventDefault();
-    if($("#update-user-section").is(":hidden")){
-      console.log("section is hidden");
-    }
     $('#update-user-section').slideDown(1000);
   });
 
