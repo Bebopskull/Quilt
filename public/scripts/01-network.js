@@ -129,3 +129,9 @@ function ajaxPostReview(data){
     data,
   })
 }
+
+function ajaxGetAveRating(patchid){
+  return $.ajax({
+    url:`/api/patches/rating/${patchid}`
+  })
+}

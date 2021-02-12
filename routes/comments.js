@@ -23,7 +23,7 @@ module.exports = (db) => {
     // extract information out of the comment form
 
     //where to get those, some of this info is in the patch object
-    
+
     const userId = req.session.userId;
     const title = req.body.title;
     const url = req.body.url;

@@ -116,12 +116,10 @@ $(() => { //the jquery document.on ready function
 
   // ADD PATCH FORM
   $('#user-option').on("click", "#add-patch", function(event) {
-    console.log("Click!");
     $('#add-new-patch-section').slideDown(500);
     $('#new-patch').submit(function(event) {
       event.preventDefault();
       const data = $(this).serialize();
-      //console.log(data)
 
       $.ajax({
         method: "POST",
@@ -156,14 +154,12 @@ $(() => { //the jquery document.on ready function
 
   //REGISTRATION FORM
   $('#user-option').on("click","#signup", function(event) {
-   console.log("click!");
     $('.registration-section').slideDown(500);
     $('#registration-form').submit(function(event) {
       event.preventDefault();
       //stores form data in a variable
       const data = $(this).serialize();
       console.log(data)
-
       $.ajax({
         method: "POST",
         url: "/api/users/register",
@@ -177,7 +173,6 @@ $(() => { //the jquery document.on ready function
               ajaxGetUserPatches(user)
               .then(patches => {
                 clearPage();
-                console.log("patches",patches);
                 renderPatches(patches)
               });
             })
@@ -284,11 +279,10 @@ $(() => { //the jquery document.on ready function
 
     event.preventDefault()
     const patchId = $(this).closest(".saveflag").attr("data-patchid");
-    console.log(patchId)
     ajaxGetUser()
     .then (user => {
       ajaxSavePatch({user_id: user.id,patch_id: parseInt(patchId)})
-      .then(res => console.log(res))
+      .then(res => console.log(`saved patch ${patchId}`))
       .catch(err => console.log('err in ajax save patch', err))
     })
     .catch(err => console.log('err at app.js', err))
@@ -300,7 +294,6 @@ $(() => { //the jquery document.on ready function
 
     event.preventDefault()
     const patchId = $(this).closest(".saveflag").attr("data-patchid");
-    console.log(patchId)
     ajaxGetUser()
     .then (user => {
       ajaxDeleteFromColl(user.id,parseInt(patchId))
@@ -352,11 +345,7 @@ $(() => { //the jquery document.on ready function
 
 
 
-  //on form submit
-  // const data = this.serialize()
-  // ajaxPostReview(data)
-  //.then (res => console.log res)
-  //empty the comment box $(#comment box).empty() and reload the comments for that patch.
+//SUBMITTING A COMMENT
 
 
   $("section.board").on("submit", ".patchcomment", function (event){
@@ -377,29 +366,39 @@ $(() => { //the jquery document.on ready function
     })
     .then(()=> {
       const patchId = $(this).attr("data-patchid");
-      ajaxGetAllcomments(patchId)
+      ajaxGetAllcomments(patchId);
+      ajaxGetAveRating(patchId)
+      .then(ratingObj => {
+        $(this).closest(".frame").find(".ave-rating").html((Math.round(ratingObj.rating * 10 ) / 10));
+      })
 
     })
     .then(()=> {
       $(".new_comment").slideUp();
     })
+
   })
 
     // STAR rating on each comment form
   $("section.board").on("click","div.star-rating > s", function(e) {
+    e.stopPropagation();
 
     // remove all active classes first, needed if user clicks multiple times
+    $(this).closest('div').find('.active').addClass('inactive');
     $(this).closest('div').find('.active').removeClass('active');
 
-    $(e.target).parentsUntil("div").addClass('active'); // all elements up from the clicked one excluding self
-    $(e.target).addClass('active');  // the element user has clicked on
+    $(e.target).parentsUntil("div").addClass('active');
+    $(e.target).parentsUntil("div").removeClass('inactive'); // all elements up from the clicked one excluding self
+    $(e.target).addClass('active');
+    $(e.target).removeClass('inactive'); // the element user has clicked on
 
         var numStars = $(e.target).parentsUntil("div").length+1;
         $('.show-result').text(numStars + (numStars == 1 ? " star" : " stars!"));
-
-    const rating = $(this).attr("data-star");
-    $(this).closest(".rateSection").find(".rateInput").val(rating);
+    const rating = $(".star-rating").find(".innermost").closest(".active").attr("data-star")
+    $(this).closest(".rateSection").find(".rateInput").val(rating)
 
     });
+
+
 
 });

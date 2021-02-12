@@ -23,7 +23,7 @@
 	align-items: flex-start;
 	margin:5px;
 	width: 22vw;
-	height: 30vw;
+	height: 28vw;
 	display:flex;
   padding: 0.5em;
 	border:none;
@@ -72,7 +72,7 @@
 	overflow: hidden;
 	font-family: 'Josefin Slab', serif;
 	max-width: 50vw;
-	max-height: 40vw;
+	max-height: 45vw;
 }
 
 .thumbnail{
@@ -121,11 +121,15 @@
   font-size: 1.5rem;
 }
 
-.sourceUrl p{
+a.sourceUrl {
 	margin: 0px;
 	padding: 0px;
 	color: white;
 	pointer-events: hand;
+}
+
+.description a.sourceUrl {
+  text-decoration: underline;
 }
 
 .usertag{
@@ -145,18 +149,19 @@
 	flex-direction: row;
 	justify-content: space-between;
 	width: 100%;
-	height: 25%;
+	height: 50%;
 	max-height: 50px;
 }
 
 .patchinfo p{
 	color:white;
-	padding: 0em 1em;
+	padding: 3px 1em;
 	margin: 0em;
 }
 
 .patchinfoLeft{
 	flex-grow: 2;
+  font-size:0.8em;
 	display: flex;
 	width:70%;
 	justify-content: flex-start;
@@ -169,8 +174,11 @@
   flex-grow: 1;
   flex-direction: column;
   width: 30%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-end;
 }
 
 
+.saveflag {
+  margin-top:2px;
+}
