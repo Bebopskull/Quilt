@@ -191,16 +191,20 @@ $(() => { //the jquery document.on ready function
   // UPDATE PROFILE FORM
   $(document).on('click', '#updateProfile', function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $('#update-user-section').slideDown(1000);
   });
 
-  $(document).on('click','#update-user-exit-button', function() {
+  $(document).on('click','#update-user-exit-button', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
     $('#update-user-section').slideUp(500);
   });
 
   $('#profile-update-form').submit(function (event) {
   event.preventDefault();
-  const data = $(this).serialize();
+  event.stopPropagation();
+
 
   var values = {};
   $.each($('#profile-update-form').serializeArray(), function (i, field) {

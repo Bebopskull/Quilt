@@ -105,10 +105,10 @@ const createCommentElement = function(comment) {
             <div class='new_comment'>
 
               <form method = "POST" action = "/reviews" data-patchid=${patchObj.id} class="patchcomment">
-                <textarea name="comment" id="comment-text" placeholder="What do you think about this Patch?" name="comment"></textarea>
+                <textarea name="comment" class="comment-text" placeholder="What do you think about this Patch?" name="comment"></textarea>
                 <br>
-                <footer class = 'bajoTextInput' id='bajoTextInput'>
-                  <button class='commentBtn' id='commentBtn'type="submit">Post</button>
+                <footer class ='bajoTextInput comment-footer' id='bajoTextInput'>
+                  <button class='commentBtn' type="submit">Post</button>
                   <div class='rateSection'>
 
                   <!-- star rating -->

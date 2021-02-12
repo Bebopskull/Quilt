@@ -41,7 +41,7 @@
 	align-items: center;
 }
 
-#comment-text{
+.comment-text{
 	background-color: #f4f1ec;
 	border: none;
   border-bottom: 4px solid #545149;
@@ -53,12 +53,12 @@
   padding: 2vw;
 }
 
-#comment-text:focus {
+.comment-text:focus {
 	outline:none;
 }
 
 
-#bajoTextInput{
+.comment-footer{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
