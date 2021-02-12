@@ -198,6 +198,9 @@ $(() => { //the jquery document.on ready function
     $('#update-user-section').slideDown(1000);
   });
 
+  $('#update-user-exit-button').on('click', function() {
+    $('#update-user-section').slideUp(500);
+
   $('#profile-update-form').submit(function (event) {
   event.preventDefault();
   const data = $(this).serialize();
@@ -219,6 +222,7 @@ $(() => { //the jquery document.on ready function
 
   $('.success-message-update-user').slideDown(500).delay(700).slideUp(700);
   $('#profile-update-form').slideUp(2200);
+  })
 
   });
 
